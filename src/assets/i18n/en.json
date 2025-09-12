@@ -54,6 +54,7 @@
 
   "admin.panel.tab.header.settings": "Settings",
 
+  "admin.panel.tab.header.settings.manageDictionary": "Zarządzaj słownikiem",
   "admin.panel.tab.header.settings.users": "Users",
 
   "admin.panel.table.filter": "Filter",
@@ -68,6 +69,10 @@
   "admin.panel.table.header.details": "Details",
   "admin.panel.table.header.delete": "Delete",
   "admin.panel.table.header.modify": "Modify",
+
+  "admin.panel.settings.manageDictionary.removeAll": "Remove all words",
+  "admin.panel.settings.manageDictionary.loadAllWords": "Load words from TXT",
+  "admin.panel.settings.manageDictionary.textarea.placeholder": "Provide here the list of supported words, separated by new line",
 
   "admin.panel.settings.warning.popupWarning": "Warning",
 
