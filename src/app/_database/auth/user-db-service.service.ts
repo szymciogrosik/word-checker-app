@@ -12,7 +12,6 @@ export class UserDbService {
   private firestore: Firestore;
 
   constructor() {
-    // w Angular 19 modularnym używamy inject()
     this.firestore = inject(Firestore);
   }
 

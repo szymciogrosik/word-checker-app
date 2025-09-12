@@ -3,6 +3,7 @@ import {MatButton} from "@angular/material/button";
 import {TranslateModule} from "@ngx-translate/core";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatProgressBar} from "@angular/material/progress-bar";
+import {DictionaryService} from "../../../_database/dictionary/dictionary.service";
 
 @Component({
   selector: 'app-manage-dictionary',
@@ -22,7 +23,7 @@ export class ManageDictionaryComponent {
   progress: number;
   totalWords: number;
 
-  constructor() {
+  constructor(private dictionaryService: DictionaryService) {
     this.setDefaultSelectedFileValues();
   }
 
@@ -44,41 +45,53 @@ export class ManageDictionaryComponent {
 
     const file = input.files[0];
     this.fileName = file.name;
-    this.fileSizeMB = (file.size / (1024 * 1024)).toFixed(2) as unknown as number;
+    this.fileSizeMB = +(file.size / (1024 * 1024)).toFixed(2);
     this.loading = true;
     this.progress = 0;
     this.totalWords = 0;
 
     const reader = file.stream().getReader();
     const decoder = new TextDecoder();
-    const fileSize = file.size;
     let partial = '';
     let processedBytes = 0;
+
+    const batchSize = 400;
+    let batchWords: string[] = [];
 
     while (true) {
       const { value, done } = await reader.read();
       if (done) break;
 
       processedBytes += value.length;
-      const chunk = decoder.decode(value, { stream: true });
-      partial += chunk;
+      partial += decoder.decode(value, { stream: true });
 
       let lines = partial.split('\n');
       partial = lines.pop() || '';
 
       for (const line of lines) {
         const word = line.trim();
-        if (word) this.totalWords++;
+        if (word) {
+          batchWords.push(word);
+          this.totalWords++;
+        }
+
+        if (batchWords.length >= batchSize) {
+          await this.dictionaryService.addWords(batchWords);
+          batchWords = [];
+        }
       }
 
-      this.progress = +(processedBytes / fileSize * 100).toFixed(2);
+      this.progress = +(processedBytes / file.size * 100).toFixed(2);
     }
 
-    if (partial.trim()) {
-      this.totalWords++;
+    if (partial.trim()) batchWords.push(partial.trim());
+
+    if (batchWords.length) {
+      await this.dictionaryService.addWords(batchWords);
     }
 
     this.loading = false;
   }
+
 
 }
