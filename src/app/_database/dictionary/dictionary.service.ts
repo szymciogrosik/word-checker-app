@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, doc, writeBatch, getDoc } from '@angular/fire/firestore';
+import {Firestore, doc, writeBatch, getDoc} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +13,10 @@ export class DictionaryService {
   }
 
   public async addWords(words: string[]): Promise<void> {
-    let batchSize = words.length;
-    for (let i = 0; i < words.length; i += batchSize) {
+    const batchLimit = 400;
+    for (let i = 0; i < words.length; i += batchLimit) {
       const batch = writeBatch(this.firestore);
-      const chunk = words.slice(i, i + batchSize);
+      const chunk = words.slice(i, i + batchLimit);
 
       chunk.forEach(rawWord => {
         const word = rawWord.trim();
@@ -26,7 +26,6 @@ export class DictionaryService {
       });
 
       await batch.commit();
-      await new Promise(r => setTimeout(r, 500));
     }
   }
 
