@@ -1,4 +1,4 @@
-# Angular Firebase Accelerator app
+# Word Checker App
 
 This project was generated with latest version of [Angular CLI](https://github.com/angular/angular-cli).
 
@@ -30,19 +30,17 @@ ng version
 
 - Create a project
 - Enable authentication (email and google with default settings)
-- Add dummy logged user + add it to Firestore database:
-- email: email@gmail.com
-- firstName: "Adam"
-- lastName: "Abacki"
-- roles: ["ADMIN_FULL_ACCESS"]
-- uid: "FROM_AUTHENTICATION"
+- Add dummy user in authentication console by: email: email@gmail.com, pass: <whatever you want> -> copy the uid and store somewhere
+- Navigate to the Settings in Authentication, and select Authorized domains. Add your GitHub pages domain, in my case it is: szymciogrosik.github.io
 
-- If you are planning to use GH-pages add a page to authentication -> Settings -> Authorized domains
-
-- Generate firebase config (main page -> </> -> with hosting)
-- Add firebase config to codebase (without api key ofc)
-
-- Firestore database, create new -> location warsaw -> start in prod mode -> fill:
+- Create Firebase database -> location: Warsaw -> Start in prod mode
+- Add dummy user in authentication console by:  (location -> users -> AdamAbacki -> the rest as following)
+- email: type string: email@gmail.com (your google email)
+- firstName: type string: Adam
+- lastName: type string: Abacki
+- roles: type array -> string: ADMIN_FULL_ACCESS
+- uid: type string: <copied from authentication>
+- Fill in "Rules" tab
 ```json
 rules_version = '2';
 
@@ -68,6 +66,14 @@ service cloud.firestore {
  }
 }
 ```
+
+- Generate firebase config (Settings on the top -> General -> Scroll down "Web" -> process with guide)
+- Add firebase config to codebase (without api key ofc), to the files:
+  - environment.ts
+  - firebase/environment.ts
+  - ftp/environment.ts
+  - gh-pages/environment.ts
+
 - Install firebase cli (https://firebase.google.com/docs/cli?hl=pl)
 - firebase login
 - firebase init - will be added GH secret FIREBASE_SERVICE_ACCOUNT_<PROJECT_NAME> as private key generated on service accounts page
