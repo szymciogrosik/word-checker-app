@@ -12,7 +12,7 @@ Run `ng serve` for a local server. Navigate to `http://localhost:4200/`. The app
 
 ## Firebase hosting
 
-[Deployed app on firebase hosting](https://word-checker-app.web.app)
+[Deployed app on firebase hosting](https://word-checker-app-2cbfd.web.app)
 
 ## Change version of angular cli
 
@@ -120,6 +120,7 @@ service cloud.firestore {
 - Replace all places with angular-firebase-accelerator with your app name. Only in those places provide your unique firebase app id:
   - .firebaserc
   - CI - firebase - Step 2 - Build and deploy to firebase-release.yaml (two places in that file)
+  - README.md (link to firebase hosting)
 
 - Replace also token in:
   - FIREBASE_SERVICE_ACCOUNT_ANGULAR_FIREBASE_ACCELERATOR -> your token name from GitHub
