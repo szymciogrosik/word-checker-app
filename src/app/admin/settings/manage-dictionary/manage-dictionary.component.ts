@@ -55,7 +55,7 @@ export class ManageDictionaryComponent {
     let partial = '';
     let processedBytes = 0;
 
-    const batchSize = 400;
+    const batchSize = 3000;
     let batchWords: string[] = [];
 
     while (true) {
