@@ -119,8 +119,7 @@ service cloud.firestore {
 
 - Replace all places with angular-firebase-accelerator with your app name. Only in those places provide your unique firebase app id:
   - .firebaserc
-  - CI - firebase - Step 2 - Build and deploy to firebase-release.yaml ("projectId" property)
-  - 
+  - CI - firebase - Step 2 - Build and deploy to firebase-release.yaml (two places in that file)
 
 - Replace also token in:
   - FIREBASE_SERVICE_ACCOUNT_ANGULAR_FIREBASE_ACCELERATOR -> your token name from GitHub
