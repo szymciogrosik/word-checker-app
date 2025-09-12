@@ -26,6 +26,13 @@ npm install -g @angular/cli@wished.version.here
 
 ng version
 
+## Use template
+
+Create new project based on template. Do not copy branches.
+Add and push new two branches:
+- release/gh-pages
+- release/firebase
+
 ## Setup firebase
 
 - Create a project
