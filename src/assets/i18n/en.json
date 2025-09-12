@@ -6,7 +6,7 @@
   "datePicker.chooseDate": "Select date",
   "datePicker.chooseDateAndTime": "Provide date and time",
 
-  "navbar.tab.applicationName": "Angular accelerator app",
+  "navbar.tab.applicationName": "Word Checker App",
   "navbar.tab.button.logout": "Logout",
 
   "snackbar.default.dismiss": "Dismiss",

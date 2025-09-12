@@ -8,11 +8,11 @@ Run `ng serve` for a local server. Navigate to `http://localhost:4200/`. The app
 
 ## GitHub pages
 
-[Deployed app on GitHub pages](https://szymciogrosik.github.io/angular-firebase-accelerator)
+[Deployed app on GitHub pages](https://szymciogrosik.github.io/word-checker-app)
 
 ## Firebase hosting
 
-[Deployed app on firebase hosting](https://angular-firebase-accelerator.web.app)
+[Deployed app on firebase hosting](https://word-checker-app.web.app)
 
 ## Change version of angular cli
 
@@ -75,17 +75,44 @@ service cloud.firestore {
   - gh-pages/environment.ts
 
 - Install firebase cli (https://firebase.google.com/docs/cli?hl=pl)
+- Install tools if not installed yet: npm install -g firebase-tools
 - firebase login
-- firebase init - will be added GH secret FIREBASE_SERVICE_ACCOUNT_<PROJECT_NAME> as private key generated on service accounts page
+- firebase init (will added GH secret FIREBASE_SERVICE_ACCOUNT_<PROJECT_NAME> as private key generated on service accounts page). Select:
+  - Hosting -> Create a new project
+  - What do you want to use as your public directory? Enter
+  - ✔ Configure as a single-page app (rewrite all urls to /index.html)? Yes
+  - ✔ Set up automatic builds and deploys with GitHub? Yes -> provide your user/repository
+- Check if you are turned on API Identity and Access Management (IAM)
+  - Open Google Cloud Console (https://console.cloud.google.com/apis/library)
+  - Select project (your app name). 
+  - Select API & Services → Enabled APIs & services. 
+  - If there is no Identity and Access Management (IAM) API, turn them on:
+  - Enable APIs & Services → search "IAM Service Account Credentials API" → Enable.
+- firebase init. Select:
+  - Hosting
+  - What do you want to use as your public directory? Enter
+  - ✔ Configure as a single-page app (rewrite all urls to /index.html)? Yes
+  - ✔ Set up automatic builds and deploys with GitHub? Yes -> provide your user/repository
+  - Set up the workflow to run a build script before every deploy? (Y/n) -> n
+  - Set up automatic deployment to your site's live channel when a PR is merged? (Y/n) -> n
+- Revert changes in firebase.json file
 
-- GH settings -> Workflow permissions -> Read and write permissions
+- GH settings -> Actions -> General -> Workflow permissions ->
+- + Read and write permissions
 - + Allow GitHub Actions to create and approve pull requests
-- GH settings -> pages -> enable from GitHub Actions
 
 - GH Pages
-- GH -> Settings -> Pages -> GitHub Actions
-- GH -> Settings -> Environment -> github-pages -> Deployment branches and tags -> add release/gh-pages
-- Firebase -> Authentication -> Settings -> Authorized domains -> add GitHub page
-- GH -> Settings -> environment -> gh-pages -> add secret FIREBASE_API_KEY
+- GH -> Settings -> Pages -> Build and deployment: GitHub Actions
+- GH -> Settings -> Environments -> github-pages -> Deployment branches and tags -> add release/gh-pages
+- GH -> Settings -> Environments -> github-pages -> add secret FIREBASE_API_KEY (from Firebase app)
+- GH -> Settings -> Environments -> firebase -> add secret FIREBASE_API_KEY (from Firebase app)
 
-- Copy and paste environment-example.ts to environment.ts
+- Copy and paste environment-example.ts to environment.ts and replace firebase config
+
+- Replace all places with angular-firebase-accelerator with your app name. Only in those places provide your unique firebase app id:
+  - .firebaserc
+  - CI - firebase - Step 2 - Build and deploy to firebase-release.yaml ("projectId" property)
+  - 
+
+- Replace also token in:
+  - FIREBASE_SERVICE_ACCOUNT_ANGULAR_FIREBASE_ACCELERATOR -> your token name from GitHub
