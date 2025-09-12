@@ -16,7 +16,7 @@ jobs:
 
       - name: Replace site name in firebase configurations
         run: |
-          sed -i "s/SITE_NAME/word-checker-app/g" firebase.json
+          sed -i "s/SITE_NAME/word-checker-app-2cbfd/g" firebase.json
 
       - name: Replace scss variable properties
         run: cp -f ${GITHUB_WORKSPACE}/src/environments/firebase/variables.scss ${GITHUB_WORKSPACE}/src/environments/variables.scss
