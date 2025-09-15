@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "SITE_NAME",
+    "site": "word-checker-app-2cbfd",
     "public": "./docs/browser/",
     "ignore": [
       "firebase.json",
@@ -9,9 +9,16 @@
     ],
     "rewrites": [
       {
+        "source": "/api/**",
+        "function": "scrabbleApi"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
     ]
+  },
+  "functions": {
+    "source": "functions"
   }
 }

@@ -1,0 +1,27 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Auth } from '@angular/fire/auth';
+import { from, switchMap } from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
+export class ApiService {
+  private baseUrl = '/api';
+
+  constructor(private http: HttpClient, private auth: Auth) {}
+
+  private getHeaders() {
+    return from(this.auth.currentUser?.getIdToken(true) || Promise.resolve(''))
+      .pipe(
+        switchMap(token => {
+          const headers = new HttpHeaders({
+            'Authorization': `Bearer ${token}`
+          });
+          return this.http.get(`${this.baseUrl}/exact?q=test`, { headers });
+        })
+      );
+  }
+
+  searchExact(word: string) {
+    return this.getHeaders();
+  }
+}
