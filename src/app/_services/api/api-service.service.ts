@@ -9,19 +9,15 @@ export class ApiService {
 
   constructor(private http: HttpClient, private auth: Auth) {}
 
-  private getHeaders() {
+  public searchExact(word: string) {
     return from(this.auth.currentUser?.getIdToken(true) || Promise.resolve(''))
       .pipe(
         switchMap(token => {
           const headers = new HttpHeaders({
             'Authorization': `Bearer ${token}`
           });
-          return this.http.get(`${this.baseUrl}/exact?q=test`, { headers });
+          return this.http.get(`${this.baseUrl}/exact?q=${word}`, { headers });
         })
       );
-  }
-
-  searchExact(word: string) {
-    return this.getHeaders();
   }
 }

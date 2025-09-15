@@ -5,7 +5,7 @@ const axios = require("axios");
 admin.initializeApp();
 
 // URL of your application at Cloud Run
-const CLOUD_RUN_URL = "https://scrabble-search-xyz.a.run.app";
+const CLOUD_RUN_URL = "https://scrabble-search-255717563537.europe-central2.run.app";
 
 exports.scrabbleApi = functions.https.onRequest(async (req, res) => {
   try {
