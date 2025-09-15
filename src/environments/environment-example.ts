@@ -5,11 +5,10 @@ export const environment = {
   selected_language_key: 'Language',
   firebase: {
     apiKey: "FIREBASE_API_KEY",
-    authDomain: "word-checker-app.firebaseapp.com",
-    projectId: "word-checker-app",
-    storageBucket: "word-checker-app.firebasestorage.app",
-    messagingSenderId: "176869109728",
-    appId: "1:176869109728:web:edb2ccc7de5086b0124585",
-    measurementId: "G-MYS6SZDCDN"
+    authDomain: "word-checker-app-2cbfd.firebaseapp.com",
+    projectId: "word-checker-app-2cbfd",
+    storageBucket: "word-checker-app-2cbfd.firebasestorage.app",
+    messagingSenderId: "255717563537",
+    appId: "1:255717563537:web:ea5902f69f2d7f3967b330"
   }
 };
