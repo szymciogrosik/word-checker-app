@@ -6,7 +6,12 @@
           <h1>Dummy title!</h1>
         </mat-card-title>
         <mat-card-content>
-          Dummy card content.
+          <input [(ngModel)]="query" placeholder="Wpisz słowo">
+          <button (click)="searchWord()">Szukaj dokładnie</button>
+
+          <ul>
+            <li *ngFor="let word of results">{{ word }}</li>
+          </ul>
         </mat-card-content>
       </mat-card>
     </div>
