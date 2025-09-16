@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
         this.results = res.found ? [res.word] : [];
       },
       error: (err) => {
-        console.error('Błąd API', err);
+        console.error('Error in call to search words API ', err);
         this.results = [];
       }
     });

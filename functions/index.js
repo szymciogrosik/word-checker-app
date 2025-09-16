@@ -20,7 +20,7 @@ exports.searchExact = onCall(async (request) => {
 
     const word = request.data?.word;
     if (!word) {
-      throw new HttpsError("invalid-argument", "Missing word parameter");
+      throw new HttpsError("invalid-argument", "Missing word parameter.");
     }
 
     const url = `${CLOUD_RUN_URL}/exact?q=${encodeURIComponent(word)}`;
