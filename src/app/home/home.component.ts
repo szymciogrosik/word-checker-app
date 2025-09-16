@@ -1,21 +1,29 @@
-import { Component } from '@angular/core';
-import { ApiService } from '../_services/api/api-service.service';
+import {Component, OnInit} from '@angular/core';
+import {environment} from "../../environments/environment";
+import {CustomCommonModule} from "../_imports/CustomCommon.module";
+import {ApiService} from "../_services/api/api-service.service";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  standalone: true,
+  imports: [CustomCommonModule],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   results: string[] = [];
   query: string = '';
 
   constructor(private api: ApiService) {}
 
+  ngOnInit(): void {
+  }
+
+  protected readonly environment = environment;
+
   searchWord() {
     this.api.searchExact(this.query).subscribe({
       next: (res: any) => {
-        // Cloud Run zwraca np. { found: true, word: "test" }
         this.results = res.found ? [res.word] : [];
       },
       error: (err) => {
