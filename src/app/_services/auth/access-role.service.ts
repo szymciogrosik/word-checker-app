@@ -1,6 +1,8 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {AuthService} from "./auth.service";
 import {AccessRole} from "../../_models/user/access-role";
+import {catchError, Observable, of, Subscription} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +31,13 @@ export class AccessRoleService implements OnDestroy {
         error: (err) => reject(err)
       });
     });
+  }
+
+  public isAuthorized$(requestedRole: AccessRole): Observable<boolean> {
+    return this.authService.loggedUser().pipe(
+      map(customUser => !!customUser && customUser.roles.includes(requestedRole)),
+      catchError(() => of(false))
+    );
   }
 
 }
