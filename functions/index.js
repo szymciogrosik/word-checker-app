@@ -4,7 +4,7 @@ const axios = require("axios");
 
 admin.initializeApp();
 
-const CLOUD_RUN_URL = "https://scrabble-search-255717563537.europe-central2.run.app";
+const CLOUD_RUN_URL = "SEARCH_WORD_API_URL_PLACEHOLDER";
 
 exports.searchExact = onCall(async (request) => {
   try {
