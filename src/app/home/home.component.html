@@ -6,7 +6,7 @@
           <div>
             <mat-form-field appearance="outline">
               <mat-label>{{ 'search.word.enterWord' | translate }}</mat-label>
-              <input matInput [(ngModel)]="queryWord" [disabled]="loading">
+              <input matInput style="text-transform: uppercase" [(ngModel)]="queryWord" [disabled]="loading">
             </mat-form-field>
           </div>
           <div class="button-row">
@@ -30,7 +30,7 @@
                   <span class="no-class bolt-font">
                     {{ 'search.word.result.part1.no' | translate }}
                   </span>
-                }{{ 'search.word.result.part2' | translate }}<span class="bolt-font">{{ this.queryWord.toUpperCase() }}</span>
+                }{{ 'search.word.result.part2' | translate }}<span class="bolt-font">{{ this.lastSearchedWord.toUpperCase() }}</span>
                 @if (this.presentWord === true) {
                   {{ 'search.word.result.part3-allowed' | translate }}
                 } @else {
@@ -38,11 +38,13 @@
                 }
               </p>
 
-              <p class="link">
-                <a (click)="openDictionary()">
-                  {{ 'search.word.result.checkInDictionary' | translate }}
-                </a>
-              </p>
+              @if (this.presentWord === true) {
+                <p class="link">
+                  <a (click)="openDictionary()">
+                    {{ 'search.word.result.checkInDictionary' | translate }}
+                  </a>
+                </p>
+              }
             </div>
           }
         </mat-card-content>
