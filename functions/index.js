@@ -1,38 +1,27 @@
-const functions = require("firebase-functions");
-const admin = require("firebase-admin");
-const axios = require("axios");
+import * as functions from "firebase-functions";
+import axios from "axios";
 
-admin.initializeApp();
-
-// URL of your application at Cloud Run
 const CLOUD_RUN_URL = "https://scrabble-search-255717563537.europe-central2.run.app";
 
-exports.scrabbleApi = functions.https.onRequest(async (req, res) => {
+export const scrabbleApi = functions.https.onRequest(async (req, res) => {
   try {
-    // 1. Authorization header verification
-    const authHeader = req.headers.authorization || "";
-    const idToken = authHeader.startsWith("Bearer ") ? authHeader.split("Bearer ")[1] : null;
+    const url = `${CLOUD_RUN_URL}${req.url}`;
 
-    if (!idToken) {
-      return res.status(401).json({ error: "Missing or invalid token" });
+    const method = req.method;
+    const headers = { ...req.headers };
+    delete headers.host;
+
+    const axiosConfig = { url, method, headers };
+
+    if (method !== 'GET' && method !== 'HEAD') {
+      axiosConfig.data = req.body;
     }
 
-    // 2. Verification of the Firebase token
-    await admin.auth().verifyIdToken(idToken);
+    const response = await axios(axiosConfig);
 
-    // 3. Forward do Cloud Run
-    const response = await axios({
-      method: req.method,
-      url: `${CLOUD_RUN_URL}${req.url}`, // np. /exact?q=test
-      data: req.body,
-      headers: { "Content-Type": "application/json" }
-    });
-
-    // 4. Referring the answer to Angular
-    res.status(response.status).json(response.data);
-
-  } catch (error) {
-    console.error(error);
-    res.status(403).json({ error: "Unauthorized or invalid request" });
+    res.status(response.status).send(response.data);
+  } catch (err) {
+    console.error(err);
+    res.status(err.response?.status || 500).send(err.response?.data || err.message);
   }
 });

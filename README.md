@@ -6,10 +6,6 @@ This project was generated with latest version of [Angular CLI](https://github.c
 
 Run `ng serve` for a local server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## GitHub pages
-
-[Deployed app on GitHub pages](https://szymciogrosik.github.io/word-checker-app)
-
 ## Firebase hosting
 
 [Deployed app on firebase hosting](https://word-checker-app-2cbfd.web.app)
