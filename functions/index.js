@@ -15,7 +15,10 @@ exports.searchExact = functions.https.onCall(async (data, context) => {
     //   );
     // }
 
-    const word = data.word;
+    console.log("searchExact: called. auth:", !!context.auth, "uid:", context.auth?.uid);
+    console.log("searchExact: payload data:", data);
+    const word = data?.word;
+    console.log("searchExact: word =", word);
     if (!word) {
       throw new functions.https.HttpsError('invalid-argument', 'Missing word parameter');
     }
