@@ -7,8 +7,8 @@ export class ApiService {
   constructor() {}
 
   public searchExact(word: string) {
-    const functions = getFunctions(); // firebase functions instance
+    const functions = getFunctions();
     const callable = httpsCallable(functions, 'searchExact');
-    return from(callable({ word })); // zwraca Observable
+    return from(callable({ word }));
   }
 }
