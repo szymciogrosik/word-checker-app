@@ -1,27 +1,35 @@
 import * as functions from "firebase-functions";
+import * as admin from "firebase-admin";
 import axios from "axios";
+
+admin.initializeApp();
 
 const CLOUD_RUN_URL = "https://scrabble-search-255717563537.europe-central2.run.app";
 
-export const scrabbleApi = functions.https.onRequest(async (req, res) => {
+export const searchExact = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError(
+      'unauthenticated',
+      'User must be logged in to call this function.'
+    );
+  }
+
+  const word = data.word;
+  if (!word) {
+    throw new functions.https.HttpsError(
+      'invalid-argument',
+      'Word must be provided'
+    );
+  }
+
   try {
-    const url = `${CLOUD_RUN_URL}${req.url}`;
-
-    const method = req.method;
-    const headers = { ...req.headers };
-    delete headers.host;
-
-    const axiosConfig = { url, method, headers };
-
-    if (method !== 'GET' && method !== 'HEAD') {
-      axiosConfig.data = req.body;
-    }
-
-    const response = await axios(axiosConfig);
-
-    res.status(response.status).send(response.data);
+    const response = await axios.get(`${CLOUD_RUN_URL}/exact?q=${encodeURIComponent(word)}`);
+    return response.data;
   } catch (err) {
-    console.error(err);
-    res.status(err.response?.status || 500).send(err.response?.data || err.message);
+    console.error('Error calling Cloud Run:', err.message || err);
+    throw new functions.https.HttpsError(
+      'internal',
+      err.response?.data || err.message
+    );
   }
 });
