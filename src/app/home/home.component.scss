@@ -1,9 +1,5 @@
 @use "src/styles.scss" as *;
 
-.input-row {
-  margin-top: 10px;
-}
-
 .button-row {
   display: flex;
   gap: 10px;
@@ -38,4 +34,5 @@
 .link {
   text-decoration: underline;
   text-align: center;
+  margin-bottom: 0;
 }
