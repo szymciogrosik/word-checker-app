@@ -1,23 +1,26 @@
-const functions = require("firebase-functions");
+const { onCall, HttpsError } = require("firebase-functions/v2/https");
 const admin = require("firebase-admin");
 const axios = require("axios");
 
 admin.initializeApp();
 
-const CLOUD_RUN_URL = "https://scrabble-search-255717563537.europe-central2.run.app";
+const CLOUD_RUN_URL = "SEARCH_WORD_API_URL_PLACEHOLDER";
 
-exports.searchExact = functions.https.onCall(async (data, context) => {
+exports.searchExact = onCall(async (request) => {
   try {
-    if (!context.auth) {
-      throw new functions.https.HttpsError(
-        'unauthenticated',
-        'User must be logged in to call this function.'
+    if (!request.auth) {
+      throw new HttpsError(
+        "unauthenticated",
+        "User must be logged in to call this function."
       );
     }
 
-    const word = data.word;
+    console.log("searchExact: called. uid:", request.auth.uid);
+    console.log("searchExact: payload data:", request.data);
+
+    const word = request.data?.word;
     if (!word) {
-      throw new functions.https.HttpsError('invalid-argument', 'Missing word parameter');
+      throw new HttpsError("invalid-argument", "Missing word parameter.");
     }
 
     const url = `${CLOUD_RUN_URL}/exact?q=${encodeURIComponent(word)}`;
@@ -27,8 +30,8 @@ exports.searchExact = functions.https.onCall(async (data, context) => {
   } catch (err) {
     console.error(err);
     if (err.response) {
-      throw new functions.https.HttpsError('internal', err.response.data || err.message);
+      throw new HttpsError("internal", err.response.data || err.message);
     }
-    throw new functions.https.HttpsError('internal', err.message);
+    throw new HttpsError("internal", err.message);
   }
 });

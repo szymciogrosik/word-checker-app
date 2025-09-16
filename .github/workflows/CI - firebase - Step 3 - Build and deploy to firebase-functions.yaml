@@ -17,6 +17,9 @@ jobs:
         with:
           credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WORD_CHECKER_APP_2CBFD }}
 
+      - name: Replace search app URL by actual value
+        run: sed -i "s/SEARCH_WORD_API_URL_PLACEHOLDER/${{ secrets.SEARCH_WORD_API_URL }}/g" functions/index.js
+
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 

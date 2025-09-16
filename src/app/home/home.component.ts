@@ -24,10 +24,10 @@ export class HomeComponent implements OnInit {
   searchWord() {
     this.api.searchExact(this.query).subscribe({
       next: (res: any) => {
-        this.results = res.found ? [res.word] : [];
+        this.results = res.data.found ? [res.data.word] : [];
       },
       error: (err) => {
-        console.error('Błąd API', err);
+        console.error('Error in call to search words API ', err);
         this.results = [];
       }
     });

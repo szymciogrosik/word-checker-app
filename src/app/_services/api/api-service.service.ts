@@ -4,13 +4,16 @@ import {from} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class ApiService {
+  private searchExactFunctionName: string = 'searchExact';
+
   constructor(
     private functions: Functions
   ) {
   }
 
   public searchExact(word: string) {
-    const callableFn = httpsCallable(this.functions, 'searchExact');
+    const callableFn = httpsCallable(this.functions, this.searchExactFunctionName);
     return from(callableFn({word}));
   }
+
 }
