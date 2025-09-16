@@ -26,10 +26,7 @@
               <p class="search-results-sentence">
                 @if (this.presentWord === true) {
                   <span class="bolt-font yes-class">
-                    {{ 'search.word.result.part1.yes' | translate }}
-                  </span>
-                } @else {
-                  <span class="no-class bolt-font">
+                    {{ 'search.word.result.part1.yes' | translate }}</span>} @else {<span class="no-class bolt-font">
                     {{ 'search.word.result.part1.no' | translate }}</span>}{{ 'search.word.result.part2' | translate }}
                   <span class="bolt-font">{{ this.lastSearchedWord.toUpperCase() }}</span>
                 @if (this.presentWord === true) {
