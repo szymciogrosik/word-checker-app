@@ -11,6 +11,16 @@
 
   "snackbar.default.dismiss": "Dismiss",
 
+  "search.word.enterWord": "Enter the word you want to check",
+  "search.word.search": "Search",
+  "search.word.reset": "Reset",
+  "search.word.result.part1.yes": "Yes",
+  "search.word.result.part1.no": "No",
+  "search.word.result.part2": ", word ",
+  "search.word.result.part3-allowed": " is allowed in the games.",
+  "search.word.result.part3-disallowed": " is not allowed in the games.",
+  "search.word.result.checkInDictionary": "Check its meaning",
+
   "registration.enterEmail": "Enter your email",
   "registration.exampleEmail": "pat@example.com",
   "registration.fillField": "Fill field",

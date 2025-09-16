@@ -11,6 +11,16 @@
 
   "snackbar.default.dismiss": "Zamknij",
 
+  "search.word.enterWord": "Wprowadź słowo, które chcesz sprawdzić",
+  "search.word.search": "Szukaj",
+  "search.word.reset": "Resetuj",
+  "search.word.result.part1.yes": "Tak",
+  "search.word.result.part1.no": "Nie",
+  "search.word.result.part2": ", słowo ",
+  "search.word.result.part3-allowed": " jest dozwolone w grach.",
+  "search.word.result.part3-disallowed": " nie jest dozwolone w grach.",
+  "search.word.result.checkInDictionary": "Sprawdź jego znaczenie",
+
   "registration.enterEmail": "Wprowadź email",
   "registration.exampleEmail": "adam@gmail.com",
   "registration.fillField": "Uzupełnij pole",
