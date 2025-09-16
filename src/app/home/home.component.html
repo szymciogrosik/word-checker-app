@@ -28,9 +28,8 @@
                   </span>
                 } @else {
                   <span class="no-class bolt-font">
-                    {{ 'search.word.result.part1.no' | translate }}
-                  </span>
-                }{{ 'search.word.result.part2' | translate }}<span class="bolt-font">{{ this.lastSearchedWord.toUpperCase() }}</span>
+                    {{ 'search.word.result.part1.no' | translate }}</span>}{{ 'search.word.result.part2' | translate }}
+                  <span class="bolt-font">{{ this.lastSearchedWord.toUpperCase() }}</span>
                 @if (this.presentWord === true) {
                   {{ 'search.word.result.part3-allowed' | translate }}
                 } @else {
