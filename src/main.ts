@@ -14,6 +14,7 @@ import {environment} from './environments/environment';
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {AssetsService} from "./app/_services/util/assets.service";
 import {CustomCommonModule} from "./app/_imports/CustomCommon.module";
+import {getFunctions, provideFunctions} from "@angular/fire/functions";
 
 if (environment.production) {
   enableProdMode();
@@ -23,6 +24,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    provideFunctions(() => getFunctions()),
     provideFirestore(() => getFirestore()),
     provideAnalytics(() => getAnalytics()),
     provideHttpClient(withInterceptorsFromDi()),

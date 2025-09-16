@@ -1,14 +1,16 @@
-import { Injectable } from '@angular/core';
-import { getFunctions, httpsCallable } from '@angular/fire/functions';
-import { from } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Functions, httpsCallable} from '@angular/fire/functions';
+import {from} from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class ApiService {
-  constructor() {}
+  constructor(
+    private functions: Functions
+  ) {
+  }
 
   public searchExact(word: string) {
-    const functions = getFunctions();
-    const callable = httpsCallable(functions, 'searchExact');
-    return from(callable({ word }));
+    const callableFn = httpsCallable(this.functions, 'searchExact');
+    return from(callableFn({word}));
   }
 }
