@@ -7,10 +7,14 @@ jobs:
   deploy_functions:
     name: Deploy Cloud Functions
     runs-on: ubuntu-latest
+    environment: firebase
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Replace search app URL by actual value
+        run: sed -i "s/SEARCH_WORD_API_URL_PLACEHOLDER/${{ secrets.SEARCH_WORD_API_URL }}/g" functions/index.js
 
       - name: Authenticate with GCP
         uses: google-github-actions/auth@v2
@@ -19,9 +23,6 @@ jobs:
 
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
-
-      - name: Replace search app URL by actual value
-        run: sed -i "s/SEARCH_WORD_API_URL_PLACEHOLDER/${{ secrets.SEARCH_WORD_API_URL }}/g" functions/index.js
 
       - name: Install dependencies for Functions
         run: npm install
