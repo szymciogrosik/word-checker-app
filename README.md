@@ -42,7 +42,7 @@ Add and push new two branches:
 - email: type string: email@gmail.com (your google email)
 - firstName: type string: Adam
 - lastName: type string: Abacki
-- roles: type array -> string: ADMIN_FULL_ACCESS
+- roles: type array -> string: ADMIN_PAGE_ACCESS
 - uid: type string: <copied from authentication>
 - Fill in "Rules" tab
 ```json
