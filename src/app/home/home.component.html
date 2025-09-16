@@ -3,22 +3,24 @@
     <div class="row">
       <mat-card class="short-page-content" style="margin-top: 50px">
         <mat-card-content>
-          <div>
-            <mat-form-field appearance="outline">
-              <mat-label>{{ 'search.word.enterWord' | translate }}</mat-label>
-              <input matInput style="text-transform: uppercase" [(ngModel)]="queryWord" [disabled]="loading">
-            </mat-form-field>
-          </div>
-          <div class="button-row">
-            <button mat-raised-button color="warn" class="half-width-button" (click)="resetQueryAndSearchResults()"
-                    [disabled]="loading">
-              {{ 'search.word.reset' | translate }}
-            </button>
-            <button mat-raised-button color="primary" class="half-width-button" (click)="searchWord()"
-                    [disabled]="loading">
-              {{ 'search.word.search' | translate }}
-            </button>
-          </div>
+          <form (ngSubmit)="searchWord()">
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>{{ 'search.word.enterWord' | translate }}</mat-label>
+                <input matInput style="text-transform: uppercase" [(ngModel)]="queryWord" name="queryWord" [disabled]="loading">
+              </mat-form-field>
+            </div>
+            <div class="button-row">
+              <button type="button" mat-raised-button color="warn" class="half-width-button" (click)="resetQueryAndSearchResults()"
+                      [disabled]="loading">
+                {{ 'search.word.reset' | translate }}
+              </button>
+              <button type="submit" mat-raised-button color="primary" class="half-width-button" (click)="searchWord()"
+                      [disabled]="loading">
+                {{ 'search.word.search' | translate }}
+              </button>
+            </div>
+          </form>
           @if (lastSearchedWord !== undefined && presentWord !== undefined) {
             <div class="search-result-container">
               <p class="search-results-sentence">
