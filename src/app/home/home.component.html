@@ -2,16 +2,52 @@
   <div class="container">
     <div class="row">
       <mat-card class="short-page-content" style="margin-top: 50px">
-        <mat-card-title>
-          <h1>Dummy title!</h1>
-        </mat-card-title>
         <mat-card-content>
-          <input [(ngModel)]="query" placeholder="Wpisz słowo">
-          <button (click)="searchWord()">Szukaj dokładnie</button>
+          <form (ngSubmit)="searchWord()">
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>{{ 'search.word.enterWord' | translate }}</mat-label>
+                <input matInput style="text-transform: uppercase" [(ngModel)]="queryWord" name="queryWord" [disabled]="loading">
+              </mat-form-field>
+            </div>
+            <div class="button-row">
+              <button type="button" mat-raised-button color="warn" class="half-width-button" (click)="resetQueryAndSearchResults()"
+                      [disabled]="loading">
+                {{ 'search.word.reset' | translate }}
+              </button>
+              <button type="submit" mat-raised-button color="primary" class="half-width-button" (click)="searchWord()"
+                      [disabled]="loading">
+                {{ 'search.word.search' | translate }}
+              </button>
+            </div>
+          </form>
+          @if (lastSearchedWord !== undefined && presentWord !== undefined) {
+            <div class="search-result-container">
+              <p class="search-results-sentence">
+                @if (this.presentWord === true) {
+                  <span class="bolt-font yes-class">
+                    {{ 'search.word.result.part1.yes' | translate }}
+                  </span>
+                } @else {
+                  <span class="no-class bolt-font">
+                    {{ 'search.word.result.part1.no' | translate }}</span>}{{ 'search.word.result.part2' | translate }}
+                  <span class="bolt-font">{{ this.lastSearchedWord.toUpperCase() }}</span>
+                @if (this.presentWord === true) {
+                  {{ 'search.word.result.part3-allowed' | translate }}
+                } @else {
+                  {{ 'search.word.result.part3-disallowed' | translate }}
+                }
+              </p>
 
-          <ul>
-            <li *ngFor="let word of results">{{ word }}</li>
-          </ul>
+              @if (this.presentWord === true) {
+                <p class="link">
+                  <a (click)="openDictionary()">
+                    {{ 'search.word.result.checkInDictionary' | translate }}
+                  </a>
+                </p>
+              }
+            </div>
+          }
         </mat-card-content>
       </mat-card>
     </div>
