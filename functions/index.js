@@ -8,12 +8,12 @@ const CLOUD_RUN_URL = "https://scrabble-search-255717563537.europe-central2.run.
 
 exports.searchExact = functions.https.onCall(async (data, context) => {
   try {
-    // if (!context.auth) {
-    //   throw new functions.https.HttpsError(
-    //     'unauthenticated',
-    //     'User must be logged in to call this function.'
-    //   );
-    // }
+    if (!context.auth) {
+      throw new functions.https.HttpsError(
+        'unauthenticated',
+        'User must be logged in to call this function.'
+      );
+    }
 
     console.log("searchExact: called. auth:", !!context.auth, "uid:", context.auth?.uid);
     console.log("searchExact: payload data:", data);

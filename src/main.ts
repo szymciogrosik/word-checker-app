@@ -24,7 +24,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFunctions(() => getFunctions()),
+    provideFunctions(() => getFunctions(undefined, 'us-central1')),
     provideFirestore(() => getFirestore()),
     provideAnalytics(() => getAnalytics()),
     provideHttpClient(withInterceptorsFromDi()),
