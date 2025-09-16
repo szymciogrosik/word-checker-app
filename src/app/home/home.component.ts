@@ -1,31 +1,22 @@
-import {Component, OnInit} from '@angular/core';
-import {ScrollService} from "../_services/util/scroll.service";
-import {environment} from "../../environments/environment";
-import {CustomCommonModule} from "../_imports/CustomCommon.module";
-import {ApiService} from "../_services/api/api-service.service";
+import { Component } from '@angular/core';
+import { ApiService } from '../_services/api/api-service.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  standalone: true,
-  imports: [CustomCommonModule],
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   results: string[] = [];
   query: string = '';
 
   constructor(private api: ApiService) {}
 
-  ngOnInit(): void {
-  }
-
-  protected readonly environment = environment;
-
   searchWord() {
     this.api.searchExact(this.query).subscribe({
-      next: (data: any) => {
-        this.results = data.found ? [data.word] : [];
+      next: (res: any) => {
+        // Cloud Run zwraca np. { found: true, word: "test" }
+        this.results = res.found ? [res.word] : [];
       },
       error: (err) => {
         console.error('Błąd API', err);
@@ -33,5 +24,4 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-
 }

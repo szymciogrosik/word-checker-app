@@ -1,4 +1,4 @@
-name: CI - firebase - Step 2 - Build and deploy to firebase
+name: CI - firebase - Build and deploy
 
 on:
   push:
@@ -6,24 +6,23 @@ on:
       - release/firebase
 
 jobs:
-  build_and_deploy:
+  build_and_deploy_app:
+    name: Build & Deploy Firebase Hosting
     runs-on: ubuntu-latest
     environment: firebase
 
     steps:
-      - name: 🚚 Get latest code (checkout repo)
+      - name: 🚚 Checkout code
         uses: actions/checkout@v4
 
       - name: Replace scss variable properties
         run: cp -f ${GITHUB_WORKSPACE}/src/environments/firebase/variables.scss ${GITHUB_WORKSPACE}/src/environments/variables.scss
 
       - name: Rename environment-example.ts file to environment.ts
-        run: |
-          mv src/environments/environment-example.ts src/environments/environment.ts
+        run: mv src/environments/environment-example.ts src/environments/environment.ts
 
       - name: Replace config in environment.ts
-        run: |
-          sed -i "s/FIREBASE_API_KEY/${{ secrets.FIREBASE_API_KEY }}/g" src/environments/firebase/environment.ts
+        run: sed -i "s/FIREBASE_API_KEY/${{ secrets.FIREBASE_API_KEY }}/g" src/environments/firebase/environment.ts
 
       - name: Replace build version in environment.ts
         run: |
@@ -41,10 +40,10 @@ jobs:
       - name: 🔨 Build with firebase settings
         run: npm run build-firebase
 
-      - name: Copy custom 404 page for GitHub pages
+      - name: Copy custom 404 page for GitHub Pages
         run: cp ${GITHUB_WORKSPACE}/src/environments/firebase/404.html ${GITHUB_WORKSPACE}/docs/browser/404.html
 
-      - name: Update last deployment data and time
+      - name: Update last deployment date and time
         run: sed -i "s/DD-MM-YYYY HH:MM:SS/$(TZ=Europe/Warsaw date +'%d-%m-%Y %H:%M:%S')/g" ${GITHUB_WORKSPACE}/docs/browser/assets/status/status.json
 
       - name: 🎉 Deploy App to Firebase Hosting
@@ -54,6 +53,17 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WORD_CHECKER_APP_2CBFD }}
           channelId: live
           projectId: word-checker-app-2cbfd
+
+  deploy_functions:
+    name: Deploy Firebase Functions
+    runs-on: ubuntu-latest
+    needs: build_and_deploy_app
+    if: ${{ github.event_name == 'push' }}
+    environment: firebase
+
+    steps:
+      - name: 🚚 Checkout code
+        uses: actions/checkout@v4
 
       - name: Authenticate with GCP
         uses: google-github-actions/auth@v2
@@ -67,5 +77,15 @@ jobs:
         run: npm install
         working-directory: functions
 
+      - name: Check if functions changed
+        id: functions_changed
+        run: |
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^functions/'; then
+            echo "functions_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "functions_changed=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: 🎉 Deploy Cloud Functions
+        if: steps.functions_changed.outputs.functions_changed == 'true'
         run: firebase deploy --only functions --project word-checker-app-2cbfd
