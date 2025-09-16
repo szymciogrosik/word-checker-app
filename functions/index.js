@@ -1,12 +1,12 @@
-import * as functions from "firebase-functions";
-import * as admin from "firebase-admin";
-import axios from "axios";
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+const axios = require("axios");
 
 admin.initializeApp();
 
 const CLOUD_RUN_URL = "https://scrabble-search-255717563537.europe-central2.run.app";
 
-export const searchExact = functions.https.onCall(async (data, context) => {
+exports.searchExact = functions.https.onCall(async (data, context) => {
   if (!context.auth) {
     throw new functions.https.HttpsError(
       'unauthenticated',
