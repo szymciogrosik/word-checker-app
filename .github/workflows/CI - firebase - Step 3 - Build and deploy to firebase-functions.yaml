@@ -7,7 +7,6 @@ jobs:
   deploy_functions:
     name: Deploy Cloud Functions
     runs-on: ubuntu-latest
-    environment: firebase
 
     steps:
       - name: Checkout code
