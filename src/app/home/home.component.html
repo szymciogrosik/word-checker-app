@@ -1,7 +1,7 @@
 <div class="home-content">
   <div class="container">
     <div class="row">
-      <mat-card class="short-page-content" style="margin-top: 50px">
+      <mat-card class="short-page-content" style="margin-top: 20px">
         <mat-card-content>
           <form (ngSubmit)="searchWord()">
             <div>
@@ -11,13 +11,13 @@
               </mat-form-field>
             </div>
             <div class="button-row">
-              <button type="button" mat-raised-button color="warn" class="half-width-button" (click)="resetQueryAndSearchResults()"
-                      [disabled]="loading">
-                {{ 'search.word.reset' | translate }}
-              </button>
               <button type="submit" mat-raised-button color="primary" class="half-width-button" (click)="searchWord()"
                       [disabled]="loading">
                 {{ 'search.word.search' | translate }}
+              </button>
+              <button type="button" mat-raised-button color="warn" class="half-width-button" (click)="resetQueryAndSearchResults()"
+                      [disabled]="loading">
+                {{ 'search.word.reset' | translate }}
               </button>
             </div>
           </form>
