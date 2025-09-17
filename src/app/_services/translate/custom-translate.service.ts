@@ -6,7 +6,7 @@ import {registerLocaleData} from "@angular/common";
 import localePl from '@angular/common/locales/pl';
 import localeEn from '@angular/common/locales/en';
 import {LanguageEnum} from "./language-enum";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, firstValueFrom} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +52,10 @@ export class CustomTranslateService {
 
   public get(key: string): string {
     return this.translateService.instant(key);
+  }
+
+  public getPromise(key: string): Promise<any> {
+    return firstValueFrom(this.translateService.get(key));
   }
 
 }
