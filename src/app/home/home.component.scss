@@ -33,8 +33,13 @@
 }
 
 .link {
-  text-decoration: underline;
+  font-style: italic;
   text-align: center;
   margin-bottom: 0;
   margin-top: 20px;
+  cursor: default;
+}
+
+.link-icon {
+  padding-top: 7px;
 }
