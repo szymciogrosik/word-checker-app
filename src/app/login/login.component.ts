@@ -44,6 +44,10 @@ export class LoginComponent implements OnInit {
           }
         }
       });
+
+      this.authService.getAuthErrorLogout().subscribe(() => {
+        this.loading = false;
+      });
     }, 600);
   }
 

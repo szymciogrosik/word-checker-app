@@ -11,7 +11,7 @@ import {
   updatePassword,
   User
 } from '@angular/fire/auth';
-import {firstValueFrom, BehaviorSubject, Observable, map} from 'rxjs';
+import {firstValueFrom, BehaviorSubject, Observable, map, Subject} from 'rxjs';
 import {FirebaseError} from 'firebase/app';
 import {Router} from '@angular/router';
 import {SnackbarService} from '../util/snackbar.service';
@@ -26,6 +26,7 @@ import {RedirectionEnum} from '../../../utils/redirection.enum';
 export class AuthService {
   private userSubject = new BehaviorSubject<CustomUser | null>(null);
   private user: Observable<CustomUser | null> = this.userSubject.asObservable();
+  private authErrorLogoutSubject = new Subject<void>();
 
   constructor(
     private auth: Auth,
@@ -44,18 +45,21 @@ export class AuthService {
           const foundUser = await this.standardUserService.getUser(firebaseUser.uid, firebaseUser.email);
           if (foundUser) {
             if (foundUser.isDeleted) {
-              this.logout(true);
-              this.snackbarService.openLongSnackBar(this.translateService.get('login.error.accountDeleted'));
+              this.logout(false);
+              this.authErrorLogoutSubject.next();
+              this.snackbarService.openLongSnackBar(this.translateService.get('login.error.invalidUser'));
             } else {
               this.userSubject.next(foundUser);
             }
           } else {
-            this.logout(true);
+            this.logout(false);
+            this.authErrorLogoutSubject.next();
             this.snackbarService.openLongSnackBar(this.translateService.get('login.error.invalidUser'));
           }
         } catch (err) {
           console.error(err);
-          this.logout(true);
+          this.logout(false);
+          this.authErrorLogoutSubject.next();
           this.snackbarService.openLongSnackBar(this.translateService.get('login.error.internal'));
         }
       } else {
@@ -137,5 +141,9 @@ export class AuthService {
 
   public async loggedUserPromise(): Promise<CustomUser | null> {
     return await firstValueFrom(this.loggedUser());
+  }
+
+  public getAuthErrorLogout(): Observable<void> {
+    return this.authErrorLogoutSubject.asObservable();
   }
 }
