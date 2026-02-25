@@ -9,6 +9,9 @@ import {MatDialog} from "@angular/material/dialog";
 import {EmbeddedBrowserPopupComponent} from "./embedded-browser-popup/embedded-browser-popup.component";
 import {EmbeddedBrowserWarningData} from "../_models/dialog/embedded-browser-warning/embedded-browser-warning-data";
 import {CustomCommonModule} from "../_imports/CustomCommon.module";
+import {FirebaseError} from 'firebase/app';
+import {CustomValidators} from "../_services/validator/custom-validators";
+import {MatTabChangeEvent} from "@angular/material/tabs";
 
 @Component({
   selector: 'app-login',
@@ -20,9 +23,11 @@ import {CustomCommonModule} from "../_imports/CustomCommon.module";
 export class LoginComponent implements OnInit {
   checkingIfUserIsAlreadyLoggedIn: boolean = true;
   loginForm: FormGroup;
+  registerForm: FormGroup;
   loading: boolean = false;
   submitted: boolean = false;
   hidePassword: boolean = true;
+  isRegistrationMode: boolean = false;
   returnUrl: string = '';
 
   constructor(
@@ -57,22 +62,35 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     });
+
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6), CustomValidators.passwordValidator]]
+    });
+
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   // convenience getter for easy access to form fields
-  get formControls(): { [key: string]: AbstractControl; } {
+  get loginFormControls(): { [key: string]: AbstractControl; } {
     return this.loginForm.controls;
   }
 
-  onSubmit(): void {
-    this.submitted = true;
+  get registerFormControls(): { [key: string]: AbstractControl; } {
+    return this.registerForm.controls;
+  }
 
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      return;
-    }
+  onTabChange(event: MatTabChangeEvent): void {
+    this.isRegistrationMode = event.index === 1;
+    this.hidePassword = true;
+  }
+
+  onSubmitLogin(): void {
+    this.submitted = true;
+    if (this.loginForm.invalid) return;
 
     const {email, password} = this.loginForm.getRawValue();
     this.loading = true;
@@ -80,7 +98,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.loginWithEmailAndPassword(email, password)
       .then((): void => {
-        // success; leave loading = true so spinner stays until redirection
+        // success
       })
       .catch((err): void => {
         this.snackbarService.openLongSnackBar(err);
@@ -89,14 +107,48 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  protected getErrorMessage(formControlName: string): string {
-    if (this.formControls[formControlName].hasError('required')) {
+  onSubmitRegister(): void {
+    this.submitted = true;
+    if (this.registerForm.invalid) return;
+
+    const {email, password, firstName, lastName} = this.registerForm.getRawValue();
+    this.loading = true;
+    this.registerForm.disable();
+
+    this.authService.registerUserWithDetails(email, password, firstName, lastName)
+      .then((): void => {
+        // success
+      })
+      .catch((err): void => {
+        if (err instanceof FirebaseError && err.code === 'auth/email-already-in-use') {
+          this.snackbarService.openLongSnackBar(this.translateService.get('login.error.emailAlreadyUsed'));
+        } else {
+          this.snackbarService.openLongSnackBar(err);
+        }
+        this.loading = false;
+        this.registerForm.enable();
+      });
+  }
+
+  protected getErrorMessage(formControlName: string, isRegister: boolean = false): string {
+    const control = isRegister ? this.registerFormControls[formControlName] : this.loginFormControls[formControlName];
+    if (!control) return '';
+
+    if (control.hasError('required')) {
       return this.translateService.get('login.validation.mandatoryField');
     }
+    if (control.hasError('email')) {
+      return this.translateService.get('login.validation.invalidEmail');
+    }
+    if (control.hasError('minlength')) {
+      const requiredLength = control.errors?.['minlength']?.requiredLength;
+      return this.translateService.get('registration.validation.minLength') + requiredLength;
+    }
+    if (control.hasError('invalidPasswordSecurity')) {
+      return this.translateService.get('registration.validation.invalidPasswordSecurity');
+    }
 
-    return this.formControls[formControlName].hasError('email')
-      ? this.translateService.get('login.validation.invalidEmail')
-      : '';
+    return '';
   }
 
   protected openPopupIfEmbeddedBrowserOpenOtherwiseOpenPopup(): void {
@@ -128,16 +180,18 @@ export class LoginComponent implements OnInit {
 
   private loginGoogleSsoPopup(): void {
     this.loading = true;
-    this.loginForm.disable();
+    if (this.isRegistrationMode) this.registerForm.disable();
+    else this.loginForm.disable();
 
-    this.authService.loginWithGoogleSso()
+    this.authService.loginWithGoogleSso(this.isRegistrationMode)
       .then((): void => {
         // success; leave loading = true so spinner stays until redirection
       })
       .catch((err): void => {
         this.snackbarService.openLongSnackBar(err);
         this.loading = false;
-        this.loginForm.enable();
+        if (this.isRegistrationMode) this.registerForm.enable();
+        else this.loginForm.enable();
       });
   }
 
