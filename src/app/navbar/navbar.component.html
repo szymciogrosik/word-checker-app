@@ -21,6 +21,10 @@
       <button mat-button class="navbar-button" (click)="logout()">
         {{ 'navbar.tab.button.logout' | translate }}
       </button>
+    } @else {
+      <button mat-button class="navbar-button" (click)="navigateToLogin()">
+        {{ 'navbar.tab.button.login' | translate }}
+      </button>
     }
     <!-- Choose language tab -->
     <button mat-button class="navbar-button" [matMenuTriggerFor]="languageMenu">
@@ -50,6 +54,10 @@
     </button>
     <button mat-menu-item class="navbar-button-burger-menu" (click)="logout()">
       {{ 'navbar.tab.button.logout' | translate }}
+    </button>
+  } @else {
+    <button mat-menu-item class="navbar-button-burger-menu" (click)="navigateToLogin()">
+      {{ 'navbar.tab.button.login' | translate }}
     </button>
   }
   <!-- Choose language tab -->

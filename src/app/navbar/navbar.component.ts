@@ -45,6 +45,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(["/" + RedirectionEnum.PROFILE]);
   }
 
+  navigateToLogin(): void {
+    this.router.navigate(["/" + RedirectionEnum.LOGIN]);
+  }
+
   protected readonly AccessRoleService = AccessRoleService;
   protected readonly AccessRole = AccessRole;
 }

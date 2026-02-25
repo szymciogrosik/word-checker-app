@@ -6,6 +6,7 @@
   "datePicker.chooseDate": "Wybierz datę",
   "datePicker.chooseDateAndTime": "Wpisz datę i czas",
   "navbar.tab.applicationName": "Angular accelerator app",
+  "navbar.tab.button.login": "Zaloguj",
   "navbar.tab.button.logout": "Wyloguj",
   "navbar.tab.button.profile": "Mój profil",
   "navbar.tab.button.adminPanel": "Panel administratora",
