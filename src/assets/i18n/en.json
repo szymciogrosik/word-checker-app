@@ -7,7 +7,7 @@
   "datePicker.chooseDateAndTime": "Provide date and time",
   "navbar.tab.applicationName": "Angular accelerator app",
   "navbar.tab.button.logout": "Logout",
-  "navbar.tab.button.profile": "Profile",
+  "navbar.tab.button.profile": "My profile",
   "navbar.tab.button.adminPanel": "Admin panel",
   "snackbar.default.dismiss": "Dismiss",
   "registration.enterEmail": "Enter your email",
