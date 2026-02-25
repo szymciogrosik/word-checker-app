@@ -72,10 +72,11 @@ export class LoginComponent implements OnInit {
     this.loading = true;
 
     this.authService.loginWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
+      .then((): void => {
+        // success; leave loading = true so spinner stays until redirection
+      })
       .catch((err): void => {
         this.snackbarService.openLongSnackBar(err);
-      })
-      .finally((): void => {
         this.loading = false;
       });
   }
@@ -121,10 +122,11 @@ export class LoginComponent implements OnInit {
     this.loading = true;
 
     this.authService.loginWithGoogleSso()
+      .then((): void => {
+        // success; leave loading = true so spinner stays until redirection
+      })
       .catch((err): void => {
         this.snackbarService.openLongSnackBar(err);
-      })
-      .finally((): void => {
         this.loading = false;
       });
   }
