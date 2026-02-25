@@ -12,6 +12,7 @@ import {CustomCommonModule} from "../_imports/CustomCommon.module";
 import {FirebaseError} from 'firebase/app';
 import {CustomValidators} from "../_services/validator/custom-validators";
 import {MatTabChangeEvent} from "@angular/material/tabs";
+import {PublicSettingsService} from "../_database/settings/public-settings.service";
 
 @Component({
   selector: 'app-login',
@@ -30,6 +31,9 @@ export class LoginComponent implements OnInit {
   isRegistrationMode: boolean = false;
   returnUrl: string = '';
 
+  allowForRegistering: boolean = false;
+  fetchingSettings: boolean = true;
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -37,7 +41,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private snackbarService: SnackbarService,
     private translateService: CustomTranslateService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private publicSettingsService: PublicSettingsService
   ) {
     setTimeout(() => {
       this.authService.isAuthenticated().subscribe({
@@ -58,6 +63,22 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.publicSettingsService.getDocument('general').subscribe({
+      next: (data) => {
+        if (data && data.allowForRegistering !== undefined) {
+          this.allowForRegistering = data.allowForRegistering;
+        } else {
+          this.allowForRegistering = false;
+        }
+        this.fetchingSettings = false;
+      },
+      error: (err) => {
+        console.error('Failed to fetch public settings.', err);
+        this.allowForRegistering = false;
+        this.fetchingSettings = false;
+      }
+    });
+
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
@@ -180,17 +201,17 @@ export class LoginComponent implements OnInit {
 
   private loginGoogleSsoPopup(): void {
     this.loading = true;
-    if (this.isRegistrationMode) this.registerForm.disable();
+    if (this.isRegistrationMode && this.allowForRegistering) this.registerForm.disable();
     else this.loginForm.disable();
 
-    this.authService.loginWithGoogleSso(this.isRegistrationMode)
+    this.authService.loginWithGoogleSso(this.allowForRegistering)
       .then((): void => {
         // success; leave loading = true so spinner stays until redirection
       })
       .catch((err): void => {
         this.snackbarService.openLongSnackBar(err);
         this.loading = false;
-        if (this.isRegistrationMode) this.registerForm.enable();
+        if (this.isRegistrationMode && this.allowForRegistering) this.registerForm.enable();
         else this.loginForm.enable();
       });
   }

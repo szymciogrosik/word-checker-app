@@ -55,6 +55,7 @@
   "admin.panel.helloMessage": "Hello, ",
   "admin.panel.tab.header.settings": "Settings",
   "admin.panel.tab.header.settings.users": "Users",
+  "admin.panel.tab.header.settings.public": "Public settings",
   "admin.panel.table.filter": "Filter",
   "admin.panel.table.filter.placeholder": "Ex. Adam",
   "admin.panel.table.filter.noResult": "No data matching the filter",
@@ -78,7 +79,7 @@
   "admin.panel.users.lastName": "Last name",
   "admin.panel.users.roles": "Roles",
   "admin.panel.users.select": "-- None --",
-  "admin.panel.users.warning.removedUser": "Please note, once a user is deleted, it will not be possible to add a new user for the same email number unless it is deleted from the Firebase authentication console.",
+  "admin.panel.users.warning.removedUser": "Please note that after deleting a user, it will not be possible to add a new user for the same email address. Only this user will be able to be restored.",
   "profile.title": "User Profile",
   "profile.subtitle": "View and edit your information",
   "profile.button.save": "Save Changes",
@@ -101,5 +102,7 @@
   "admin.panel.table.header.restore": "Restore",
   "admin.panel.settings.users.restoredSuccessfully": "User successfully restored.",
   "admin.panel.settings.users.error.userDeletedOnlyRestore": "This user was previously deleted. Adding them again is blocked - go to the 'Deleted' tab to restore their account.",
+  "admin.panel.settings.public.allowForRegistering": "Allow for open registration",
+  "admin.panel.settings.public.savedSuccessfully": "Successfully updated global settings.",
   "login.error.accountDeleted": "Account has been deleted."
 }

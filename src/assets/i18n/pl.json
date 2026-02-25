@@ -55,6 +55,7 @@
   "admin.panel.helloMessage": "Witaj, ",
   "admin.panel.tab.header.settings": "Ustawienia",
   "admin.panel.tab.header.settings.users": "Użytkownicy",
+  "admin.panel.tab.header.settings.public": "Ustawienia publiczne",
   "admin.panel.table.filter": "Filtr",
   "admin.panel.table.filter.placeholder": "Np. Kasia",
   "admin.panel.table.filter.noResult": "Brak danych pasujących do filtra",
@@ -78,7 +79,7 @@
   "admin.panel.users.lastName": "Nazwisko",
   "admin.panel.users.roles": "Role",
   "admin.panel.users.select": "-- Brak --",
-  "admin.panel.users.warning.removedUser": "Uwaga, po usunięciu użytkownika, nie będzie możliwe dodanie nowego użytkownika dla tego samego adresu email, chyba że zostanie on usunięty z konsoli autentykacyjnej Firebase.",
+  "admin.panel.users.warning.removedUser": "Uwaga, po usunięciu użytkownika, nie będzie możliwe dodanie nowego użytkownika dla tego samego adresu email. Możliwe będzie tylko przywrócenie tego użytkownika.",
   "profile.title": "Profil użytkownika",
   "profile.subtitle": "Przeglądaj i edytuj swoje dane",
   "profile.button.save": "Zapisz zmiany",
@@ -101,5 +102,7 @@
   "admin.panel.table.header.restore": "Przywróć",
   "admin.panel.settings.users.restoredSuccessfully": "Użytkownik pomyślnie przywrócony.",
   "admin.panel.settings.users.error.userDeletedOnlyRestore": "Ten użytkownik został wcześniej usunięty. Dodanie go ponownie jest zablokowane - przejdź do zakładki 'Usunięci', aby przywrócić jego konto.",
+  "admin.panel.settings.public.allowForRegistering": "Zezwól na swobodną rejestrację",
+  "admin.panel.settings.public.savedSuccessfully": "Pomyślnie zaktualizowano ustawienia.",
   "login.error.accountDeleted": "Konto zostało usunięte."
 }
