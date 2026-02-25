@@ -155,3 +155,46 @@ input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
   display: none !important;
 }
+
+// Reusable Page Layouts
+.app-page-container {
+  margin: 20px 20px 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.app-card-wide {
+  max-width: 1200px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.app-card-narrow {
+  max-width: 700px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+// Reusable Action Button Groups
+.app-full-width-actions {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.app-popup-full-width-actions {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+  margin-top: 10px;
+  justify-content: space-between;
+  padding: 0 16px 16px 16px;
+}
+
+.app-action-button {
+  flex: 1;
+  margin: 0 !important;
+}

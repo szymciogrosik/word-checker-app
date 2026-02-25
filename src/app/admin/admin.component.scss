@@ -1,16 +1,5 @@
 @use "src/styles.scss" as *;
 
-.short-page-content {
-  max-width: 1200px;
-  padding-top: 0;
-  margin-bottom: 20px
-}
-
-.admin-div {
-  margin: 20px 20px 0 20px;
-  font-size: 1rem;
-}
-
 table {
   width: 100%;
 }
@@ -55,6 +44,7 @@ table {
     flex-direction: column; // Stacks the flex items vertically on small screens
     align-items: flex-start; // Aligns items to the start of the flex container
   }
+
   .button-toggle-label {
     margin-bottom: 0;
   }

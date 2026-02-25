@@ -26,31 +26,8 @@
   color: #f44336;
 }
 
-/* Matching styles from UserDetailsPopup */
 .dialog-title {
   margin-top: 5px;
   margin-bottom: 24px;
   font-weight: bold;
-}
-
-.dialog-actions {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.action-button {
-  flex: 1;
-}
-
-.button-wrapper {
-  width: 100%;
-  margin-top: 10px;
-}
-
-.profile-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 16px;
-  margin-top: 1rem;
 }

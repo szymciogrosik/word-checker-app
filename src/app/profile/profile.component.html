@@ -17,12 +17,12 @@
       </div>
     }
 
-    <div class="button-wrapper dialog-actions profile-actions">
-      <button mat-raised-button color="accent" class="action-button" [disabled]="isLoading || !user"
+    <div class="app-full-width-actions">
+      <button mat-raised-button color="accent" class="app-action-button" [disabled]="isLoading || !user"
               (click)="openChangePasswordDialog()">
         {{ 'profile.button.changePassword' | translate }}
       </button>
-      <button mat-raised-button color="primary" class="action-button" [disabled]="isLoading || !user"
+      <button mat-raised-button color="primary" class="app-action-button" [disabled]="isLoading || !user"
               (click)="userFormComponent.triggerSubmit()">
         {{ 'profile.button.save' | translate }}
       </button>
