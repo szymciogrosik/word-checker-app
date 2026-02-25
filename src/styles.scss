@@ -88,13 +88,9 @@ $warn-palette: (
   contrast: (500: $app-on-warn-color)
 );
 
-$light-theme: mat.m2-define-light-theme((
-  color: (
-    primary: mat.m2-define-palette($main-palette),
-    accent: mat.m2-define-palette($accent-palette),
-    warn: mat.m2-define-palette($warn-palette)
-  )
-));
+$light-theme: mat.m2-define-light-theme((color: (primary: mat.m2-define-palette($main-palette),
+  accent: mat.m2-define-palette($accent-palette),
+  warn: mat.m2-define-palette($warn-palette))));
 
 @include mat.all-component-themes($light-theme);
 
@@ -103,9 +99,12 @@ $light-theme: mat.m2-define-light-theme((
 html {
   scroll-behavior: smooth;
 }
-html, body {
+
+html,
+body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -126,21 +125,33 @@ mat-card-title {
   padding-top: 40px;
   padding-bottom: 20px;
 }
+
 mat-card-content {
   padding-top: 16px !important;
 }
+
 mat-card {
   padding: 10px;
 }
+
 mat-form-field {
   width: 100%;
 }
+
 mat-spinner {
   margin: 0 auto;
 }
+
 mat-hint {
   font-size: 0.75rem;
 }
+
 mat-error {
   font-size: 0.9rem;
+}
+
+/* Hide the default browser password reveal icon (mostly in Edge/IE) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none !important;
 }
