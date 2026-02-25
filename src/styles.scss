@@ -186,6 +186,14 @@ input[type="password"]::-ms-clear {
   font-size: 1.2rem;
 }
 
+// Reusable tab
+.highlight-tab-content {
+  border: 2px solid $app-primary-color;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
 // Reusable Dialog
 .dialog-font {
   font-size: 1rem;
