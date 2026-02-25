@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
   signOut,
   onAuthStateChanged,
   updatePassword,
@@ -97,6 +98,15 @@ export class AuthService {
       await updatePassword(this.auth.currentUser, newPassword);
     } catch (error) {
       console.error('Failed to update password', error);
+      throw error;
+    }
+  }
+
+  public async sendPasswordResetLink(email: string): Promise<void> {
+    try {
+      await sendPasswordResetEmail(this.auth, email);
+    } catch (error) {
+      console.error('Failed to send password reset email', error);
       throw error;
     }
   }

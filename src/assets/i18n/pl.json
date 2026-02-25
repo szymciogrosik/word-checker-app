@@ -63,6 +63,8 @@
   "admin.panel.settings.users.deletedSuccessfully": "Użytkownik usunięty pomyślnie",
   "admin.panel.settings.users.updatedSuccessfully": "Użytkownik zaktualizowany pomyślnie",
   "admin.panel.settings.users.addedSuccessfully": "Użytkownik dodany pomyślnie, za chwilę nastąpi przełączenie na nowo utworzone konto. Sprawdź, czy nowo utworzony użytkownik nie ma zbyt dużych uprawnień.",
+  "admin.panel.users.sendResetEmail": "Wyślij link resetu hasła",
+  "admin.panel.users.sendResetEmail.success": "Wysłano link resetujący hasło na podany adres e-mail.",
   "admin.panel.users.header": "Szczegóły użytkownika",
   "admin.panel.users.firstName": "Imię",
   "admin.panel.users.lastName": "Nazwisko",

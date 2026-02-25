@@ -6,6 +6,8 @@ import {CustomTranslateService} from "../../../../_services/translate/custom-tra
 import {CustomValidators} from "../../../../_services/validator/custom-validators";
 import {CustomCommonModule} from "../../../../_imports/CustomCommon.module";
 import {UserFormComponent} from "../../../../_shared-components/user-form/user-form.component";
+import {AuthService} from "../../../../_services/auth/auth.service";
+import {SnackbarService} from "../../../../_services/util/snackbar.service";
 
 @Component({
   selector: 'app-user-details',
@@ -22,6 +24,8 @@ export class UserDetailsComponent implements OnInit {
     public dialogRef: MatDialogRef<UserDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: UserDetailsPopupData,
     private translateService: CustomTranslateService,
+    private authService: AuthService,
+    private snackbarService: SnackbarService
   ) {
   }
 
@@ -38,6 +42,17 @@ export class UserDetailsComponent implements OnInit {
 
   protected onFormSubmit(payload: any): void {
     this.dialogRef.close(payload);
+  }
+
+  protected onSendResetEmail(): void {
+    if (this.data.user && this.data.user.email) {
+      this.authService.sendPasswordResetLink(this.data.user.email).then(() => {
+        this.snackbarService.openSnackBar(this.translateService.get('admin.panel.users.sendResetEmail.success'));
+      }).catch(err => {
+        console.error(err);
+        this.snackbarService.openLongSnackBar(this.translateService.get('login.error.internal'));
+      });
+    }
   }
 
 }
