@@ -93,5 +93,6 @@
   "admin.panel.table.header.guid": "GUID",
   "admin.panel.table.header.restore": "Restore",
   "admin.panel.settings.users.restoredSuccessfully": "User successfully restored.",
+  "admin.panel.settings.users.error.userDeletedOnlyRestore": "This user was previously deleted. Adding them again is blocked - go to the 'Deleted' tab to restore their account.",
   "login.error.accountDeleted": "Account has been deleted."
 }

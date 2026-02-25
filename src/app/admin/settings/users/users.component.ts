@@ -109,16 +109,7 @@ export class UsersComponent implements OnDestroy {
           }
 
           if (deletedUser) {
-            user.id = deletedUser.id;
-            user.uid = deletedUser.uid;
-            user.isDeleted = false;
-            this.userDb.update(deletedUser.id, user).then(() => {
-              this.snackbarService.openSnackBar(this.translateService.get('admin.panel.settings.users.restoredSuccessfully'));
-              this.openConfirmCreateUserDialog();
-            }).catch(err => {
-              console.error(err);
-              this.snackbarService.openLongSnackBar(this.translateService.get('login.error.internal'));
-            });
+            this.snackbarService.openLongSnackBar(this.translateService.get('admin.panel.settings.users.error.userDeletedOnlyRestore'));
             return;
           }
 

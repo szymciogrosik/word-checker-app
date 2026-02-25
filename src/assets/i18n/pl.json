@@ -93,5 +93,6 @@
   "admin.panel.table.header.guid": "GUID",
   "admin.panel.table.header.restore": "Przywróć",
   "admin.panel.settings.users.restoredSuccessfully": "Użytkownik pomyślnie przywrócony.",
+  "admin.panel.settings.users.error.userDeletedOnlyRestore": "Ten użytkownik został wcześniej usunięty. Dodanie go ponownie jest zablokowane - przejdź do zakładki 'Usunięci', aby przywrócić jego konto.",
   "login.error.accountDeleted": "Konto zostało usunięte."
 }
