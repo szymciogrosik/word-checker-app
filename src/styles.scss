@@ -228,6 +228,16 @@ input[type="password"]::-ms-clear {
   margin: 0 !important;
 }
 
+@media (max-width: 450px) {
+
+  .app-full-width-actions,
+  .app-popup-full-width-actions {
+    flex-direction: column;
+    gap: 20px;
+    height: 8rem;
+  }
+}
+
 /* Dialog override to remove padding and background for image preview */
 .image-preview-dialog-panel {
   .mat-mdc-dialog-container {

@@ -6,6 +6,7 @@ import {AuthService} from "../_services/auth/auth.service";
 import {CustomCommonModule} from "../_imports/CustomCommon.module";
 import {AccessRoleService} from "../_services/auth/access-role.service";
 import {AccessRole} from "../_models/user/access-role";
+import {CustomUser} from "../_models/user/custom-user";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 
@@ -20,6 +21,7 @@ export class NavbarComponent implements OnInit {
   protected readonly LanguageEnum = LanguageEnum;
   protected readonly rp = RedirectionEnum;
   protected isAdmin$: Observable<boolean>;
+  protected currentUser$: Observable<CustomUser | null>;
 
   constructor(
     protected translateService: CustomTranslateService,
@@ -28,6 +30,7 @@ export class NavbarComponent implements OnInit {
     private router: Router,
   ) {
     this.isAdmin$ = this.accessService.isAuthorized$(AccessRole.ADMIN_PAGE_ACCESS);
+    this.currentUser$ = this.authService.loggedUser();
   }
 
   ngOnInit(): void {
