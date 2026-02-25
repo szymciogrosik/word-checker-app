@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
 
       this.authService.getAuthErrorLogout().subscribe(() => {
         this.loading = false;
+        this.loginForm.enable();
       });
     }, 600);
   }
@@ -73,15 +74,18 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    const {email, password} = this.loginForm.getRawValue();
     this.loading = true;
+    this.loginForm.disable();
 
-    this.authService.loginWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
+    this.authService.loginWithEmailAndPassword(email, password)
       .then((): void => {
         // success; leave loading = true so spinner stays until redirection
       })
       .catch((err): void => {
         this.snackbarService.openLongSnackBar(err);
         this.loading = false;
+        this.loginForm.enable();
       });
   }
 
@@ -124,6 +128,7 @@ export class LoginComponent implements OnInit {
 
   private loginGoogleSsoPopup(): void {
     this.loading = true;
+    this.loginForm.disable();
 
     this.authService.loginWithGoogleSso()
       .then((): void => {
@@ -132,6 +137,7 @@ export class LoginComponent implements OnInit {
       .catch((err): void => {
         this.snackbarService.openLongSnackBar(err);
         this.loading = false;
+        this.loginForm.enable();
       });
   }
 
