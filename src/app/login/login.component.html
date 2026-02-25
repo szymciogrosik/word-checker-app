@@ -1,9 +1,10 @@
 <div class="registration-content">
   <mat-card class="short-page-content">
     <mat-card-title>
-      <h1>{{ 'login.header' | translate }}</h1>
-      <h5>{{ 'login.header2' | translate }}</h5>
+      <h1 class="card-title">{{ 'login.header' | translate }}</h1>
+      <p class="card-subtitle">{{ 'login.header2' | translate }}</p>
     </mat-card-title>
+
     <mat-card-content>
       @if (!checkingIfUserIsAlreadyLoggedIn) {
         <div>
