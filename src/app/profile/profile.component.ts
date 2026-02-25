@@ -58,7 +58,8 @@ export class ProfileComponent implements OnInit {
         width: '600px',
         data: {
           imageChangedEvent: event,
-          userId: this.user.id
+          authUserUid: this.user.uid,
+          userDocId: this.user.id
         } as ImageCropperData
       });
 

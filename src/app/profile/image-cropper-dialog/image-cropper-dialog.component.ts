@@ -9,7 +9,8 @@ import {CustomTranslateService} from '../../_services/translate/custom-translate
 
 export interface ImageCropperData {
   imageChangedEvent: Event;
-  userId: string;
+  authUserUid: string;
+  userDocId: string;
 }
 
 @Component({
@@ -47,11 +48,11 @@ export class ImageCropperDialogComponent {
 
     try {
       // 1. Upload to Firebase Storage
-      const path = `users/${this.data.userId}/profile.webp`;
+      const path = `users/${this.data.authUserUid}/profile.webp`;
       const photoUrl = await this.storageService.uploadFile(path, this.croppedImageBlob);
 
       // 2. Update Firestore User Document
-      await this.userDbService.update(this.data.userId, {photoUrl});
+      await this.userDbService.update(this.data.userDocId, {photoUrl});
 
       // 3. Inform the user and close dialog returns the photoUrl
       this.snackbarService.openLongSnackBar(this.translateService.get('profile.cropper.success'));
