@@ -11,6 +11,7 @@ import {
   User
 } from '@angular/fire/auth';
 import {firstValueFrom, BehaviorSubject, Observable, map} from 'rxjs';
+import {FirebaseError} from 'firebase/app';
 import {Router} from '@angular/router';
 import {SnackbarService} from '../util/snackbar.service';
 import {StandardUserDbService} from '../../_database/auth/standard-user-db.service';
@@ -66,8 +67,13 @@ export class AuthService {
   public async loginWithEmailAndPassword(email: string, password: string): Promise<void> {
     try {
       await signInWithEmailAndPassword(this.auth, email, password);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
+      if (err instanceof FirebaseError || err?.code) {
+        if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') {
+          throw this.translateService.get('login.error.invalidCredentials');
+        }
+      }
       throw this.translateService.get('login.error.internal');
     }
   }

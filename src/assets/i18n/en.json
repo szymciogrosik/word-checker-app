@@ -30,6 +30,7 @@
   "login.validation.mandatoryField": "Field is mandatory",
   "login.validation.invalidEmail": "Email is invalid",
   "login.error.internal": "Internal error occurred.",
+  "login.error.invalidCredentials": "Invalid email or password.",
   "login.error.emailAlreadyUsed": "This email is already in use by another user. Check the details in the Firebase console.",
   "login.error.invalidUser": "This user does not have rights to be logged into this application!",
   "login.error.unsupportedAction": "This option is not supported currently.",
