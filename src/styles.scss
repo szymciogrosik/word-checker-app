@@ -122,7 +122,7 @@ body {
 /* mat-card general styles */
 mat-card-title {
   text-align: center;
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 20px;
 }
 
@@ -131,7 +131,8 @@ mat-card-content {
 }
 
 mat-card {
-  padding: 10px;
+  margin: 20px;
+  padding: 2rem;
 }
 
 mat-form-field {
@@ -158,7 +159,6 @@ input[type="password"]::-ms-clear {
 
 // Reusable Page Layouts
 .app-page-container {
-  margin: 20px 20px 0 20px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -178,7 +178,6 @@ input[type="password"]::-ms-clear {
 
 // Reusable Card
 .card-title {
-  margin-top: 5px;
   margin-bottom: 24px;
   font-weight: bold;
 }

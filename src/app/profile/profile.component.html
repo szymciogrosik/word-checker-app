@@ -1,31 +1,35 @@
-<div class="profile-container">
+<div class="app-page-container">
   <mat-card class="dialog-container profile-card mat-elevation-z4">
-    <h1 class="card-title">{{ 'profile.title' | translate }}</h1>
-    <p class="card-subtitle" style="padding-bottom: 30px; margin-bottom: 0;">{{ 'profile.subtitle' | translate }}</p>
+    <mat-card-title>
+      <h1 class="card-title">{{ 'profile.title' | translate }}</h1>
+      <p class="card-subtitle">{{ 'profile.subtitle' | translate }}</p>
+    </mat-card-title>
 
-    @if (isLoading) {
-      <div class="loader-container">
-        <mat-spinner diameter="40"></mat-spinner>
-      </div>
-    } @else if (user) {
-      <app-user-form #userFormComponent [user]="user" [showPassword]="false" [showRoles]="false" [disableEmail]="true"
-                     (formSubmit)="onFormSubmit($event)"></app-user-form>
-    } @else {
-      <div class="error-container">
-        <mat-icon color="warn">error</mat-icon>
-        <p>{{ 'profile.error.notFound' | translate }}</p>
-      </div>
-    }
+    <mat-card-content>
+      @if (isLoading) {
+        <div class="loader-container">
+          <mat-spinner diameter="40"></mat-spinner>
+        </div>
+      } @else if (user) {
+        <app-user-form #userFormComponent [user]="user" [showPassword]="false" [showRoles]="false" [disableEmail]="true"
+                       (formSubmit)="onFormSubmit($event)"></app-user-form>
+      } @else {
+        <div class="error-container">
+          <mat-icon color="warn">error</mat-icon>
+          <p>{{ 'profile.error.notFound' | translate }}</p>
+        </div>
+      }
 
-    <div class="app-full-width-actions">
-      <button mat-raised-button color="accent" class="app-action-button" [disabled]="isLoading || !user"
-              (click)="openChangePasswordDialog()">
-        {{ 'profile.button.changePassword' | translate }}
-      </button>
-      <button mat-raised-button color="primary" class="app-action-button" [disabled]="isLoading || !user"
-              (click)="userFormComponent.triggerSubmit()">
-        {{ 'profile.button.save' | translate }}
-      </button>
-    </div>
+      <div class="app-full-width-actions">
+        <button mat-raised-button color="accent" class="app-action-button" [disabled]="isLoading || !user"
+                (click)="openChangePasswordDialog()">
+          {{ 'profile.button.changePassword' | translate }}
+        </button>
+        <button mat-raised-button color="primary" class="app-action-button" [disabled]="isLoading || !user"
+                (click)="userFormComponent.triggerSubmit()">
+          {{ 'profile.button.save' | translate }}
+        </button>
+      </div>
+    </mat-card-content>
   </mat-card>
 </div>
