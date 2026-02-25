@@ -104,5 +104,11 @@
   "admin.panel.settings.users.error.userDeletedOnlyRestore": "Ten użytkownik został wcześniej usunięty. Dodanie go ponownie jest zablokowane - przejdź do zakładki 'Usunięci', aby przywrócić jego konto.",
   "admin.panel.settings.public.allowForRegistering": "Zezwól na swobodną rejestrację",
   "admin.panel.settings.public.savedSuccessfully": "Pomyślnie zaktualizowano ustawienia.",
-  "login.error.accountDeleted": "Konto zostało usunięte."
+  "login.error.accountDeleted": "Konto zostało usunięte.",
+  "dialog.cancel": "Anuluj",
+  "dialog.save": "Zapisz",
+  "profile.button.changePhoto": "Zmień zdjęcie",
+  "profile.cropper.title": "Edytuj zdjęcie profilowe",
+  "profile.cropper.success": "Zdjęcie profilowe zostało zaktualizowane.",
+  "profile.cropper.error": "Wystąpił błąd podczas zapisywania zdjęcia."
 }

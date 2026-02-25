@@ -10,6 +10,9 @@ import {UserDbService} from '../_database/auth/user-db-service.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ChangePasswordDialogComponent} from './change-password-dialog/change-password-dialog.component';
 
+import {ImageCropperDialogComponent, ImageCropperData} from './image-cropper-dialog/image-cropper-dialog.component';
+import {ImagePreviewDialogComponent, ImagePreviewData} from './image-preview-dialog/image-preview-dialog.component';
+
 @Component({
   selector: 'app-profile',
   standalone: true,
@@ -46,6 +49,35 @@ export class ProfileComponent implements OnInit {
     // Open the change password dialog
     this.dialog.open(ChangePasswordDialogComponent, {
       width: '450px'
+    });
+  }
+
+  onFileSelected(event: any): void {
+    if (event.target.files && event.target.files.length > 0 && this.user) {
+      const dialogRef = this.dialog.open(ImageCropperDialogComponent, {
+        width: '600px',
+        data: {
+          imageChangedEvent: event,
+          userId: this.user.id
+        } as ImageCropperData
+      });
+
+      dialogRef.afterClosed().subscribe((photoUrl: string | null) => {
+        // Clear input to allow re-selection of the same file
+        event.target.value = null;
+        if (photoUrl && this.user) {
+          this.user.photoUrl = photoUrl;
+        }
+      });
+    }
+  }
+
+  openPreviewDialog(imageUrl: string): void {
+    this.dialog.open(ImagePreviewDialogComponent, {
+      panelClass: 'image-preview-dialog-panel',
+      data: {
+        imageUrl: imageUrl
+      } as ImagePreviewData
     });
   }
 

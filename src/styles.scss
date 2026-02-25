@@ -227,3 +227,14 @@ input[type="password"]::-ms-clear {
   flex: 1;
   margin: 0 !important;
 }
+
+/* Dialog override to remove padding and background for image preview */
+.image-preview-dialog-panel {
+  .mat-mdc-dialog-container {
+    .mdc-dialog__surface {
+      background: transparent !important;
+      box-shadow: none !important;
+      overflow: visible;
+    }
+  }
+}
