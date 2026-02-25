@@ -46,7 +46,7 @@ export class UsersComponent implements OnDestroy {
       .then((isAuthorized: boolean): void => {
         if (isAuthorized) {
           this.allUsersSubscription = this.userDb.getAll().subscribe(allUsers => {
-            this.allUsers = allUsers.sort((a,b) => a.firstName.localeCompare(b.firstName));
+            this.allUsers = allUsers.sort((a, b) => a.firstName.localeCompare(b.firstName));
             this.dataSource.data = this.allUsers;
           });
         }
@@ -74,9 +74,16 @@ export class UsersComponent implements OnDestroy {
 
     createRef.afterClosed().subscribe(user => {
       if (user) {
-        // Taking password from id place, because there are no dedicated place for it
-        let password = user.id;
+        let password = user.password;
+        delete user.password;
         user.id = null;
+
+        if (!password) {
+          console.error('Password missing from form payload');
+          this.snackbarService.openLongSnackBar(this.translateService.get('login.error.internal'));
+          return;
+        }
+
         this.authService.registerUser(user.email, password)
           .then((uid: string): void => {
             user.uid = uid;
@@ -137,7 +144,7 @@ export class UsersComponent implements OnDestroy {
       if (user) {
         this.userDb.update(user.id, user)
           .then((): void => {
-            this.snackbarService.openDefaultSnackBar(this.translateService.get('admin.panel.settings.users.updatedSuccessfully'));
+            this.snackbarService.openSnackBar(this.translateService.get('admin.panel.settings.users.updatedSuccessfully'));
           })
           .catch((err): void => {
             console.error(err);
@@ -160,7 +167,7 @@ export class UsersComponent implements OnDestroy {
   private removeUser(id: string): any {
     this.userDb.delete(id)
       .then((): void => {
-        this.snackbarService.openDefaultSnackBar(this.translateService.get('admin.panel.settings.users.deletedSuccessfully'));
+        this.snackbarService.openSnackBar(this.translateService.get('admin.panel.settings.users.deletedSuccessfully'));
       })
       .catch((err): void => {
         console.error(err);

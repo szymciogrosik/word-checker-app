@@ -15,6 +15,9 @@
       </button>
     }
     @if (this.authService.isAuthenticated() | async) {
+      <button mat-button class="navbar-button" (click)="navigateToProfile()">
+        {{ 'navbar.tab.button.profile' | translate }}
+      </button>
       <button mat-button class="navbar-button" (click)="logout()">
         {{ 'navbar.tab.button.logout' | translate }}
       </button>
@@ -42,13 +45,17 @@
     </button>
   }
   @if (this.authService.isAuthenticated() | async) {
+    <button mat-menu-item class="navbar-button-burger-menu" (click)="navigateToProfile()">
+      {{ 'navbar.tab.button.profile' | translate }}
+    </button>
     <button mat-menu-item class="navbar-button-burger-menu" (click)="logout()">
       {{ 'navbar.tab.button.logout' | translate }}
     </button>
   }
   <!-- Choose language tab -->
   <button mat-menu-item class="navbar-button-burger-menu"
-          [matMenuTriggerFor]="languageMenu"><mat-icon>language</mat-icon>
+          [matMenuTriggerFor]="languageMenu">
+    <mat-icon>language</mat-icon>
   </button>
 </mat-menu>
 

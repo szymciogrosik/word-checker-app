@@ -1,33 +1,25 @@
 {
   "language.english": "English",
   "language.polish": "Polski",
-
   "page.title": "Angular accelerator app",
-
   "datePicker.formatHint": "DD.MM.YYYY",
   "datePicker.chooseDate": "Wybierz datę",
   "datePicker.chooseDateAndTime": "Wpisz datę i czas",
-
   "navbar.tab.applicationName": "Angular accelerator app",
   "navbar.tab.button.logout": "Wyloguj",
+  "navbar.tab.button.profile": "Profil",
   "navbar.tab.button.adminPanel": "Panel administratora",
-
   "snackbar.default.dismiss": "Zamknij",
-
   "registration.enterEmail": "Wprowadź email",
   "registration.exampleEmail": "adam@gmail.com",
   "registration.fillField": "Uzupełnij pole",
   "registration.select.noOptionSelected": "-- Brak --",
-
   "registration.validation.mandatoryField": "Pole jest obowiązkowe",
   "registration.validation.invalidEmail": "Email jest niepoprawny",
   "registration.validation.minLength": "Wymagana minimalna liczba znaków: ",
   "registration.validation.invalidPasswordSecurity": "Wymagana jest co najmniej 1 wielka litera, 1 mała litera, 1 cyfra, 1 znak specjalny",
-
   "status.lastBuildTime": "Data ostatniego wdrożenia",
-
   "nonProdMode.warning": "Ta aplikacja nie jest w trybie produkcyjnym. Wprowadzone zmiany nie będą miały wpływu na produkcyjną bazę danych.",
-
   "login.header": "LOGOWANIE",
   "login.header2": "do aplikacji",
   "login.enterEmail": "Wprowadź email",
@@ -45,24 +37,18 @@
   "login.error.information.notSupportedEmbeddedBrowser1": "Przeglądarka wbudowana w aplikacje ",
   "login.error.information.notSupportedEmbeddedBrowser2": " nie wspiera tej funkcji. Otwórz stronę w innej przeglądarce lub skopiuj i wklej link.",
   "login.error.information.copy": "Kopiuj link",
-
   "registeredUsers.details.title": "Szczegóły",
   "registeredUsers.details.save": "Zapisz",
   "registeredUsers.details.create": "Utwórz",
   "registeredUsers.details.confirm": "Potwierdź",
   "registeredUsers.details.cancel": "Anuluj",
-
   "admin.panel.header": "ADMIN PANEL",
   "admin.panel.helloMessage": "Witaj, ",
-
   "admin.panel.tab.header.settings": "Ustawienia",
-
   "admin.panel.tab.header.settings.users": "Użytkownicy",
-
   "admin.panel.table.filter": "Filtr",
   "admin.panel.table.filter.placeholder": "Np. Kasia",
   "admin.panel.table.filter.noResult": "Brak danych pasujących do filtra",
-
   "admin.panel.table.header.no": "Numer",
   "admin.panel.table.header.name": "Imię i nazwisko",
   "admin.panel.table.header.email": "Email",
@@ -71,18 +57,31 @@
   "admin.panel.table.header.details": "Szczegóły",
   "admin.panel.table.header.delete": "Usuń",
   "admin.panel.table.header.modify": "Zmień",
-
   "admin.panel.settings.warning.popupWarning": "Ostrzeżenie",
-
   "admin.panel.settings.users.addNewUser": "Dodaj nowego użytkownika",
   "admin.panel.settings.users.deletedSuccessfully": "Użytkownik usunięty pomyślnie",
   "admin.panel.settings.users.updatedSuccessfully": "Użytkownik zaktualizowany pomyślnie",
   "admin.panel.settings.users.addedSuccessfully": "Użytkownik dodany pomyślnie, za chwilę nastąpi przełączenie na nowo utworzone konto. Sprawdź, czy nowo utworzony użytkownik nie ma zbyt dużych uprawnień.",
-
   "admin.panel.users.header": "Szczegóły użytkownika",
   "admin.panel.users.firstName": "Imię",
   "admin.panel.users.lastName": "Nazwisko",
   "admin.panel.users.roles": "Role",
   "admin.panel.users.select": "-- Brak --",
-  "admin.panel.users.warning.removedUser": "Uwaga, po usunięciu użytkownika, nie będzie możliwe dodanie nowego użytkownika dla tego samego numer email, chyba że zostanie on usunięty z konsoli autentykacyjnej Firebase."
+  "admin.panel.users.warning.removedUser": "Uwaga, po usunięciu użytkownika, nie będzie możliwe dodanie nowego użytkownika dla tego samego adresu email, chyba że zostanie on usunięty z konsoli autentykacyjnej Firebase.",
+  "profile.title": "Profil użytkownika",
+  "profile.subtitle": "Przeglądaj i edytuj swoje dane",
+  "profile.button.save": "Zapisz zmiany",
+  "profile.success.update": "Profil zaaktualizowany pomyślnie.",
+  "profile.error.load": "Nie udało się pobrać profilu użytkownika.",
+  "profile.error.update": "Nie udało się zaaktualizować profilu. Spróbuj ponownie.",
+  "profile.error.notFound": "Zalogowany użytkownik nie został znaleziony.",
+  "profile.button.changePassword": "Zmień hasło",
+  "profile.password.title": "Zmień hasło",
+  "profile.password.new": "Nowe hasło",
+  "profile.password.confirm": "Potwierdź nowe hasło",
+  "profile.password.cancel": "Anuluj",
+  "profile.password.change": "Zmień",
+  "profile.password.success": "Hasło zostało pomyślnie zmienione.",
+  "profile.password.error": "Nie udało się zmienić hasła. Spróbuj ponownie po ponownym zalogowaniu się do aplikacji.",
+  "profile.password.mismatch": "Hasła nie są identyczne."
 }

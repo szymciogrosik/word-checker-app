@@ -1,0 +1,31 @@
+<div class="profile-container">
+  <mat-card class="dialog-container profile-card mat-elevation-z4">
+    <h1 class="dialog-font dialog-title">{{ 'profile.title' | translate }}</h1>
+    <p class="dialog-font" style="padding-bottom: 30px; margin-bottom: 0;">{{ 'profile.subtitle' | translate }}</p>
+
+    @if (isLoading) {
+      <div class="loader-container">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+    } @else if (user) {
+      <app-user-form #userFormComponent [user]="user" [showPassword]="false" [showRoles]="false" [disableEmail]="true"
+                     (formSubmit)="onFormSubmit($event)"></app-user-form>
+    } @else {
+      <div class="error-container">
+        <mat-icon color="warn">error</mat-icon>
+        <p>{{ 'profile.error.notFound' | translate }}</p>
+      </div>
+    }
+
+    <div class="button-wrapper dialog-actions profile-actions">
+      <button mat-raised-button color="accent" class="action-button" [disabled]="isLoading || !user"
+              (click)="openChangePasswordDialog()">
+        {{ 'profile.button.changePassword' | translate }}
+      </button>
+      <button mat-raised-button color="primary" class="action-button" [disabled]="isLoading || !user"
+              (click)="userFormComponent.triggerSubmit()">
+        {{ 'profile.button.save' | translate }}
+      </button>
+    </div>
+  </mat-card>
+</div>

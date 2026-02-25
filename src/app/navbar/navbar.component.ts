@@ -30,7 +30,8 @@ export class NavbarComponent implements OnInit {
     this.isAdmin$ = this.accessService.isAuthorized$(AccessRole.ADMIN_PAGE_ACCESS);
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   logout(): void {
     this.authService.logout(true);
@@ -38,6 +39,10 @@ export class NavbarComponent implements OnInit {
 
   navigateToAdminPanel(): void {
     this.router.navigate(["/" + RedirectionEnum.ADMIN]);
+  }
+
+  navigateToProfile(): void {
+    this.router.navigate(["/" + RedirectionEnum.PROFILE]);
   }
 
   protected readonly AccessRoleService = AccessRoleService;

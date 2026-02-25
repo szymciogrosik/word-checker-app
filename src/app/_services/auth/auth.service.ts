@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  updatePassword,
   User
 } from '@angular/fire/auth';
 import {firstValueFrom, BehaviorSubject, Observable, map} from 'rxjs';
@@ -78,6 +79,19 @@ export class AuthService {
     } catch (err) {
       console.error(err);
       throw this.translateService.get('login.error.internal');
+    }
+  }
+
+  public async updateAuthPassword(newPassword: string): Promise<void> {
+    if (!this.auth.currentUser) {
+      throw new Error('No user currently logged in.');
+    }
+
+    try {
+      await updatePassword(this.auth.currentUser, newPassword);
+    } catch (error) {
+      console.error('Failed to update password', error);
+      throw error;
     }
   }
 
