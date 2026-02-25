@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {UserDbService} from "../../../_database/auth/user-db-service.service";
 import {CustomUser} from "../../../_models/user/custom-user";
-import {Subscription} from "rxjs";
+import {Subscription, first} from "rxjs";
 import {AccessRoleService} from "../../../_services/auth/access-role.service";
 import {CustomTranslateService} from "../../../_services/translate/custom-translate.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -27,11 +27,18 @@ import {AccessRole} from "../../../_models/user/access-role";
 })
 export class UsersComponent implements OnDestroy {
   protected allUsers: CustomUser[];
+  protected deletedUsers: CustomUser[];
   protected allUsersSubscription: Subscription;
-  protected displayedColumns: string[] = [
+
+  protected activeDisplayedColumns: string[] = [
     'position', 'name', 'email', 'roles', 'details', 'remove'
   ];
-  protected dataSource = new MatTableDataSource<CustomUser>([]);
+  protected activeDataSource = new MatTableDataSource<CustomUser>([]);
+
+  protected deletedDisplayedColumns: string[] = [
+    'position', 'name', 'email', 'uid', 'restore'
+  ];
+  protected deletedDataSource = new MatTableDataSource<CustomUser>([]);
 
   constructor(
     private accessService: AccessRoleService,
@@ -46,8 +53,11 @@ export class UsersComponent implements OnDestroy {
       .then((isAuthorized: boolean): void => {
         if (isAuthorized) {
           this.allUsersSubscription = this.userDb.getAll().subscribe(allUsers => {
-            this.allUsers = allUsers.sort((a, b) => a.firstName.localeCompare(b.firstName));
-            this.dataSource.data = this.allUsers;
+            this.allUsers = allUsers.filter(u => !u.isDeleted).sort((a, b) => a.firstName.localeCompare(b.firstName));
+            this.deletedUsers = allUsers.filter(u => u.isDeleted).sort((a, b) => a.firstName.localeCompare(b.firstName));
+
+            this.activeDataSource.data = this.allUsers;
+            this.deletedDataSource.data = this.deletedUsers;
           });
         }
       });
@@ -57,9 +67,14 @@ export class UsersComponent implements OnDestroy {
     this.allUsersSubscription?.unsubscribe();
   }
 
-  protected applyFilter(event: Event): void {
+  protected applyActiveFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.activeDataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  protected applyDeletedFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.deletedDataSource.filter = filterValue.trim().toLowerCase();
   }
 
   protected openAddUser(): any {
@@ -84,26 +99,50 @@ export class UsersComponent implements OnDestroy {
           return;
         }
 
-        this.authService.registerUser(user.email, password)
-          .then((uid: string): void => {
-            user.uid = uid;
-            this.userDb.create(user)
-              .then((): void => {
-                this.openConfirmCreateUserDialog();
-              })
-              .catch((err): void => {
-                console.error(err);
-                this.snackbarService.openLongSnackBar(this.translateService.get('login.error.internal'));
-              });
-          })
-          .catch((err) => {
-            console.error(err);
-            if (err instanceof FirebaseError && err.code === 'auth/email-already-in-use') {
-              this.snackbarService.openLongSnackBar(this.translateService.get('login.error.emailAlreadyUsed'));
-            } else {
+        this.userDb.getUserByEmail(user.email).pipe(first()).subscribe(existingUsers => {
+          const deletedUser = existingUsers.find(u => u.isDeleted);
+          const activeUser = existingUsers.find(u => !u.isDeleted);
+
+          if (activeUser) {
+            this.snackbarService.openLongSnackBar(this.translateService.get('login.error.emailAlreadyUsed'));
+            return;
+          }
+
+          if (deletedUser) {
+            user.id = deletedUser.id;
+            user.uid = deletedUser.uid;
+            user.isDeleted = false;
+            this.userDb.update(deletedUser.id, user).then(() => {
+              this.snackbarService.openSnackBar(this.translateService.get('admin.panel.settings.users.restoredSuccessfully'));
+              this.openConfirmCreateUserDialog();
+            }).catch(err => {
+              console.error(err);
               this.snackbarService.openLongSnackBar(this.translateService.get('login.error.internal'));
-            }
-          });
+            });
+            return;
+          }
+
+          this.authService.registerUser(user.email, password)
+            .then((uid: string): void => {
+              user.uid = uid;
+              this.userDb.create(user)
+                .then((): void => {
+                  this.openConfirmCreateUserDialog();
+                })
+                .catch((err): void => {
+                  console.error(err);
+                  this.snackbarService.openLongSnackBar(this.translateService.get('login.error.internal'));
+                });
+            })
+            .catch((err) => {
+              console.error(err);
+              if (err instanceof FirebaseError && err.code === 'auth/email-already-in-use') {
+                this.snackbarService.openLongSnackBar(this.translateService.get('login.error.emailAlreadyUsed'));
+              } else {
+                this.snackbarService.openLongSnackBar(this.translateService.get('login.error.internal'));
+              }
+            });
+        });
       }
     });
   }
@@ -165,9 +204,20 @@ export class UsersComponent implements OnDestroy {
   }
 
   private removeUser(id: string): any {
-    this.userDb.delete(id)
+    this.userDb.update(id, {isDeleted: true})
       .then((): void => {
         this.snackbarService.openSnackBar(this.translateService.get('admin.panel.settings.users.deletedSuccessfully'));
+      })
+      .catch((err): void => {
+        console.error(err);
+        this.snackbarService.openLongSnackBar(this.translateService.get('login.error.internal'));
+      });
+  }
+
+  protected restoreUser(id: string): any {
+    this.userDb.update(id, {isDeleted: false})
+      .then((): void => {
+        this.snackbarService.openSnackBar(this.translateService.get('admin.panel.settings.users.restoredSuccessfully'));
       })
       .catch((err): void => {
         console.error(err);

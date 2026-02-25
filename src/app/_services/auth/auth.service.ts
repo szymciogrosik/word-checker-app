@@ -43,7 +43,12 @@ export class AuthService {
         try {
           const foundUser = await this.standardUserService.getUser(firebaseUser.uid, firebaseUser.email);
           if (foundUser) {
-            this.userSubject.next(foundUser);
+            if (foundUser.isDeleted) {
+              this.logout(true);
+              this.snackbarService.openLongSnackBar(this.translateService.get('login.error.accountDeleted'));
+            } else {
+              this.userSubject.next(foundUser);
+            }
           } else {
             this.logout(true);
             this.snackbarService.openLongSnackBar(this.translateService.get('login.error.invalidUser'));

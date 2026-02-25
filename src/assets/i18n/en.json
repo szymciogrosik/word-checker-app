@@ -87,5 +87,11 @@
   "profile.password.change": "Change",
   "profile.password.success": "Password was updated successfully.",
   "profile.password.error": "Failed to update password. Please try again.",
-  "profile.password.mismatch": "Passwords do not match."
+  "profile.password.mismatch": "Passwords do not match.",
+  "admin.panel.tab.header.settings.users.active": "Active",
+  "admin.panel.tab.header.settings.users.deleted": "Deleted",
+  "admin.panel.table.header.guid": "GUID",
+  "admin.panel.table.header.restore": "Restore",
+  "admin.panel.settings.users.restoredSuccessfully": "User successfully restored.",
+  "login.error.accountDeleted": "Account has been deleted."
 }

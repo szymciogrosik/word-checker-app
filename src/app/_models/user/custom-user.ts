@@ -7,4 +7,5 @@ export class CustomUser {
   firstName: string;
   lastName: string;
   roles: AccessRole[];
+  isDeleted?: boolean;
 }

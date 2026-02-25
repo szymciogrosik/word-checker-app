@@ -87,5 +87,11 @@
   "profile.password.change": "Zmień",
   "profile.password.success": "Hasło zostało pomyślnie zmienione.",
   "profile.password.error": "Nie udało się zmienić hasła. Spróbuj ponownie po ponownym zalogowaniu się do aplikacji.",
-  "profile.password.mismatch": "Hasła nie są identyczne."
+  "profile.password.mismatch": "Hasła nie są identyczne.",
+  "admin.panel.tab.header.settings.users.active": "Aktywni",
+  "admin.panel.tab.header.settings.users.deleted": "Usunięci",
+  "admin.panel.table.header.guid": "GUID",
+  "admin.panel.table.header.restore": "Przywróć",
+  "admin.panel.settings.users.restoredSuccessfully": "Użytkownik pomyślnie przywrócony.",
+  "login.error.accountDeleted": "Konto zostało usunięte."
 }
