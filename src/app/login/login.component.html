@@ -11,8 +11,10 @@
             <p>
               <mat-form-field appearance="outline">
                 <mat-label>{{ 'login.enterEmail' | translate }}</mat-label>
-                <input matInput type="email" placeholder="{{ 'login.exampleEmail' | translate }}" formControlName="email" required>
-                <mat-error>{{this.getErrorMessage('email')}}</mat-error>
+                <input matInput type="email" placeholder="{{ 'login.exampleEmail' | translate }}"
+                       formControlName="email"
+                       required>
+                <mat-error>{{ this.getErrorMessage('email') }}</mat-error>
               </mat-form-field>
             </p>
 
@@ -20,11 +22,12 @@
               <mat-form-field appearance="outline">
                 <mat-label>{{ 'login.enterPassword' | translate }}</mat-label>
                 <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" required>
-                <button mat-icon-button matSuffix class="register-button"
-                        (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
-                  <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <button mat-icon-button matSuffix type="button" class="register-button"
+                        (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hidePassword">
+                  <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                 </button>
-                <mat-error>{{this.getErrorMessage('password')}}</mat-error>
+                <mat-error>{{ this.getErrorMessage('password') }}</mat-error>
               </mat-form-field>
             </p>
 
