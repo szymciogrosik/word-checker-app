@@ -176,6 +176,28 @@ input[type="password"]::-ms-clear {
   margin-bottom: 20px;
 }
 
+// Reusable Card
+.card-title {
+  margin-top: 5px;
+  margin-bottom: 24px;
+  font-weight: bold;
+}
+
+.card-subtitle {
+  font-size: 1.2rem;
+}
+
+// Reusable Dialog
+.dialog-font {
+  font-size: 1rem;
+}
+
+.dialog-title {
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
 // Reusable Action Button Groups
 .app-full-width-actions {
   display: flex;

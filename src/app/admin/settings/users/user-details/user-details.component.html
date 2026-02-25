@@ -1,5 +1,5 @@
 <div class="dialog-container">
-  <h1 mat-dialog-title class="dialog-font dialog-title">{{ 'admin.panel.users.header' | translate }}</h1>
+  <h1 mat-dialog-title class="dialog-title">{{ 'admin.panel.users.header' | translate }}</h1>
 
   <app-user-form #userFormComponent [user]="data.user" [showPassword]="data.userDetailsType === UserDetailsType.CREATE"
                  [showRoles]="true" [disableEmail]="data.userDetailsType !== UserDetailsType.CREATE"
