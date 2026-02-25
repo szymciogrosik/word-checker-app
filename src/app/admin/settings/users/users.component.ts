@@ -17,13 +17,14 @@ import {DialogType} from "../../../_models/dialog/dialog-type";
 import {FirebaseError} from 'firebase/app';
 import {CustomCommonModule} from "../../../_imports/CustomCommon.module";
 import {AccessRole} from "../../../_models/user/access-role";
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
   standalone: true,
-  imports: [CustomCommonModule],
+  imports: [CustomCommonModule, MatSort],
 })
 export class UsersComponent implements OnDestroy {
   protected allUsers: CustomUser[];
