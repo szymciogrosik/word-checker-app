@@ -191,6 +191,7 @@ input[type="password"]::-ms-clear {
 }
 
 @media (max-width: 440px) {
+
   .app-card-wide,
   .app-card-medium,
   .app-card-narrow {
@@ -199,12 +200,12 @@ input[type="password"]::-ms-clear {
 }
 
 // Reusable Card
-mat-card-title>h1 {
+mat-card-title > h1 {
   margin-bottom: 24px;
   font-weight: bold;
 }
 
-mat-card-title>p {
+mat-card-title > p {
   font-size: 1.2rem;
 }
 
@@ -274,5 +275,13 @@ mat-card-title>p {
 @media (min-width: 470px) {
   .dialog-container {
     width: 450px;
+  }
+}
+
+/* Ensure all popups take 100% width on screens <= 470px */
+@media (max-width: 470px) {
+  .cdk-overlay-pane.mat-mdc-dialog-panel {
+    max-width: 100vw !important;
+    width: 100% !important;
   }
 }
