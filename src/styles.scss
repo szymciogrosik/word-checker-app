@@ -211,8 +211,6 @@ $dark-theme: mat.m2-define-dark-theme((color: (primary: mat.m2-define-palette($m
     background-color: #1e1e1e !important;
     color: #ffd54f !important;
     border-left: 4px solid #ffd54f !important;
-    padding-top: 0;
-    padding-bottom: 0;
   }
 
   /* SnackBar (Toasts) */
@@ -403,6 +401,8 @@ mat-card-title > p {
   border-left: 4px solid #ff8f00;
   margin-bottom: 30px;
   box-shadow: none !important;
+  padding-top: 0;
+  padding-bottom: 0;
 
   mat-card-content {
     display: flex;
