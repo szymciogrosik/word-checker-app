@@ -111,5 +111,11 @@
   "profile.button.changePhoto": "Zmień zdjęcie",
   "profile.cropper.title": "Edytuj zdjęcie profilowe",
   "profile.cropper.success": "Zdjęcie profilowe zostało zaktualizowane.",
-  "profile.cropper.error": "Wystąpił błąd podczas zapisywania zdjęcia."
+  "profile.cropper.error": "Wystąpił błąd podczas zapisywania zdjęcia.",
+  "admin.panel.table.paginator.itemsPerPageLabel": "Ilość na stronę:",
+  "admin.panel.table.paginator.nextPageLabel": "Następna strona",
+  "admin.panel.table.paginator.previousPageLabel": "Poprzednia strona",
+  "admin.panel.table.paginator.firstPageLabel": "Pierwsza strona",
+  "admin.panel.table.paginator.lastPageLabel": "Ostatnia strona",
+  "admin.panel.table.paginator.of": "z"
 }

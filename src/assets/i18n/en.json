@@ -111,5 +111,11 @@
   "profile.button.changePhoto": "Change photo",
   "profile.cropper.title": "Edit profile photo",
   "profile.cropper.success": "Profile photo has been updated.",
-  "profile.cropper.error": "An error occurred while saving photo."
+  "profile.cropper.error": "An error occurred while saving photo.",
+  "admin.panel.table.paginator.itemsPerPageLabel": "Items per page:",
+  "admin.panel.table.paginator.nextPageLabel": "Next page",
+  "admin.panel.table.paginator.previousPageLabel": "Previous page",
+  "admin.panel.table.paginator.firstPageLabel": "First page",
+  "admin.panel.table.paginator.lastPageLabel": "Last page",
+  "admin.panel.table.paginator.of": "of"
 }

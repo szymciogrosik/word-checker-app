@@ -1,0 +1,14 @@
+.smart-table-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-element {
+  width: 100%;
+}
+
+.enable-vertical-scrolling {
+  overflow-x: auto;
+  width: 100%;
+}
