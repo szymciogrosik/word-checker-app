@@ -117,5 +117,6 @@
   "admin.panel.table.paginator.previousPageLabel": "Poprzednia strona",
   "admin.panel.table.paginator.firstPageLabel": "Pierwsza strona",
   "admin.panel.table.paginator.lastPageLabel": "Ostatnia strona",
-  "admin.panel.table.paginator.of": "z"
+  "admin.panel.table.paginator.of": "z",
+  "admin.panel.table.noData": "Brak danych"
 }
