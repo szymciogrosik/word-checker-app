@@ -1,8 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {CustomCommonModule} from '../_imports/CustomCommon.module';
 import {UserFormComponent} from '../_shared-components/user-form/user-form.component';
 import {AuthService} from '../_services/auth/auth.service';
-import {StandardUserDbService} from '../_database/auth/standard-user-db.service';
 import {CustomUser} from '../_models/user/custom-user';
 import {SnackbarService} from '../_services/util/snackbar.service';
 import {CustomTranslateService} from '../_services/translate/custom-translate.service';
@@ -13,11 +11,18 @@ import {ChangePasswordDialogComponent} from './change-password-dialog/change-pas
 import {ImageCropperDialogComponent, ImageCropperData} from './image-cropper-dialog/image-cropper-dialog.component';
 import {ImagePreviewDialogComponent, ImagePreviewData} from './image-preview-dialog/image-preview-dialog.component';
 import {PublicSettingsService} from '../_database/settings/public-settings.service';
+import {CommonModule} from '@angular/common';
+import {TranslateModule} from '@ngx-translate/core';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CustomCommonModule, UserFormComponent],
+  imports: [UserFormComponent, CommonModule, TranslateModule, MatCardModule, MatButtonModule, MatProgressSpinnerModule, MatIconModule, MatDialogModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })

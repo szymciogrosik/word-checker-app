@@ -14,8 +14,9 @@
         <div class="profile-picture-container">
           <div class="avatar-wrapper">
             @if (user.photoUrl) {
-              <img [src]="user.photoUrl" alt="Profile Picture" class="avatar-image avatar-clickable" loading="lazy"
-                   fetchpriority="high" (click)="openPreviewDialog(user.photoUrl)">
+              <img [src]="user.photoUrl" alt="Profile Picture" class="avatar-image avatar-clickable"
+                   fetchpriority="high"
+                   (click)="openPreviewDialog(user.photoUrl)">
             } @else {
               <div class="avatar-fallback">{{ user.firstName.charAt(0) || '' }}{{ user.lastName.charAt(0) || '' }}</div>
             }
