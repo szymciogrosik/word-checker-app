@@ -79,7 +79,7 @@
   "admin.panel.users.lastName": "Last name",
   "admin.panel.users.roles": "Roles",
   "admin.panel.users.select": "-- None --",
-  "admin.panel.users.warning.removedUser": "Please note that after deleting a user, it will not be possible to add a new user for the same email address. To this user will be only possible to be restored.",
+  "admin.panel.users.warning.removedUser": "Please note that after deleting a user, it will not be possible to add a new user for the same email address. To this user will be only possible to be restored and edited.",
   "profile.title": "User Profile",
   "profile.subtitle": "View and edit your information",
   "profile.button.save": "Save changes",
