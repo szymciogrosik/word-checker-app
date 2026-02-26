@@ -82,7 +82,7 @@
   "admin.panel.users.warning.removedUser": "Please note that after deleting a user, it will not be possible to add a new user for the same email address. Only this user will be able to be restored.",
   "profile.title": "User Profile",
   "profile.subtitle": "View and edit your information",
-  "profile.button.save": "Save Changes",
+  "profile.button.save": "Save changes",
   "profile.success.update": "Profile updated successfully.",
   "profile.error.load": "Failed to load user profile.",
   "profile.error.update": "Failed to update profile. Try again.",
