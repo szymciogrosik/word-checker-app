@@ -1,16 +1,8 @@
 <mat-tab-group>
   <mat-tab label="{{ 'admin.panel.tab.header.settings.users.active' | translate }}">
     <div class="highlight-tab-content">
-      <div class="filer-and-add-new-user-container" style="justify-content: flex-end;">
-        <div class="add-new-user-element" style="margin-top: 1rem; margin-bottom: 1rem;">
-          <button mat-raised-button color="primary" class="action-button" (click)="openAddUser()">
-            {{ 'admin.panel.settings.users.addNewUser' | translate }}
-          </button>
-        </div>
-      </div>
-
       <app-smart-table [data]="allUsers" [columns]="activeUsersColumns"
-                       filterPlaceholderKey="admin.panel.table.filter.placeholder">
+                       filterPlaceholderKey="admin.panel.table.filter.placeholder" [headerAction]="addUserAction">
       </app-smart-table>
     </div>
   </mat-tab>

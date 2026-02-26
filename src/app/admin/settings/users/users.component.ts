@@ -38,6 +38,13 @@ export class UsersComponent implements OnDestroy {
   protected deletedUsers: CustomUser[];
   protected allUsersSubscription: Subscription;
 
+  protected addUserAction = {
+    icon: 'person_add',
+    tooltipKey: 'admin.panel.settings.users.addNewUser',
+    color: 'primary' as const,
+    onClick: () => this.openAddUser()
+  };
+
   protected activeUsersColumns: SmartTableColumn<CustomUser>[] = [
     {key: 'position', headerLabelKey: 'admin.panel.table.header.no', type: 'index'},
     {

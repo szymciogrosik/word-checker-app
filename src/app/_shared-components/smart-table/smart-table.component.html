@@ -5,6 +5,13 @@
       <input matInput type="text" (keyup)="applyFilter($event)" [placeholder]="filterPlaceholderKey | translate"
              #filterInput>
     </mat-form-field>
+    @if (headerAction) {
+      <button mat-fab [color]="headerAction.color || 'primary'" (click)="headerAction.onClick()"
+              [matTooltip]="headerAction.tooltipKey | translate"
+              style="margin-bottom: 22px; width: 56px; height: 56px;">
+        <mat-icon>{{ headerAction.icon }}</mat-icon>
+      </button>
+    }
   </div>
 
   <div class="enable-vertical-scrolling mat-elevation-z8">

@@ -16,6 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-smart-table',
@@ -30,6 +31,7 @@ import {MatInputModule} from '@angular/material/input';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTooltipModule,
   ],
   templateUrl: './smart-table.component.html',
   styleUrl: './smart-table.component.scss',
@@ -38,6 +40,12 @@ export class SmartTableComponent<T> implements OnChanges, AfterViewInit {
   @Input() data: T[] = [];
   @Input() columns: SmartTableColumn<T>[] = [];
   @Input() filterPlaceholderKey: string = 'admin.panel.table.filter.placeholder';
+  @Input() headerAction?: {
+    icon: string;
+    tooltipKey: string;
+    color?: 'primary' | 'accent' | 'warn';
+    onClick: () => void;
+  };
 
   protected dataSource = new MatTableDataSource<T>([]);
   protected displayedColumns: string[] = [];
