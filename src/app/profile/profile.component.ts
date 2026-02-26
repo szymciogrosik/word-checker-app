@@ -12,6 +12,7 @@ import {ChangePasswordDialogComponent} from './change-password-dialog/change-pas
 
 import {ImageCropperDialogComponent, ImageCropperData} from './image-cropper-dialog/image-cropper-dialog.component';
 import {ImagePreviewDialogComponent, ImagePreviewData} from './image-preview-dialog/image-preview-dialog.component';
+import {PublicSettingsService} from '../_database/settings/public-settings.service';
 
 @Component({
   selector: 'app-profile',
@@ -24,19 +25,31 @@ export class ProfileComponent implements OnInit {
   @ViewChild('userFormComponent') userFormComponent!: UserFormComponent;
   user: CustomUser | null = null;
   isLoading = true;
+  allowForProfilePictureChange = false;
 
   constructor(
     private authService: AuthService,
     private userDbService: UserDbService,
     private snackbarService: SnackbarService,
     private translateService: CustomTranslateService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private publicSettingsService: PublicSettingsService
   ) {
   }
 
   async ngOnInit(): Promise<void> {
     try {
       this.user = await this.authService.loggedUserPromise();
+      this.publicSettingsService.getDocument('general').subscribe({
+        next: (data) => {
+          if (data && data.allowForProfilePictureChange !== undefined) {
+            this.allowForProfilePictureChange = data.allowForProfilePictureChange;
+          } else {
+            this.allowForProfilePictureChange = false;
+          }
+        },
+        error: (err) => console.error('Failed to load public settings', err)
+      });
     } catch (error) {
       console.error('Failed to load user', error);
       this.snackbarService.openLongSnackBar(this.translateService.get('profile.error.load'));

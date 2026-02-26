@@ -26,7 +26,8 @@ export class PublicSettingsComponent implements OnInit {
     private translateService: CustomTranslateService
   ) {
     this.settingsForm = this.formBuilder.group({
-      allowForRegistering: [false]
+      allowForRegistering: [false],
+      allowForProfilePictureChange: [false]
     });
   }
 
@@ -37,6 +38,11 @@ export class PublicSettingsComponent implements OnInit {
           this.settingsForm.patchValue({allowForRegistering: data.allowForRegistering});
         } else {
           this.settingsForm.patchValue({allowForRegistering: false});
+        }
+        if (data && data.allowForProfilePictureChange !== undefined) {
+          this.settingsForm.patchValue({allowForProfilePictureChange: data.allowForProfilePictureChange});
+        } else {
+          this.settingsForm.patchValue({allowForProfilePictureChange: false});
         }
         this.loading = false;
       },
@@ -51,7 +57,8 @@ export class PublicSettingsComponent implements OnInit {
     this.saving = true;
     try {
       const payload = {
-        allowForRegistering: this.settingsForm.get('allowForRegistering')?.value
+        allowForRegistering: this.settingsForm.get('allowForRegistering')?.value,
+        allowForProfilePictureChange: this.settingsForm.get('allowForProfilePictureChange')?.value
       };
 
       await this.publicSettingsService.update('general', payload).catch(async (e) => {
