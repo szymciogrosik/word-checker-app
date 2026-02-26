@@ -19,11 +19,15 @@
 
       @for (col of columns; track col.key) {
         <ng-container [matColumnDef]="col.key">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="col.type === 'action'">
-            {{ col.headerLabelKey | translate }}
+          <th mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="col.type === 'action'"
+              [ngClass]="{'smart-table-col-action': col.type === 'action', 'smart-table-col-index': col.type === 'index'}">
+            @if (col.headerLabelKey) {
+              {{ col.headerLabelKey | translate }}
+            }
           </th>
 
-          <td mat-cell *matCellDef="let element; let i = index">
+          <td mat-cell *matCellDef="let element; let i = index"
+              [ngClass]="{'smart-table-col-action': col.type === 'action', 'smart-table-col-index': col.type === 'index'}">
 
             @if (col.type === 'index') {
               {{ (dataSource.paginator?.pageIndex || 0) * (dataSource.paginator?.pageSize || 0) + i + 1 }}
@@ -39,16 +43,23 @@
 
             @if (col.type === 'action' && col.actions) {
               <div class="smart-table-actions">
-                @for (action of col.actions; track action.labelKey) {
-                  <button mat-raised-button [color]="action.color"
-                          (click)="action.onClick(element); $event.stopPropagation()">
-                    @if (action.icon) {
-                      <mat-icon>{{ action.icon }}</mat-icon>
-                    }
-                    @if (action.labelKey) {
+                @for (action of col.actions; track action.labelKey || action.icon) {
+                  @if (action.labelKey) {
+                    <button mat-raised-button [color]="action.color"
+                            (click)="action.onClick(element); $event.stopPropagation()"
+                            [matTooltip]="action.tooltipKey ? (action.tooltipKey | translate) : ''">
+                      @if (action.icon) {
+                        <mat-icon>{{ action.icon }}</mat-icon>
+                      }
                       {{ action.labelKey | translate }}
-                    }
-                  </button>
+                    </button>
+                  } @else {
+                    <button mat-icon-button [color]="action.color"
+                            (click)="action.onClick(element); $event.stopPropagation()"
+                            [matTooltip]="action.tooltipKey ? (action.tooltipKey | translate) : ''">
+                      <mat-icon>{{ action.icon }}</mat-icon>
+                    </button>
+                  }
                 }
               </div>
             }

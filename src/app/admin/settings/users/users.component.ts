@@ -56,14 +56,16 @@ export class UsersComponent implements OnDestroy {
     {key: 'email', headerLabelKey: 'admin.panel.table.header.email', type: 'text'},
     {key: 'roles', headerLabelKey: 'admin.panel.table.header.role', type: 'text'},
     {
-      key: 'details', headerLabelKey: 'admin.panel.table.header.details', type: 'action', actions: [
-        {labelKey: 'admin.panel.table.header.modify', color: 'accent', onClick: (row) => this.openUpdateUser(row.id!)}
-      ]
-    },
-    {
-      key: 'remove', headerLabelKey: '', type: 'action', actions: [
+      key: 'actions', headerLabelKey: '', type: 'action', actions: [
         {
-          labelKey: 'admin.panel.table.header.delete',
+          tooltipKey: 'admin.panel.table.header.modify',
+          icon: 'edit',
+          color: 'primary',
+          onClick: (row) => this.openUpdateUser(row.id!)
+        },
+        {
+          tooltipKey: 'admin.panel.table.header.delete',
+          icon: 'delete',
           color: 'warn',
           onClick: (row) => this.openConfirmRemoveUserDialog(row.id!)
         }
@@ -82,8 +84,13 @@ export class UsersComponent implements OnDestroy {
     {key: 'email', headerLabelKey: 'admin.panel.table.header.email', type: 'text'},
     {key: 'uid', headerLabelKey: 'admin.panel.table.header.guid', type: 'text'},
     {
-      key: 'restore', headerLabelKey: '', type: 'action', actions: [
-        {labelKey: 'admin.panel.table.header.restore', color: 'primary', onClick: (row) => this.restoreUser(row.id!)}
+      key: 'actions', headerLabelKey: '', type: 'action', actions: [
+        {
+          tooltipKey: 'admin.panel.table.header.restore',
+          icon: 'settings_backup_restore',
+          color: 'primary',
+          onClick: (row) => this.restoreUser(row.id!)
+        }
       ]
     }
   ];
