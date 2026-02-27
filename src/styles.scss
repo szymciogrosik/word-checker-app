@@ -397,8 +397,8 @@ mat-card-title > p {
 // Reusable Action Button Groups
 .app-alert-warning {
   background-color: #fff8e1;
-  color: #ff8f00;
-  border-left: 4px solid #ff8f00;
+  color: #333333;
+  border-left: 5px solid #ff8f00;
   margin-bottom: 30px;
   box-shadow: none !important;
   padding-top: 0;
@@ -408,6 +408,10 @@ mat-card-title > p {
     display: flex;
     align-items: center;
     padding: 16px !important;
+  }
+
+  mat-icon {
+    color: #ff8f00;
   }
 }
 
