@@ -60,3 +60,14 @@
   text-transform: uppercase;
   letter-spacing: 2px;
 }
+
+:host-context(.dark-theme) {
+  .avatar-wrapper {
+    background-color: $dark-surface;
+    border-color: $dark-border-primary;
+  }
+
+  .avatar-fallback {
+    color: $dark-text-primary;
+  }
+}
