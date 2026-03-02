@@ -13,7 +13,7 @@
   "navbar.tab.button.profile": "Mój profil",
   "navbar.tab.button.adminPanel": "Panel administratora",
   "snackbar.default.dismiss": "Zamknij",
-  "registration.enterEmail": "Wprowadź email",
+  "registration.enterEmail": "Email",
   "registration.exampleEmail": "adam@gmail.com",
   "registration.fillField": "Uzupełnij pole",
   "registration.select.noOptionSelected": "-- Brak --",
