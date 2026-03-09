@@ -33,8 +33,13 @@ jobs:
           git fetch template
 
           # Create a dedicated branch for the sync based exactly on the template's state
+          HEAD_SHA=$(git rev-parse HEAD)
           BRANCH_NAME="sync-template-$(date +'%Y-%m-%d')"
           git checkout -b $BRANCH_NAME template/$TEMPLATE_BRANCH
+
+          # Restore local workflows to prevent GitHub Actions permission errors
+          git checkout $HEAD_SHA -- .github/workflows || true
+          git commit -m "chore: keep local workflows to bypass github permissions" || true
 
           # Push the branch to origin in case it doesn't exist, overwrite if it does
           git push -f origin $BRANCH_NAME
