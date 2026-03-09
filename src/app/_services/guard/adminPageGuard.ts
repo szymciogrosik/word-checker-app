@@ -1,14 +1,12 @@
 import {ActivatedRouteSnapshot, CanActivateFn, Router} from '@angular/router';
 import {inject} from "@angular/core";
-import {AuthService} from "../auth/auth.service";
 import {RedirectionEnum} from "../../../utils/redirection.enum";
-import {from, tap} from "rxjs";
+import {from} from "rxjs";
 import {AccessRoleService} from "../auth/access-role.service";
 import {AccessRole} from "../../_models/user/access-role";
 import {map} from "rxjs/operators";
 
 export const adminPageGuard: CanActivateFn = (next: ActivatedRouteSnapshot) => {
-  const authService: AuthService = inject(AuthService);
   const accessRoleService: AccessRoleService = inject(AccessRoleService);
   const router: Router = inject(Router);
   return from(accessRoleService.isAuthorized(AccessRole.ADMIN_PAGE_ACCESS)).pipe(

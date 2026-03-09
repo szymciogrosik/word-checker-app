@@ -1,21 +1,16 @@
-import {Injectable, OnDestroy} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AuthService} from "./auth.service";
 import {AccessRole} from "../../_models/user/access-role";
-import {catchError, Observable, of, Subscription} from "rxjs";
-import {map} from "rxjs/operators";
+import {catchError, map, Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AccessRoleService implements OnDestroy {
+export class AccessRoleService {
 
   constructor(
     private authService: AuthService
   ) {
-  }
-
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
   }
 
   public isAuthorized(requestedRole: AccessRole): Promise<boolean> {
