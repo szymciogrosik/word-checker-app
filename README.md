@@ -200,7 +200,7 @@ git checkout main
 
 4. Merge the template changes into your code first time
 ```bash 
-git merge template/main --allow-unrelated-histories
+git merge template/main --allow-unrelated-histories --no-edit
 ```
  
 5. Resolve the Conflicts in IntelliJ At this exact point, Git will pause the merge and say CONFLICT. 
@@ -230,8 +230,7 @@ git checkout main
 
 3. Merge the template changes into your code
 ```bash 
-git merge template/main
-
+git merge template/main --no-edit
 ```
  
 4. Resolve the Conflicts in IntelliJ At this exact point, Git will pause the merge and say CONFLICT. 
