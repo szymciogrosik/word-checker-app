@@ -36,15 +36,17 @@ jobs:
           BRANCH_NAME="sync-template-$(date +'%Y-%m-%d')"
           git checkout -b $BRANCH_NAME
 
-          # Read the template's files directly into the current working directory
-          git checkout template/$TEMPLATE_BRANCH -- .
+          # Perform a raw merge. 
+          # We use || true so conflicts don't instantly stop the GitHub Action runner.
+          # The conflicting files (with <<<<<<< HEAD markers) will remain in the working directory.
+          git merge template/$TEMPLATE_BRANCH --no-commit --allow-unrelated-histories || true
 
           # Restore local workflows to prevent GitHub Actions permission errors
           git checkout HEAD -- .github/workflows || true
 
-          # Commit all incoming changes to this branch
+          # Commit all incoming changes (and any unresolved conflict markers) to this branch
           git add -A
-          git commit -m "chore: sync upstream template updates" || { echo "No changes from template to sync."; exit 0; }
+          git commit -m "chore: sync upstream template updates (contains conflicts if any)" || { echo "No changes from template to sync."; exit 0; }
 
           # Push the branch to origin in case it doesn't exist, overwrite if it does
           git push -f origin $BRANCH_NAME
