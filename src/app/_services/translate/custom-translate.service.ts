@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslateService, Translation} from '@ngx-translate/core';
 import {environment} from '../../../environments/environment';
 import {DateAdapter} from "@angular/material/core";
 import {registerLocaleData} from "@angular/common";
@@ -13,21 +13,12 @@ import {BehaviorSubject, firstValueFrom} from "rxjs";
 })
 export class CustomTranslateService {
 
-  private selectedLanguage : BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
-  selectedLanguageObservable = this.selectedLanguage.asObservable();
+  private selectedLanguage: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
   constructor(
     private translateService: TranslateService,
     private dateAdapter: DateAdapter<any>
   ) {
-  }
-
-  public setLoadedOrDefaultLanguage(): void {
-    const savedLanguage: string | null = localStorage.getItem(environment.selected_language_key);
-    const language: string = savedLanguage !== null && savedLanguage !== 'null' ? savedLanguage : environment.default_language;
-
-    this.translateService.setDefaultLang(language);
-    this.setLanguage(language);
   }
 
   public setLanguage(language: string): void {
@@ -54,7 +45,7 @@ export class CustomTranslateService {
     return this.translateService.instant(key);
   }
 
-  public getPromise(key: string): Promise<any> {
+  public getPromise(key: string): Promise<Translation> {
     return firstValueFrom(this.translateService.get(key));
   }
 

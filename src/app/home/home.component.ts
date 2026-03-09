@@ -1,16 +1,22 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {environment} from "../../environments/environment";
-import {CustomCommonModule} from "../_imports/CustomCommon.module";
+import {CommonModule} from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
 import {ApiService} from "../_services/api/api-service.service";
+import {MatButton} from "@angular/material/button";
+import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
+import {FormsModule} from "@angular/forms";
+import {TranslateModule} from "@ngx-translate/core";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [CustomCommonModule],
+  imports: [CommonModule, TranslateModule, MatCardModule, MatButton, MatInput, MatFormField, FormsModule, MatLabel, MatIcon],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   loading = false;
   queryWord: string;
   lastSearchedWord: string | undefined;
@@ -21,6 +27,9 @@ export class HomeComponent {
   }
 
   protected readonly environment = environment;
+
+  ngOnInit(): void {
+  }
 
   searchWord() {
     this.resetSearchResult();
