@@ -1,16 +1,34 @@
-import {Component} from '@angular/core';
-import {environment} from "../../environments/environment";
-import {CustomCommonModule} from "../_imports/CustomCommon.module";
-import {ApiService} from "../_services/api/api-service.service";
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {environment} from '../../environments/environment';
+import {CommonModule} from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
+import {ApiService} from '../_services/api/api-service.service';
+import {MatButton} from '@angular/material/button';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
+import {TranslateModule} from '@ngx-translate/core';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [CustomCommonModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    MatCardModule,
+    MatButton,
+    MatInput,
+    MatFormField,
+    FormsModule,
+    MatLabel,
+    MatIcon
+  ]
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  @ViewChild('wordInput') wordInput!: ElementRef;
+
   loading = false;
   queryWord: string;
   lastSearchedWord: string | undefined;
@@ -21,6 +39,8 @@ export class HomeComponent {
   }
 
   protected readonly environment = environment;
+
+  ngOnInit(): void {}
 
   searchWord() {
     this.resetSearchResult();
@@ -36,7 +56,7 @@ export class HomeComponent {
         this.lastSearchedWord = queryToSearch;
         this.presentWord = res.data.found;
       },
-      error: (err) => {
+      error: err => {
         console.error('Error in call to search words API ', err);
       },
       complete: () => {
@@ -48,6 +68,12 @@ export class HomeComponent {
   resetQueryAndSearchResults() {
     this.queryWord = '';
     this.resetSearchResult();
+
+    setTimeout(() => {
+      if (this.wordInput) {
+        this.wordInput.nativeElement.focus();
+      }
+    });
   }
 
   resetSearchResult() {

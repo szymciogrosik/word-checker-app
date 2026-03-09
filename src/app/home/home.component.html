@@ -7,7 +7,7 @@
             <div>
               <mat-form-field appearance="outline">
                 <mat-label>{{ 'search.word.enterWord' | translate }}</mat-label>
-                <input matInput style="text-transform: uppercase" [(ngModel)]="queryWord" name="queryWord" [disabled]="loading">
+                <input matInput style="text-transform: uppercase" [(ngModel)]="queryWord" name="queryWord" [disabled]="loading" #wordInput>
               </mat-form-field>
             </div>
             <div class="button-row">
