@@ -30,16 +30,21 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git remote add template $TEMPLATE_URL
-          git fetch template
+          git fetch template main
 
-          # Create a dedicated branch for the sync based exactly on the template's state
-          HEAD_SHA=$(git rev-parse HEAD)
+          # Create a dedicated branch for the sync based exactly on the local main's state
           BRANCH_NAME="sync-template-$(date +'%Y-%m-%d')"
-          git checkout -b $BRANCH_NAME template/$TEMPLATE_BRANCH
+          git checkout -b $BRANCH_NAME
+
+          # Read the template's files directly into the current working directory
+          git checkout template/$TEMPLATE_BRANCH -- .
 
           # Restore local workflows to prevent GitHub Actions permission errors
-          git checkout $HEAD_SHA -- .github/workflows || true
-          git commit -m "chore: keep local workflows to bypass github permissions" || true
+          git checkout HEAD -- .github/workflows || true
+
+          # Commit all incoming changes to this branch
+          git add -A
+          git commit -m "chore: sync upstream template updates" || { echo "No changes from template to sync."; exit 0; }
 
           # Push the branch to origin in case it doesn't exist, overwrite if it does
           git push -f origin $BRANCH_NAME
@@ -47,6 +52,6 @@ jobs:
           # Create Pull Request via GitHub CLI
           gh pr create \
             --title "Sync template changes: $(date +'%Y-%m-%d')" \
-            --body "Automated PR to sync updates from the upstream template. If there are merge conflicts, you can resolve them directly in the GitHub web UI or locally." \
+            --body "Automated PR to sync updates from the upstream template. This branch shares history with main. If there are merge conflicts, you can resolve them directly in the GitHub web UI or locally." \
             --base main \
             --head $BRANCH_NAME || echo "No changes to PR, or PR already exists."
