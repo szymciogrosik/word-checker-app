@@ -23,28 +23,25 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Fetch and Merge Template
+      - name: Fetch and Push Template Branch
         env:
-          TEMPLATE_URL: "https://github.com/<OWNER>/<TEMPLATE_REPO>.git" # Replace with actual URL
-          TEMPLATE_BRANCH: "main"
+          TEMPLATE_URL: 'https://github.com/szymciogrosik/angular-firebase-accelerator.git'
+          TEMPLATE_BRANCH: 'main'
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git remote add template $TEMPLATE_URL
           git fetch template
 
-          # Create a dedicated branch for the sync
+          # Create a dedicated branch for the sync based exactly on the template's state
           BRANCH_NAME="sync-template-$(date +'%Y-%m-%d')"
-          git checkout -b $BRANCH_NAME
+          git checkout -b $BRANCH_NAME template/$TEMPLATE_BRANCH
 
-          # Merge template into the new branch
-          # --allow-unrelated-histories is included just in case the initial local merge wasn't pushed yet
-          git merge template/$TEMPLATE_BRANCH --no-edit --allow-unrelated-histories || echo "Merge conflicts detected. Please resolve them in the PR."
-
-          git push origin $BRANCH_NAME
+          # Push the branch to origin in case it doesn't exist, overwrite if it does
+          git push -f origin $BRANCH_NAME
 
           # Create Pull Request via GitHub CLI
           gh pr create \
             --title "Sync template changes: $(date +'%Y-%m-%d')" \
-            --body "Automated PR to sync updates from the upstream template." \
+            --body "Automated PR to sync updates from the upstream template. If there are merge conflicts, you can resolve them directly in the GitHub web UI or locally." \
             --base main \
-            --head $BRANCH_NAME
+            --head $BRANCH_NAME || echo "No changes to PR, or PR already exists."
