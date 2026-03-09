@@ -83,15 +83,9 @@
         }
       </div>
     </button>
-    <button mat-menu-item class="navbar-button-burger-menu" (click)="logout()">
-      {{ 'navbar.tab.button.logout' | translate }}
-    </button>
   } @else if (this.authService.isAuthenticated() | async) {
     <button mat-menu-item class="navbar-button-burger-menu" (click)="navigateToProfile()">
       {{ 'navbar.tab.button.profile' | translate }}
-    </button>
-    <button mat-menu-item class="navbar-button-burger-menu" (click)="logout()">
-      {{ 'navbar.tab.button.logout' | translate }}
     </button>
   } @else {
     <button mat-menu-item class="navbar-button-burger-menu" (click)="navigateToLogin()">
@@ -110,6 +104,12 @@
     <mat-icon>language</mat-icon>
     <span>{{ 'language.name' | translate }}</span>
   </button>
+
+  @if (this.authService.isAuthenticated() | async) {
+    <button mat-menu-item class="navbar-button-burger-menu" (click)="logout()">
+      {{ 'navbar.tab.button.logout' | translate }}
+    </button>
+  }
 </mat-menu>
 
 <!-- Language sub-menu -->
