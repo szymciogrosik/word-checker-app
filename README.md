@@ -181,6 +181,51 @@ firebase use --add
 
 ---
 
+## Sync with template
+
+### Steps to sync (Do this every time you want updates from template repo)
+
+1. <b>ONE-TIME STEP</b> If you haven't recently added the template as a remote repository to your local Git directory, do this once: 
+```bash
+# Add the template repo as a remote source named "template"
+git remote add template https://github.com/szymciogrosik/angular-firebase-accelerator.git
+```
+
+2. Fetch the latest template data: 
+```bash 
+# Downloads the newest commits from the template, but doesn't change your code yet 
+git fetch template main
+```
+
+3. Make sure you are on your main branch with a clean working tree: 
+```bash 
+git checkout main
+```
+
+4. <b>ONE-TIME STEP</b> Merge the template changes into your code first time
+Note: You MUST use the --allow-unrelated-histories flag because you squashed the original merge, meaning Git considers the template a "foreign" repository. 
+```bash 
+git merge template/main --allow-unrelated-histories
+```
+
+5. Merge the template changes into your code <b>not</b> first time: 
+```bash 
+git merge template/main
+```
+ 
+6. Resolve the Conflicts in IntelliJ At this exact point, Git will pause the merge and say CONFLICT. 
+- Open IntelliJ IDEA. 
+- IntelliJ will detect the conflicting files. You can right-click them -> Git -> Resolve Conflicts. 
+- Use IntelliJ's side-by-side three-way merge tool to pick which changes you want from the template vs. what you want to keep in your original app.
+
+7. Commit and Push: 
+Once all conflicts are marked as resolved in IntelliJ, finalize the merge process: 
+```bash 
+git commit -m "Merged latest updates from template" git push origin main
+```
+
+---
+
 ## Troubleshooting
 - 403 when deploying to Firebase: enable **IAM Service Account Credentials API**.
 - Auth popup blocked on GH Pages: add your GH Pages domain in **Authorized domains**.
