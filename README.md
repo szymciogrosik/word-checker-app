@@ -181,6 +181,72 @@ firebase use --add
 
 ---
 
+## Connect with template (ONLY FIRST TIME)
+
+1. Add the template repo as a remote source named "template":
+```bash
+git remote add template https://github.com/szymciogrosik/angular-firebase-accelerator.git
+```
+
+2. Fetch the latest template data: 
+```bash 
+git fetch template main
+```
+
+3. Make sure you are on your main branch with a clean working tree: 
+```bash 
+git checkout main
+```
+
+4. Merge the template changes into your code first time
+```bash 
+git merge template/main --allow-unrelated-histories
+```
+ 
+5. Resolve the Conflicts in IntelliJ At this exact point, Git will pause the merge and say CONFLICT. 
+- Open IntelliJ IDEA. 
+- IntelliJ will detect the conflicting files. You can right-click them -> Git -> Resolve Conflicts. 
+- Use IntelliJ's side-by-side three-way merge tool to pick which changes you want from the template vs. what you want to keep in your original app.
+
+6. Commit and Push: 
+Once all conflicts are marked as resolved in IntelliJ, finalize the merge process: 
+```bash 
+git commit -m "Permanently link template history" git push origin main
+```
+
+---
+
+## Sync with template (Do this every time you want updates from template repo)
+
+1. Fetch the latest template data: 
+```bash 
+git fetch template main
+```
+
+2. Make sure you are on your main branch with a clean working tree: 
+```bash 
+git checkout main
+```
+
+3. Merge the template changes into your code
+```bash 
+git merge template/main
+
+```
+ 
+4. Resolve the Conflicts in IntelliJ At this exact point, Git will pause the merge and say CONFLICT. 
+- Open IntelliJ IDEA. 
+- IntelliJ will detect the conflicting files. You can right-click them -> Git -> Resolve Conflicts. 
+- Use IntelliJ's side-by-side three-way merge tool to pick which changes you want from the template vs. what you want to keep in your original app.
+
+5. Commit and Push: 
+Once all conflicts are marked as resolved in IntelliJ, finalize the merge process: 
+```bash 
+git commit -m "Merged latest changes from template repository" git push origin main
+```
+
+---
+
 ## Troubleshooting
 - 403 when deploying to Firebase: enable **IAM Service Account Credentials API**.
 - Auth popup blocked on GH Pages: add your GH Pages domain in **Authorized domains**.
