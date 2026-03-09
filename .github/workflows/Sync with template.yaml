@@ -1,0 +1,50 @@
+name: Sync with template
+
+on:
+  schedule:
+    - cron: '0 4 * * 1' # Runs every Monday at 04:00 UTC
+  workflow_dispatch: # Allows manual trigger from the GitHub UI
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch and Merge Template
+        env:
+          TEMPLATE_URL: "https://github.com/<OWNER>/<TEMPLATE_REPO>.git" # Replace with actual URL
+          TEMPLATE_BRANCH: "main"
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote add template $TEMPLATE_URL
+          git fetch template
+
+          # Create a dedicated branch for the sync
+          BRANCH_NAME="sync-template-$(date +'%Y-%m-%d')"
+          git checkout -b $BRANCH_NAME
+
+          # Merge template into the new branch
+          # --allow-unrelated-histories is included just in case the initial local merge wasn't pushed yet
+          git merge template/$TEMPLATE_BRANCH --no-edit --allow-unrelated-histories || echo "Merge conflicts detected. Please resolve them in the PR."
+
+          git push origin $BRANCH_NAME
+
+          # Create Pull Request via GitHub CLI
+          gh pr create \
+            --title "Sync template changes: $(date +'%Y-%m-%d')" \
+            --body "Automated PR to sync updates from the upstream template." \
+            --base main \
+            --head $BRANCH_NAME
