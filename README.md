@@ -118,7 +118,7 @@ Replace every `angular-firebase-accelerator` with your local app name.
 
 In those files, provide a Firebase app ID:
 - `.firebaserc`
-- `CI - firebase - Step 2 - Build and deploy to firebase-release.yaml` → two places
+- `CD - firebase - Step 2 - Build and deploy to firebase-release.yaml` → two places
 - `README.md` link to Firebase Hosting
 
 Rename the secret env var:
@@ -211,7 +211,10 @@ git merge template/main --allow-unrelated-histories --no-edit --no-commit
 6. Commit and Push: 
 Once all conflicts are marked as resolved in IntelliJ, finalize the merge process: 
 ```bash 
-git commit -m "Permanently link template history" git push origin main
+git commit -m "Permanently link template history"
+```
+```bash 
+git push origin main
 ```
 
 ---
@@ -241,7 +244,10 @@ git merge template/main --no-edit --no-commit
 5. Commit and Push: 
 Once all conflicts are marked as resolved in IntelliJ, finalize the merge process: 
 ```bash 
-git commit -m "Merged latest changes from template repository" git push origin main
+git commit -m "Merged latest changes from template repository" 
+```
+```bash 
+git push origin main
 ```
 
 ---
