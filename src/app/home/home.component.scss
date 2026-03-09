@@ -1,4 +1,4 @@
-@use "src/styles.scss" as *;
+@use 'src/styles.scss' as *;
 
 .home-content {
   flex: 1 0 auto; // Takes available space, pushing the footer down
@@ -43,8 +43,15 @@
   margin-bottom: 0;
   margin-top: 20px;
   cursor: default;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
 }
 
 .link-icon {
-  padding-top: 7px;
+  margin-left: 4px;
 }
