@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 @use 'src/styles.scss' as *;
+=======
+@use "src/styles.scss" as *;
+>>>>>>> template/main
 
 .home-content {
   flex: 1 0 auto; // Takes available space, pushing the footer down
   overflow-y: auto; // Adds scroll to content if needed
 }
+<<<<<<< HEAD
 
 .button-row {
   display: flex;
@@ -55,3 +60,5 @@
 .link-icon {
   margin-left: 4px;
 }
+=======
+>>>>>>> template/main

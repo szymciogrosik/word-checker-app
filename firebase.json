@@ -1,6 +1,10 @@
 {
   "hosting": {
+<<<<<<< HEAD
     "site": "word-checker-app-2cbfd",
+=======
+    "site": "SITE_NAME",
+>>>>>>> template/main
     "public": "./docs/browser/",
     "ignore": [
       "firebase.json",
@@ -9,16 +13,22 @@
     ],
     "rewrites": [
       {
+<<<<<<< HEAD
         "source": "/api/**",
         "function": "scrabbleApi"
       },
       {
+=======
+>>>>>>> template/main
         "source": "**",
         "destination": "/index.html"
       }
     ]
+<<<<<<< HEAD
   },
   "functions": {
     "source": "functions"
+=======
+>>>>>>> template/main
   }
 }

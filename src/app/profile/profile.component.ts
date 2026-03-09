@@ -132,4 +132,8 @@ export class ProfileComponent implements OnInit {
       this.isLoading = false;
     }
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> template/main
 }

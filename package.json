@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "word-checker-app",
+=======
+  "name": "angular-firebase-accelerator",
+>>>>>>> template/main
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +11,11 @@
     "build": "ng build",
     "build-ftp": "ng build --configuration=ftp --base-href=/",
     "build-firebase": "ng build --configuration=firebase --base-href=/",
+<<<<<<< HEAD
     "build-gh-pages": "ng build --configuration=gh-pages --base-href=/word-checker-app/",
+=======
+    "build-gh-pages": "ng build --configuration=gh-pages --base-href=/angular-firebase-accelerator/",
+>>>>>>> template/main
     "watch": "ng build --watch --configuration=local",
     "test": "ng test"
   },

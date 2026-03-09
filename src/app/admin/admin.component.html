@@ -6,6 +6,7 @@
     </mat-card-title>
     <mat-card-content>
       @if (!environment.production) {
+<<<<<<< HEAD
         <mat-card class="app-alert-warning" style="margin: 0;">
           <mat-card-content>
             <span>{{ 'nonProdMode.warning' | translate }}</span>
@@ -19,8 +20,27 @@
               <app-settings></app-settings>
             </div>
           </mat-tab>
+=======
+      <mat-card class="app-alert-warning" style="margin: 0;">
+        <mat-card-content>
+          <span>{{ 'nonProdMode.warning' | translate }}</span>
+        </mat-card-content>
+      </mat-card>
+      }
+      <mat-tab-group dynamicHeight>
+        @if (settingsVisible) {
+        <mat-tab label="{{ 'admin.panel.tab.header.settings' | translate }}">
+          <div>
+            <app-settings></app-settings>
+          </div>
+        </mat-tab>
+>>>>>>> template/main
         }
       </mat-tab-group>
     </mat-card-content>
   </mat-card>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> template/main

@@ -1,5 +1,9 @@
 {
   "projects": {
+<<<<<<< HEAD
     "default": "word-checker-app-2cbfd"
+=======
+    "default": "angular-firebase-accelerator"
+>>>>>>> template/main
   }
 }

@@ -4,16 +4,25 @@
   "language.name": "Język",
   "theme.light": "Jasny motyw",
   "theme.dark": "Ciemny motyw",
+<<<<<<< HEAD
   "page.title": "Sprawdzacz słów",
   "datePicker.formatHint": "DD.MM.YYYY",
   "datePicker.chooseDate": "Wybierz datę",
   "datePicker.chooseDateAndTime": "Wpisz datę i czas",
   "navbar.tab.applicationName": "Sprawdzacz słów",
+=======
+  "page.title": "Angular accelerator app",
+  "datePicker.formatHint": "DD.MM.YYYY",
+  "datePicker.chooseDate": "Wybierz datę",
+  "datePicker.chooseDateAndTime": "Wpisz datę i czas",
+  "navbar.tab.applicationName": "Angular accelerator app",
+>>>>>>> template/main
   "navbar.tab.button.login": "Zaloguj",
   "navbar.tab.button.logout": "Wyloguj",
   "navbar.tab.button.profile": "Mój profil",
   "navbar.tab.button.adminPanel": "Panel administratora",
   "snackbar.default.dismiss": "Zamknij",
+<<<<<<< HEAD
   "search.word.enterWord": "Wprowadź słowo, które chcesz sprawdzić",
   "search.word.search": "Szukaj",
   "search.word.reset": "Resetuj",
@@ -23,6 +32,8 @@
   "search.word.result.part3-allowed": " jest dozwolone w grach słownych.",
   "search.word.result.part3-disallowed": " nie jest dozwolone w grach słownych.",
   "search.word.result.checkInDictionary": "Sprawdź jego znaczenie",
+=======
+>>>>>>> template/main
   "registration.enterEmail": "Email",
   "registration.exampleEmail": "adam@gmail.com",
   "registration.fillField": "Uzupełnij pole",

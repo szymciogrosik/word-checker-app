@@ -4,16 +4,25 @@
   "language.name": "Language",
   "theme.light": "Light theme",
   "theme.dark": "Dark theme",
+<<<<<<< HEAD
   "page.title": "Word checker",
   "datePicker.formatHint": "MM/DD/YYYY",
   "datePicker.chooseDate": "Select date",
   "datePicker.chooseDateAndTime": "Provide date and time",
   "navbar.tab.applicationName": "Word Checker App",
+=======
+  "page.title": "Angular accelerator app",
+  "datePicker.formatHint": "MM/DD/YYYY",
+  "datePicker.chooseDate": "Select date",
+  "datePicker.chooseDateAndTime": "Provide date and time",
+  "navbar.tab.applicationName": "Angular accelerator app",
+>>>>>>> template/main
   "navbar.tab.button.login": "Login",
   "navbar.tab.button.logout": "Logout",
   "navbar.tab.button.profile": "My profile",
   "navbar.tab.button.adminPanel": "Admin panel",
   "snackbar.default.dismiss": "Dismiss",
+<<<<<<< HEAD
   "search.word.enterWord": "Enter the word you want to check",
   "search.word.search": "Search",
   "search.word.reset": "Reset",
@@ -23,6 +32,8 @@
   "search.word.result.part3-allowed": " is allowed in the word games.",
   "search.word.result.part3-disallowed": " is not allowed in the word games.",
   "search.word.result.checkInDictionary": "Check its meaning",
+=======
+>>>>>>> template/main
   "registration.enterEmail": "Email",
   "registration.exampleEmail": "pat@example.com",
   "registration.fillField": "Fill field",

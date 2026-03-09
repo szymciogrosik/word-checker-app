@@ -3,7 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+<<<<<<< HEAD
     "word-checker-app": {
+=======
+    "angular-firebase-accelerator": {
+>>>>>>> template/main
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -120,6 +124,7 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "ftp": {
+<<<<<<< HEAD
               "buildTarget": "word-checker-app:build:ftp"
             },
             "firebase": {
@@ -130,6 +135,18 @@
             },
             "local": {
               "buildTarget": "word-checker-app:build:local"
+=======
+              "buildTarget": "angular-firebase-accelerator:build:ftp"
+            },
+            "firebase": {
+              "buildTarget": "angular-firebase-accelerator:build:firebase"
+            },
+            "gh-pages": {
+              "buildTarget": "angular-firebase-accelerator:build:gh-pages"
+            },
+            "local": {
+              "buildTarget": "angular-firebase-accelerator:build:local"
+>>>>>>> template/main
             }
           },
           "defaultConfiguration": "local"
@@ -138,7 +155,11 @@
           "builder": "@angular/build:extract-i18n",
           "options": {
             "outputPath": "src/i18n",
+<<<<<<< HEAD
             "buildTarget": "word-checker-app:build"
+=======
+            "buildTarget": "angular-firebase-accelerator:build"
+>>>>>>> template/main
           }
         },
         "test": {
@@ -194,4 +215,8 @@
       "typeSeparator": "."
     }
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> template/main
