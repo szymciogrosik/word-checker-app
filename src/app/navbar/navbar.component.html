@@ -73,15 +73,15 @@
   }
   @if (currentUser$ | async; as user) {
     <button mat-menu-item class="navbar-button-burger-menu" (click)="navigateToProfile()">
-      <div class="navbar-profile-btn-content">
-        <span>{{ 'navbar.tab.button.profile' | translate }}</span>
+      <mat-icon style="display: flex; align-items: center; justify-content: center; overflow: visible;">
         @if (user.photoUrl) {
           <img [src]="user.photoUrl" class="navbar-avatar-image" alt="Avatar">
         } @else {
           <div class="navbar-avatar-fallback">{{ user.firstName.charAt(0) || '' }}{{ user.lastName.charAt(0) || '' }}
           </div>
         }
-      </div>
+      </mat-icon>
+      <span>{{ 'navbar.tab.button.profile' | translate }}</span>
     </button>
   } @else if (this.authService.isAuthenticated() | async) {
     <button mat-menu-item class="navbar-button-burger-menu" (click)="navigateToProfile()">
