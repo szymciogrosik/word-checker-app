@@ -11,8 +11,7 @@ import {ProfileComponent} from "./profile/profile.component";
 const appRoutes: Routes = [
   {
     path: RedirectionEnum.HOME,
-    component: HomeComponent,
-    canActivate: [authenticatedGuard]
+    component: HomeComponent
   },
   {
     path: RedirectionEnum.STATUS,

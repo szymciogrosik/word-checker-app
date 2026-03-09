@@ -4,7 +4,6 @@ import {CustomTranslateService} from '../_services/translate/custom-translate.se
 import {SnackbarService} from '../_services/util/snackbar.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../_services/auth/auth.service';
-import {RedirectionEnum} from '../../utils/redirection.enum';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {EmbeddedBrowserPopupComponent} from './embedded-browser-popup/embedded-browser-popup.component';
 import {EmbeddedBrowserWarningData} from '../_models/dialog/embedded-browser-warning/embedded-browser-warning-data';
@@ -26,19 +25,7 @@ import {MatInputModule} from '@angular/material/input';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   standalone: true,
-  imports: [
-    CommonModule,
-    TranslateModule,
-    MatCardModule,
-    MatButtonModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatTabsModule
-  ]
+  imports: [CommonModule, TranslateModule, MatCardModule, MatButtonModule, MatProgressSpinnerModule, MatIconModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatDialogModule, MatTabsModule],
 })
 export class LoginComponent implements OnInit {
   checkingIfUserIsAlreadyLoggedIn: boolean = true;
@@ -83,7 +70,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.publicSettingsService.getDocument('general').subscribe({
-      next: data => {
+      next: (data) => {
         if (data && data.allowForRegistering !== undefined) {
           this.allowForRegistering = data.allowForRegistering;
         } else {
@@ -91,7 +78,7 @@ export class LoginComponent implements OnInit {
         }
         this.fetchingSettings = false;
       },
-      error: err => {
+      error: (err) => {
         console.error('Failed to fetch public settings.', err);
         this.allowForRegistering = false;
         this.fetchingSettings = false;
@@ -115,11 +102,11 @@ export class LoginComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get loginFormControls(): {[key: string]: AbstractControl} {
+  get loginFormControls(): { [key: string]: AbstractControl; } {
     return this.loginForm.controls;
   }
 
-  get registerFormControls(): {[key: string]: AbstractControl} {
+  get registerFormControls(): { [key: string]: AbstractControl; } {
     return this.registerForm.controls;
   }
 
@@ -136,8 +123,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.loginForm.disable();
 
-    this.authService
-      .loginWithEmailAndPassword(email, password)
+    this.authService.loginWithEmailAndPassword(email, password)
       .then((): void => {
         // success
       })
@@ -156,8 +142,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.registerForm.disable();
 
-    this.authService
-      .registerUserWithDetails(email, password, firstName, lastName)
+    this.authService.registerUserWithDetails(email, password, firstName, lastName)
       .then((): void => {
         // success
       })
@@ -203,12 +188,15 @@ export class LoginComponent implements OnInit {
   }
 
   private openWarningPopup() {
-    const dialogRef = this.dialog.open(EmbeddedBrowserPopupComponent, {
-      maxWidth: '600px',
-      width: '400px',
-      disableClose: true,
-      data: new EmbeddedBrowserWarningData('Messenger')
-    });
+    const dialogRef = this.dialog.open(
+      EmbeddedBrowserPopupComponent,
+      {
+        maxWidth: '600px',
+        width: '400px',
+        disableClose: true,
+        data: new EmbeddedBrowserWarningData('Messenger'),
+      }
+    );
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -222,8 +210,7 @@ export class LoginComponent implements OnInit {
     if (this.isRegistrationMode && this.allowForRegistering) this.registerForm.disable();
     else this.loginForm.disable();
 
-    this.authService
-      .loginWithGoogleSso(this.isRegistrationMode && this.allowForRegistering)
+    this.authService.loginWithGoogleSso(this.isRegistrationMode && this.allowForRegistering)
       .then((): void => {
         // success; leave loading = true so spinner stays until redirection
       })
@@ -234,4 +221,5 @@ export class LoginComponent implements OnInit {
         else this.loginForm.enable();
       });
   }
+
 }
