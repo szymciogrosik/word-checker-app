@@ -413,6 +413,12 @@ mat-hint, mat-error { font-size: 0.85rem; }
   --google-btn-hover: #314444;
   --google-btn-border: #{$dark-border-primary};
 
+  // MDC Checkbox & Radio Fixes for Dark Mode
+  --mdc-checkbox-unselected-icon-color: #{$dark-text-secondary};
+  --mdc-checkbox-unselected-hover-icon-color: #{$dark-text-primary};
+  --mdc-radio-unselected-icon-color: #{$dark-text-secondary};
+  --mdc-radio-unselected-hover-icon-color: #{$dark-text-primary};
+
   background-color: $dark-background !important;
   color: $dark-text-primary !important;
 

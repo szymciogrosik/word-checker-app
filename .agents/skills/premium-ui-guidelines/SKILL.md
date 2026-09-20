@@ -48,8 +48,7 @@ All content must live inside premium cards. When creating new components, struct
 
 ## 5. Micro-interactions
 - **Hover States:** Buttons and interactive cards must have a transition.
-  - Cards: Just intensify the `box-shadow` on hover, do NOT use `translateY`.
-  - Buttons: Slight lift (`transform: translateY(-1px)`) and increased shadow.
+  - Cards: Just intensify the `box-shadow` or border color on hover. **ABSOLUTELY NO BOUNCING**: do NOT use `translateY` or any position-shifting transforms on hover for cards.
 - **Active States:** Buttons scale down subtly (`transform: scale(0.98)`).
 
 ## 6. Loading States (Skeletons)

@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, effect, ElementRef, inject, input, O
 import {AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CustomUser} from '../../_models/user/custom-user';
 import {AccessRole} from '../../_models/user/access-role';
+import {select_roles} from '../../_models/registration/select/select-roles';
 import {CustomTranslateService} from '../../_services/translate/custom-translate.service';
 import {CustomValidators} from '../../_services/validator/custom-validators';
 import {TranslatePipe} from '@ngx-translate/core';
@@ -40,7 +41,7 @@ export class UserFormComponent implements OnInit {
 
   userForm!: FormGroup;
   hidePassword = true;
-  readonly accessRoleValues: AccessRole[] = Object.values(AccessRole);
+  readonly selectRoles = select_roles;
 
   private readonly formBuilder = inject(FormBuilder);
   private readonly translateService = inject(CustomTranslateService);

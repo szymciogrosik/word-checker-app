@@ -20,6 +20,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {SmartTableComponent} from '../../../_shared-components/smart-table/smart-table.component';
 import {SmartTableColumn} from '../../../_shared-components/smart-table/smart-table.model';
 import {firstValueFrom} from 'rxjs';
+import {select_roles} from '../../../_models/registration/select/select-roles';
 
 @Component({
   selector: 'app-users',
@@ -58,7 +59,13 @@ export class UsersComponent {
       valueFn: (row) => row.firstName + ' ' + row.lastName
     },
     {key: 'email', headerLabelKey: 'admin.panel.table.header.email', type: 'text'},
-    {key: 'roles', headerLabelKey: 'admin.panel.table.header.role', type: 'text', truncateLength: 40},
+    {
+      key: 'roles', 
+      headerLabelKey: 'admin.panel.table.header.role', 
+      type: 'text', 
+      truncateLength: 60,
+      valueFn: (row) => row.roles ? row.roles.map(r => this.translateService.get(select_roles.find(sr => sr.value === r)?.viewKey || r)).join(', ') : ''
+    },
     {
       key: 'actions', headerLabelKey: '', type: 'action', actions: [
         {

@@ -19,6 +19,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {SkeletonComponent} from '../_shared-components/skeleton/skeleton.component';
 import {firstValueFrom} from 'rxjs';
+import {MatTabsModule} from '@angular/material/tabs';
+import {select_roles} from '../_models/registration/select/select-roles';
 
 @Component({
   selector: 'app-profile',
@@ -32,7 +34,8 @@ import {firstValueFrom} from 'rxjs';
     MatIconModule,
     MatDialogModule,
     MatTooltipModule,
-    SkeletonComponent
+    SkeletonComponent,
+    MatTabsModule
   ],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
@@ -51,6 +54,11 @@ export class ProfileComponent {
   readonly user = this.authService.currentUser;
   readonly isLoading = this.authService.isLoading;
   readonly allowForProfilePictureChange = this.facade.allowForProfilePictureChange;
+
+  get currentUserRoles() {
+    const roles = this.user()?.roles || [];
+    return roles.map(r => select_roles.find(sr => sr.value === r)).filter(r => r !== undefined);
+  }
 
   openChangePasswordDialog(): void {
     // Open the change password dialog
