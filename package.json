@@ -9,7 +9,9 @@
     "build-firebase": "ng build --configuration=firebase --base-href=/",
     "build-gh-pages": "ng build --configuration=gh-pages --base-href=/angular-firebase-accelerator/",
     "watch": "ng build --watch --configuration=local",
-    "test": "ng test"
+    "test": "ng test",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCI --code-coverage",
+    "test:coverage": "ng test --watch=false --code-coverage"
   },
   "private": true,
   "dependencies": {
