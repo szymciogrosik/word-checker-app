@@ -1,6 +1,6 @@
 ---
 name: premium-ui-guidelines
-description: "Styling guidelines for the 'million-dollar' Apple/Monday/Netcompany UI style. Use this skill when creating or modifying frontend components to maintain a premium, clean, and vibrant aesthetic."
+description: "Use this skill ALWAYS when creating or modifying ANY visual element, component, or layout on the page."
 ---
 
 # Premium UI Design System Guidelines
@@ -56,9 +56,23 @@ All content must live inside premium cards. When creating new components, struct
 - **No Disappearing Content:** When loading data (e.g. fetching user details or waiting for a server response), do not use spinning loaders (`mat-spinner`) or completely hide/re-render the container.
 - **Always Use Skeletons:** Use a blurred layout skeleton (`<app-skeleton>`) that mirrors the shape of the incoming content. Reference the animation on the `login` page for the expected behavior. This prevents layout shifts and gives a premium, seamless feel.
 
-## 7. Angular Material Integration
+## 7. Theming and Colors (CSS Variables)
+- **No Hardcoded Colors in Components:** Never hardcode colors (HEX, RGB, etc.) in component SCSS files (e.g. `login.component.scss`).
+- **Use Global Variables:** All colors must be defined as CSS custom properties (`var(--name)`) in `styles.scss` (inside `:root` and `.dark-theme`). Components should only consume these variables.
+- **Bind CSS Variables to SCSS Variables:** Do not hardcode HEX values directly into CSS variables (e.g. `--color: #ffffff;`). Instead, define them as SCSS variables at the top of the file (e.g. `$app-surface-color: #ffffff;`) and bind them using interpolation: `--app-surface-color: #{$app-surface-color};`. This ensures a single source of truth for the entire application palette.
+
+## 8. Responsiveness and Overflow (Mobile First)
+- **Prevent Text Overflow:** ALWAYS assume that text (especially warning notes, banners, or long user-generated content) might be too long for mobile screens.
+- **Flexbox & Wraps:** When placing text inside a `display: flex;` container, always ensure it can wrap. Apply `word-break: break-word;` and `white-space: normal;` to `<span>` or text elements inside flex containers to prevent horizontal scrolling or cut-off text on phones.
+- **Card Width Overflow (100% vs Margins):** `mat-card` components have a global responsive margin (`margin: clamp(...)` in `styles.scss`). If you set `width: 100%` on a `mat-card`, it will exceed the viewport and get cut off on mobile devices. To fix this, always add `margin: 0 !important;` to the `mat-card` when forcing `width: 100%`, and use `padding` on the parent container instead.
+
+## 9. Angular Material Integration
 When using Angular Material components:
 - **Buttons (`mat-mdc-button`):** Must be rounded. The global `styles.scss` forces a `border-radius: 12px`. Do not override this to make them sharp.
 - **Form Actions:** Primary action buttons in forms (e.g. "Save", "Cancel", "Send reset link") must be identically sized. Use the `.app-action-button` class to enforce `width: 100%` and a consistent `48px` height.
 - **Inputs (`mat-form-field`):** Use the `appearance="outline"` style exclusively. The outlines should be subtle, with soft focus rings.
 - **Elevation:** Do not use `mat-elevation-z*` classes. They look outdated. Use our custom soft shadow classes.
+
+## 8. Internationalization (i18n)
+- **No Hardcoded Texts:** Never hardcode user-facing texts (like "Continue with Google" or "Premium Accelerator") directly into HTML templates.
+- **Always Use Translation Pipes:** Always define keys in `src/assets/i18n/pl.json` and `en.json`, and use the `translate` pipe (e.g., `{{ 'login.promo.title' | translate }}`).

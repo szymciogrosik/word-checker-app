@@ -53,7 +53,7 @@ $dark-alert-warning-bg: rgba(245, 158, 11, 0.1);
 $dark-alert-warning-text: #fcd34d;
 
 $navbar-font-size: clamp(1rem, 5cqi, 1.1rem);
-$footer-font-size: clamp(1rem, 5cqi, 1.1rem);
+$footer-font-size: 14px; // Matches mat-button size in navbar
 
 // Palettes
 $main-palette: (
@@ -135,6 +135,23 @@ $dark-theme: mat.m2-define-dark-theme((
 @include mat.all-component-themes($light-theme);
 
 // --- GLOBAL BASE ---
+:root {
+  --app-primary-color: #{$app-primary-color};
+  --app-accent-color: #{$app-accent-color};
+  --app-surface-color: #{$app-surface-color};
+  --app-text-primary: #{$app-on-background-color};
+  --app-text-secondary: #{$app-text-secondary};
+  --separator-color: #{$app-text-secondary};
+  --separator-line: #{$app-border-color};
+  --google-btn-bg: #{$app-surface-color};
+  --google-btn-text: #3c4043;
+  --google-btn-hover: #f8f9fa;
+  --google-btn-border: #{$app-border-color};
+  --mesh-blob-1: rgba(45, 212, 191, 0.4);
+  --mesh-blob-2: rgba(15, 95, 89, 0.6);
+  --mesh-blob-3: rgba(79, 70, 229, 0.3);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -289,8 +306,13 @@ mat-hint, mat-error { font-size: 0.85rem; }
     display: flex;
     align-items: center;
     padding: 16px !important;
+    
+    span {
+      word-break: break-word;
+      white-space: normal;
+    }
   }
-  mat-icon { color: $alert-warning-accent; }
+  mat-icon { color: $alert-warning-accent; flex-shrink: 0; margin-right: 8px; }
 }
 
 .app-full-width-actions, .app-popup-full-width-actions {
@@ -354,6 +376,17 @@ mat-hint, mat-error { font-size: 0.85rem; }
 // --- DARK THEME EXPLICIT OVERRIDES ---
 .dark-theme {
   @include mat.all-component-colors($dark-theme);
+
+  // CSS Variable Overrides
+  --app-surface-color: #{$dark-surface};
+  --app-text-primary: #{$dark-text-primary};
+  --app-text-secondary: #{$dark-text-secondary};
+  --separator-color: #{$dark-text-secondary};
+  --separator-line: #{$dark-border-primary};
+  --google-btn-bg: #2a3b3b;
+  --google-btn-text: #{$dark-text-primary};
+  --google-btn-hover: #314444;
+  --google-btn-border: #{$dark-border-primary};
 
   background-color: $dark-background !important;
   color: $dark-text-primary !important;
