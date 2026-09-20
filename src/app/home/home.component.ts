@@ -6,7 +6,7 @@ import {ApiService} from '../_services/api/api-service.service';
 import {MatButton} from '@angular/material/button';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
-import {TranslateModule, TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {MatIcon} from '@angular/material/icon';
 
 @Component({
@@ -17,7 +17,6 @@ import {MatIcon} from '@angular/material/icon';
   imports: [
     CommonModule,
     TranslatePipe,
-    TranslateModule,
     MatCardModule,
     MatButton,
     MatInput,

@@ -6,7 +6,6 @@ import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {AuthService} from '../_services/auth/auth.service';
 import {RedirectionEnum} from '../../utils/redirection.enum';
 import {CommonModule} from '@angular/common';
-import {TranslateModule} from '@ngx-translate/core';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {EmbeddedBrowserPopupComponent} from './embedded-browser-popup/embedded-browser-popup.component';
 import {EmbeddedBrowserWarningData} from '../_models/dialog/embedded-browser-warning/embedded-browser-warning-data';
@@ -33,7 +32,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
   standalone: true,
   imports: [
     CommonModule,
-    TranslateModule,
     TranslatePipe,
     MatCardModule,
     MatButtonModule,
