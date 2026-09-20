@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild, inject} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, inject, ChangeDetectorRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {APP_CONFIG} from '../app.config.token';
 import {MatCardModule} from '@angular/material/card';
@@ -34,7 +34,10 @@ export class HomeComponent implements OnInit {
   lastSearchedWord: string | undefined;
   presentWord: boolean | undefined;
 
-  constructor(private api: ApiService) {
+  constructor(
+    private api: ApiService,
+    private cdr: ChangeDetectorRef
+  ) {
     this.resetQueryAndSearchResults();
   }
 
@@ -51,16 +54,20 @@ export class HomeComponent implements OnInit {
     }
 
     this.loading = true;
+    this.cdr.markForCheck();
+    
     this.api.searchExact(queryToSearch).subscribe({
       next: (res: any) => {
         this.lastSearchedWord = queryToSearch;
         this.presentWord = res.data.found;
+        this.cdr.markForCheck();
       },
       error: err => {
         console.error('Error in call to search words API ', err);
       },
       complete: () => {
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }
@@ -79,6 +86,7 @@ export class HomeComponent implements OnInit {
   resetSearchResult() {
     this.lastSearchedWord = undefined;
     this.presentWord = undefined;
+    this.cdr.markForCheck();
   }
 
   openDictionary() {

@@ -74,7 +74,7 @@ export class LoginComponent {
 
     effect(() => {
       if (this.authService.isLoggedIn()) {
-        this.router.navigate(['/' + RedirectionEnum.HOME]);
+        this.router.navigate(['/' + RedirectionEnum.ADMIN]);
       }
     });
 
