@@ -1,26 +1,26 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {UserFacade} from '../../../_database/auth/user.facade';
-import {CustomUser} from '../../../_models/user/custom-user';
-import {AccessRoleService} from '../../../_services/auth/access-role.service';
-import {CustomTranslateService} from '../../../_services/translate/custom-translate.service';
+import {UserFacade} from '../../../../_database/auth/user.facade';
+import {CustomUser} from '../../../../_models/user/custom-user';
+import {AccessRoleService} from '../../../../_services/auth/access-role.service';
+import {CustomTranslateService} from '../../../../_services/translate/custom-translate.service';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import {SnackbarService} from '../../../_services/util/snackbar.service';
-import {AuthService} from '../../../_services/auth/auth.service';
+import {SnackbarService} from '../../../../_services/util/snackbar.service';
+import {AuthService} from '../../../../_services/auth/auth.service';
 import {UserDetailsComponent} from './user-details/user-details.component';
-import {UserDetailsPopupData} from '../../../_models/dialog/user-details/user-details-popup-data';
-import {UserDetailsType} from '../../../_models/dialog/user-details/user-details-type';
-import {DialogService} from '../../../_services/util/dialog.service';
-import {DialogType} from '../../../_models/dialog/dialog-type';
+import {UserDetailsPopupData} from '../../../../_models/dialog/user-details/user-details-popup-data';
+import {UserDetailsType} from '../../../../_models/dialog/user-details/user-details-type';
+import {DialogService} from '../../../../_services/util/dialog.service';
+import {DialogType} from '../../../../_models/dialog/dialog-type';
 import {FirebaseError} from '@angular/fire/app';
 import {TranslatePipe} from '@ngx-translate/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
-import {SmartTableComponent} from '../../../_shared-components/smart-table/smart-table.component';
-import {SmartTableColumn} from '../../../_shared-components/smart-table/smart-table.model';
+import {SmartTableComponent} from '../../../../_shared-components/smart-table/smart-table.component';
+import {SmartTableColumn} from '../../../../_shared-components/smart-table/smart-table.model';
 import {firstValueFrom} from 'rxjs';
-import {select_roles} from '../../../_models/registration/select/select-roles';
+import {select_roles} from '../../../../_models/registration/select/select-roles';
 
 @Component({
   selector: 'app-users',
@@ -60,9 +60,9 @@ export class UsersComponent {
     },
     {key: 'email', headerLabelKey: 'admin.panel.table.header.email', type: 'text'},
     {
-      key: 'roles', 
-      headerLabelKey: 'admin.panel.table.header.role', 
-      type: 'text', 
+      key: 'roles',
+      headerLabelKey: 'admin.panel.table.header.role',
+      type: 'text',
       truncateLength: 60,
       valueFn: (row) => row.roles ? row.roles.map(r => this.translateService.get(select_roles.find(sr => sr.value === r)?.viewKey || r)).join(', ') : ''
     },

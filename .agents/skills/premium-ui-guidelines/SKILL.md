@@ -27,6 +27,7 @@ All content must live inside premium cards. When creating new components, struct
 - **Background (Light Mode):** Pure white `#ffffff`.
 - **Background (Dark Mode):** `#1a2727` (Netcompany Dark Surface).
 - **Nested Card Background (Dark Mode):** `#233535` (For cards inside cards, like `.highlight-tab-content`).
+- **Highlighted Tabs:** The `.highlight-tab-content` container must always have a thicker (2px) border in the primary color (`var(--app-primary-color)`) to stand out permanently.
 
 *Use the global SCSS classes defined in `styles.scss` rather than hardcoding these values.*
 
@@ -72,6 +73,9 @@ When using Angular Material components:
 - **Inputs (`mat-form-field`):** Use the `appearance="outline"` style exclusively. The outlines should be subtle, with soft focus rings.
 - **Elevation:** Do not use `mat-elevation-z*` classes. They look outdated. Use our custom soft shadow classes.
 
-## 8. Internationalization (i18n)
+## 10. Internationalization (i18n)
 - **No Hardcoded Texts:** Never hardcode user-facing texts (like "Continue with Google" or "Premium Accelerator") directly into HTML templates.
 - **Always Use Translation Pipes:** Always define keys in `src/assets/i18n/pl.json` and `en.json`, and use the `translate` pipe (e.g., `{{ 'login.promo.title' | translate }}`).
+
+## 11. Security and Admin Panel
+- **Role Security:** EVERY single page, tab, or section within the "Admin Panel" MUST be secured by a specific access role (e.g. `ADMIN_PAGE_ACCESS`, `ADMIN_CORE_SETTINGS`). Do not create globally accessible sections in the admin panel. Use the `AccessRoleService` and `@if` blocks or route guards to protect all features.

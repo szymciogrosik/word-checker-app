@@ -299,7 +299,7 @@ mat-hint, mat-error { font-size: 0.85rem; }
 
 // Tabs
 .highlight-tab-content {
-  border: 1.5px solid rgba(0,0,0,0.05);
+  border: 2px solid var(--app-primary-color) !important;
   border-radius: 16px;
   padding: 24px;
   margin-top: 16px;
@@ -331,7 +331,7 @@ mat-hint, mat-error { font-size: 0.85rem; }
     display: flex;
     align-items: center;
     padding: 16px !important;
-    
+
     span {
       word-break: break-word;
       white-space: normal;

@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
-import {UserDetailsPopupData} from '../../../../_models/dialog/user-details/user-details-popup-data';
-import {UserDetailsType} from '../../../../_models/dialog/user-details/user-details-type';
-import {CustomTranslateService} from '../../../../_services/translate/custom-translate.service';
-import {UserFormComponent} from '../../../../_shared-components/user-form/user-form.component';
-import {AuthService} from '../../../../_services/auth/auth.service';
-import {SnackbarService} from '../../../../_services/util/snackbar.service';
+import {UserDetailsPopupData} from '../../../../../_models/dialog/user-details/user-details-popup-data';
+import {UserDetailsType} from '../../../../../_models/dialog/user-details/user-details-type';
+import {CustomTranslateService} from '../../../../../_services/translate/custom-translate.service';
+import {UserFormComponent} from '../../../../../_shared-components/user-form/user-form.component';
+import {AuthService} from '../../../../../_services/auth/auth.service';
+import {SnackbarService} from '../../../../../_services/util/snackbar.service';
 import {TranslatePipe} from '@ngx-translate/core';
 import {MatButtonModule} from '@angular/material/button';
 
