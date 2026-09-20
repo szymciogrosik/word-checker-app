@@ -1,6 +1,5 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {environment} from '../../environments/environment';
-import {CommonModule} from '@angular/common';
+import {Component, ElementRef, OnInit, ViewChild, inject} from '@angular/core';
+import {APP_CONFIG} from '../app.config.token';
 import {MatCardModule} from '@angular/material/card';
 import {ApiService} from '../_services/api/api-service.service';
 import {MatButton} from '@angular/material/button';
@@ -38,7 +37,7 @@ export class HomeComponent implements OnInit {
     this.resetQueryAndSearchResults();
   }
 
-  protected readonly environment = environment;
+  protected readonly environment = inject(APP_CONFIG);
 
   ngOnInit(): void {}
 
@@ -84,4 +83,5 @@ export class HomeComponent implements OnInit {
   openDictionary() {
     window.open('https://sjp.pl/' + this.lastSearchedWord, '_blank');
   }
+
 }
