@@ -1,4 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {APP_CONFIG} from '../app.config.token';
 import {MatCardModule} from '@angular/material/card';
 import {ApiService} from '../_services/api/api-service.service';

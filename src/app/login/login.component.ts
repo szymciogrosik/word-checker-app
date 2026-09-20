@@ -5,6 +5,8 @@ import {SnackbarService} from '../_services/util/snackbar.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../_services/auth/auth.service';
 import {RedirectionEnum} from '../../utils/redirection.enum';
+import {CommonModule} from '@angular/common';
+import {TranslateModule} from '@ngx-translate/core';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {EmbeddedBrowserPopupComponent} from './embedded-browser-popup/embedded-browser-popup.component';
 import {EmbeddedBrowserWarningData} from '../_models/dialog/embedded-browser-warning/embedded-browser-warning-data';
@@ -20,7 +22,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {SkeletonComponent} from '../_shared-components/skeleton/skeleton.component';
-import {RedirectionEnum} from '../../utils/redirection.enum';
 import {firstValueFrom} from 'rxjs';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
