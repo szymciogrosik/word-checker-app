@@ -8,7 +8,7 @@ import {AccessRole} from '../_models/user/access-role';
 import {Router, RouterModule} from '@angular/router';
 import {ThemeService} from '../_services/util/theme.service';
 import {CommonModule} from '@angular/common';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
@@ -22,7 +22,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
   standalone: true,
   imports: [
     CommonModule,
-    TranslateModule,
+    TranslatePipe,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
@@ -66,3 +66,4 @@ export class NavbarComponent {
   protected readonly AccessRoleService = AccessRoleService;
   protected readonly AccessRole = AccessRole;
 }
+

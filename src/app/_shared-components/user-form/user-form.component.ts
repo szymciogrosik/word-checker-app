@@ -4,7 +4,7 @@ import {CustomUser} from '../../_models/user/custom-user';
 import {AccessRole} from '../../_models/user/access-role';
 import {CustomTranslateService} from '../../_services/translate/custom-translate.service';
 import {CustomValidators} from '../../_services/validator/custom-validators';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -16,7 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
   selector: 'app-user-form',
   standalone: true,
   imports: [
-    TranslateModule,
+    TranslatePipe,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
@@ -133,3 +133,4 @@ export class UserFormComponent implements OnInit {
     return this.userForm.controls;
   }
 }
+

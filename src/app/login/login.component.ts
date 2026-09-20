@@ -11,7 +11,7 @@ import {FirebaseError} from '@angular/fire/app';
 import {CustomValidators} from '../_services/validator/custom-validators';
 import {MatTabChangeEvent, MatTabsModule} from '@angular/material/tabs';
 import {PublicSettingsFacade} from '../_database/settings/public-settings.facade';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -29,7 +29,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
   styleUrl: './login.component.scss',
   standalone: true,
   imports: [
-    TranslateModule,
+    TranslatePipe,
     MatCardModule,
     MatButtonModule,
     MatProgressSpinnerModule,
@@ -219,3 +219,4 @@ export class LoginComponent {
   }
 
 }
+

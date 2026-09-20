@@ -3,7 +3,6 @@ import {CustomTranslateService} from './_services/translate/custom-translate.ser
 import {FooterComponent} from './footer/footer.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {Title} from '@angular/platform-browser';
-import {TranslateModule} from '@ngx-translate/core';
 import {RouterModule, Router, NavigationEnd} from '@angular/router';
 import {APP_CONFIG} from './app.config.token';
 import {MatDatepickerIntl} from '@angular/material/datepicker';
@@ -15,7 +14,7 @@ import {filter} from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [FooterComponent, NavbarComponent, TranslateModule, RouterModule],
+  imports: [FooterComponent, NavbarComponent, RouterModule],
   providers: [
     {provide: MatDatepickerIntl, useClass: CustomDatepickerIntl}
   ],
@@ -49,3 +48,4 @@ export class AppComponent implements OnInit {
   }
 
 }
+

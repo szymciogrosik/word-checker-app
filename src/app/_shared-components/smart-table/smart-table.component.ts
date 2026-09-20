@@ -4,7 +4,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {SmartTableColumn} from './smart-table.model';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -20,7 +20,7 @@ import {SkeletonComponent} from '../skeleton/skeleton.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    TranslateModule,
+    TranslatePipe,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
@@ -123,3 +123,4 @@ export class SmartTableComponent<T> implements AfterViewInit {
     return length !== undefined && String(value).length > length;
   }
 }
+

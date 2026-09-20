@@ -12,7 +12,7 @@ import {UserDetailsType} from '../../../_models/dialog/user-details/user-details
 import {DialogService} from '../../../_services/util/dialog.service';
 import {DialogType} from '../../../_models/dialog/dialog-type';
 import {FirebaseError} from '@angular/fire/app';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -26,7 +26,7 @@ import {firstValueFrom} from 'rxjs';
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
   standalone: true,
-  imports: [TranslateModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatTabsModule, SmartTableComponent],
+  imports: [TranslatePipe, MatButtonModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatTabsModule, SmartTableComponent],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsersComponent {
@@ -228,3 +228,4 @@ export class UsersComponent {
   }
 
 }
+

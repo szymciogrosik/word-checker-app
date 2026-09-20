@@ -10,7 +10,7 @@ import {ChangePasswordDialogComponent} from './change-password-dialog/change-pas
 import {ImageCropperData, ImageCropperDialogComponent} from './image-cropper-dialog/image-cropper-dialog.component';
 import {ImagePreviewData, ImagePreviewDialogComponent} from './image-preview-dialog/image-preview-dialog.component';
 import {PublicSettingsFacade} from '../_database/settings/public-settings.facade';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -25,7 +25,7 @@ import {firstValueFrom} from 'rxjs';
   standalone: true,
   imports: [
     UserFormComponent,
-    TranslateModule,
+    TranslatePipe,
     MatCardModule,
     MatButtonModule,
     MatProgressSpinnerModule,
@@ -115,3 +115,4 @@ export class ProfileComponent {
   }
 
 }
+

@@ -5,7 +5,7 @@ import {SnackbarService} from '../../../_services/util/snackbar.service';
 import {CustomTranslateService} from '../../../_services/translate/custom-translate.service';
 import {Subscription} from 'rxjs';
 import {MatSlideToggle, MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {SkeletonComponent} from '../../../_shared-components/skeleton/skeleton.component';
 
@@ -18,7 +18,7 @@ import {SkeletonComponent} from '../../../_shared-components/skeleton/skeleton.c
     MatProgressSpinnerModule,
     MatSlideToggleModule,
     SkeletonComponent,
-    TranslateModule
+    TranslatePipe
   ],
   templateUrl: './public-settings.component.html',
   styleUrl: './public-settings.component.scss'
@@ -89,3 +89,4 @@ export class PublicSettingsComponent implements OnInit, OnDestroy {
     }
   }
 }
+
