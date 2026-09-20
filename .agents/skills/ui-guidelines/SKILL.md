@@ -1,5 +1,5 @@
 ---
-name: premium-ui-guidelines
+name: ui-guidelines
 description: "Use this skill ALWAYS when creating or modifying ANY visual element, component, or layout on the page."
 ---
 
