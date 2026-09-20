@@ -154,9 +154,34 @@ $dark-theme: mat.m2-define-dark-theme((
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.02);
 }
 html, body {
   height: 100%;
+}
+
+// --- CUSTOM SCROLLBAR (WebKit) ---
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: 2px solid transparent; // Creates padding effect
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 body {
   margin: 0;
@@ -400,6 +425,20 @@ mat-hint, mat-error { font-size: 0.85rem; }
   }
   mat-card-title > p {
     color: $dark-text-secondary;
+  }
+
+  /* Custom Scrollbar */
+  scrollbar-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.02);
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+    background-clip: padding-box;
   }
 
   /* Material Surfaces */
