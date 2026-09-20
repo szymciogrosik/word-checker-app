@@ -3,9 +3,9 @@ name: ui-guidelines
 description: "Use this skill ALWAYS when creating or modifying ANY visual element, component, or layout on the page."
 ---
 
-# Premium UI Design System Guidelines
+# UI Design System Guidelines
 
-This document serves as the single source of truth for the frontend styling of this application. The application follows a premium "million-dollar" aesthetic inspired by Apple's clean minimalism and Netcompany/Monday.com's vibrant, professional color palettes.
+This document serves as the single source of truth for the frontend styling of this application. The application follows a premium aesthetic inspired by Apple's clean minimalism vibrant, professional color palettes.
 
 ## 1. Core Principles
 - **Extreme Cleanliness:** Whitespace is your best friend. Do not clutter interfaces. Use generous padding (e.g., `24px` or `32px` inside cards).
@@ -18,34 +18,27 @@ This document serves as the single source of truth for the frontend styling of t
 - **Primary Font:** `Inter` (Google Fonts). Never use Roboto.
 - **Hierarchy:** 
   - Main titles (h1, h2) should be bold (weight 700 or 800) and large.
-  - Body text should be readable, often with a slightly muted color (e.g., `#64748b` in light mode) rather than pure black `#000000`.
+  - Body text should be readable, often with a slightly muted color (use CSS variables for secondary text) rather than pure black or pure white.
 
 ## 3. The "Bento" Card System
 All content must live inside premium cards. When creating new components, structure them as "Bento boxes".
-- **Border Radius:** `20px` for standard cards.
-- **Shadow (Light Mode):** `box-shadow: 0 10px 40px -10px rgba(0,0,0,0.06);`
-- **Background (Light Mode):** Pure white `#ffffff`.
-- **Background (Dark Mode):** `#1a2727` (Netcompany Dark Surface).
-- **Nested Card Background (Dark Mode):** `#233535` (For cards inside cards, like `.highlight-tab-content`).
-- **Highlighted Tabs:** The `.highlight-tab-content` container must always have a thicker (2px) border in the primary color (`var(--app-primary-color)`) to stand out permanently.
+- **Border Radius:** Use global CSS variables for standard cards.
+- **Shadow (Light Mode):** Use global CSS elevation variables/classes.
+- **Backgrounds:** Use global CSS variables for surface and nested backgrounds.
+- **Highlighted Tabs:** The `.highlight-tab-content` container must always have a thicker border in the primary color (`var(--app-primary-color)`) to stand out permanently.
 
-*Use the global SCSS classes defined in `styles.scss` rather than hardcoding these values.*
+*Use the global SCSS classes and variables defined in `styles.scss` rather than hardcoding these values.*
 
 ## 4. Color Palette
+The exact colors are defined and can be changed by the developer in `styles.scss`. Always use CSS variables (`var(--name)`) instead of raw HEX values.
 - **Light Mode (Default):**
-  - Background: `#f8fafc` (Very light slate/off-white)
-  - Surface/Cards: `#ffffff`
-  - Text Primary: `#0f172a`
-  - Text Secondary: `#64748b`
-  - Primary Accent (Netcompany): Deep Teal/Green `#123836`.
-  - Action Accent (Monday style): Vibrant Indigo `#4f46e5`.
-  - Secondary Accent (Warnings/Alerts): Vibrant Orange `#f59e0b` or Coral `#f43f5e`.
-- **Dark Mode (Netcompany Dark):**
-  - Background: `#141e1e` (Netcompany very dark background)
-  - Surface/Cards: `#1a2727`
-  - Nested Cards: `#233535`
-  - Text Primary: `#f8fafc`
-  - Text Secondary: `#94a3b8`
+  - Background & Surface: Use `var(--app-background-color)` and `var(--app-surface-color)`
+  - Text: Use `var(--app-text-primary)` and `var(--app-text-secondary)`
+  - Accents: Use `var(--app-primary-color)`, `var(--app-accent-color)`, `var(--app-warn-color)`
+- **Dark Mode:**
+  - Background & Surface: Use `var(--app-background-color)` and `var(--app-surface-color)`
+  - Nested Cards: Use `var(--app-nested-surface-color)`
+  - Text: Use `var(--app-text-primary)` and `var(--app-text-secondary)`
 
 ## 5. Micro-interactions
 - **Hover States:** Buttons and interactive cards must have a transition.
