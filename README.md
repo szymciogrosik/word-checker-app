@@ -213,6 +213,10 @@ Make a short review of changes and commit.
 
 12) **Revert unwanted changes in `firebase.json`** if init overwrote custom settings.
 
+13) **Update legal statements**
+- Replace all `PAGE_OWNER_NAME` by name of responsible person for this page
+- Replace all `PAGE_OWNER_EMAIL` by email of responsible person for this page
+
 ---
 
 ## GitHub configuration
