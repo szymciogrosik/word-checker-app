@@ -1,3 +1,5 @@
-export class Status {
-  lastDeployTime: string;
+export interface Status {
+  readonly lastDeployTime?: string;
+  readonly lastDictionaryUpdateTime?: string;
 }
+

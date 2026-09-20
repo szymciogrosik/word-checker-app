@@ -1,12 +1,12 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {environment} from '../../environments/environment';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {APP_CONFIG} from '../app.config.token';
 import {MatCardModule} from '@angular/material/card';
 import {ApiService} from '../_services/api/api-service.service';
 import {MatButton} from '@angular/material/button';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslateModule, TranslatePipe} from '@ngx-translate/core';
 import {MatIcon} from '@angular/material/icon';
 
 @Component({
@@ -16,6 +16,7 @@ import {MatIcon} from '@angular/material/icon';
   standalone: true,
   imports: [
     CommonModule,
+    TranslatePipe,
     TranslateModule,
     MatCardModule,
     MatButton,
@@ -24,7 +25,8 @@ import {MatIcon} from '@angular/material/icon';
     FormsModule,
     MatLabel,
     MatIcon
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
   @ViewChild('wordInput') wordInput!: ElementRef;
@@ -34,11 +36,14 @@ export class HomeComponent implements OnInit {
   lastSearchedWord: string | undefined;
   presentWord: boolean | undefined;
 
-  constructor(private api: ApiService) {
+  constructor(
+    private api: ApiService,
+    private cdr: ChangeDetectorRef
+  ) {
     this.resetQueryAndSearchResults();
   }
 
-  protected readonly environment = environment;
+  protected readonly environment = inject(APP_CONFIG);
 
   ngOnInit(): void {}
 
@@ -51,16 +56,20 @@ export class HomeComponent implements OnInit {
     }
 
     this.loading = true;
+    this.cdr.markForCheck();
+    
     this.api.searchExact(queryToSearch).subscribe({
       next: (res: any) => {
         this.lastSearchedWord = queryToSearch;
         this.presentWord = res.data.found;
+        this.cdr.markForCheck();
       },
       error: err => {
         console.error('Error in call to search words API ', err);
       },
       complete: () => {
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }
@@ -79,9 +88,11 @@ export class HomeComponent implements OnInit {
   resetSearchResult() {
     this.lastSearchedWord = undefined;
     this.presentWord = undefined;
+    this.cdr.markForCheck();
   }
 
   openDictionary() {
     window.open('https://sjp.pl/' + this.lastSearchedWord, '_blank');
   }
+
 }
