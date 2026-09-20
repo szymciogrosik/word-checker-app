@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild, inject, ChangeDetectorRef} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {APP_CONFIG} from '../app.config.token';
 import {MatCardModule} from '@angular/material/card';
@@ -6,7 +6,7 @@ import {ApiService} from '../_services/api/api-service.service';
 import {MatButton} from '@angular/material/button';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslateModule, TranslatePipe} from '@ngx-translate/core';
 import {MatIcon} from '@angular/material/icon';
 
 @Component({
@@ -16,6 +16,7 @@ import {MatIcon} from '@angular/material/icon';
   standalone: true,
   imports: [
     CommonModule,
+    TranslatePipe,
     TranslateModule,
     MatCardModule,
     MatButton,
@@ -24,7 +25,8 @@ import {MatIcon} from '@angular/material/icon';
     FormsModule,
     MatLabel,
     MatIcon
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
   @ViewChild('wordInput') wordInput!: ElementRef;
