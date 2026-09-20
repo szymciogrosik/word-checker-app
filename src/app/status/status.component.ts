@@ -19,14 +19,20 @@ export class StatusComponent {
 
   private readAssetsService = inject(AssetsService);
 
+  private statusData$ = this.readAssetsService.getResource(this.STATUS_URL).pipe(
+    catchError(error => {
+      console.error(error);
+      return of(null);
+    })
+  );
+
   lastDeployTime = toSignal(
-    this.readAssetsService.getResource(this.STATUS_URL).pipe(
-      map((data: any) => data?.lastDeployTime || ''),
-      catchError(error => {
-        console.error(error);
-        return of('');
-      })
-    ),
+    this.statusData$.pipe(map((data: any) => data?.lastDeployTime || '')),
+    { initialValue: '' }
+  );
+
+  lastDictionaryUpdateTime = toSignal(
+    this.statusData$.pipe(map((data: any) => data?.lastDictionaryUpdateTime || '')),
     { initialValue: '' }
   );
 

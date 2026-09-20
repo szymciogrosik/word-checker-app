@@ -78,4 +78,16 @@ rl.on('close', () => {
 echo "Cleaning up temporary files..."
 rm -rf "$SOURCES_DIR"/*
 
+echo "Updating status.json with lastDictionaryUpdateTime..."
+node -e "
+const fs = require('fs');
+const statusPath = 'src/assets/status/status.json';
+const status = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
+const now = new Date();
+const pad = (n) => String(n).padStart(2, '0');
+status.lastDictionaryUpdateTime = pad(now.getDate()) + '-' + pad(now.getMonth() + 1) + '-' + now.getFullYear() + ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+fs.writeFileSync(statusPath, JSON.stringify(status, null, 2));
+console.log('status.json updated: ' + status.lastDictionaryUpdateTime);
+"
+
 echo "Finished successfully!"

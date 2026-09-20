@@ -43,6 +43,7 @@
   "registration.validation.minLength": "Required minimum length: ",
   "registration.validation.invalidPasswordSecurity": "Required at least 1 of each: uppercase, lowercase, digit, special character",
   "status.lastBuildTime": "Last deploy date",
+  "status.lastDictionaryUpdateTime": "Last dictionary update",
   "nonProdMode.warning": "This application is in non-production mode. Changes provided in this application are not connected with production database.",
   "login.header2": "to application",
   "login.enterEmail": "Enter email address",

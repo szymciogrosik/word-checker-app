@@ -43,6 +43,7 @@
   "registration.validation.minLength": "Wymagana minimalna liczba znaków: ",
   "registration.validation.invalidPasswordSecurity": "Wymagana jest co najmniej 1 wielka litera, 1 mała litera, 1 cyfra, 1 znak specjalny",
   "status.lastBuildTime": "Data ostatniego wdrożenia",
+  "status.lastDictionaryUpdateTime": "Ostatnia aktualizacja słownika",
   "nonProdMode.warning": "Ta aplikacja nie jest w trybie produkcyjnym. Wprowadzone zmiany nie będą miały wpływu na produkcyjną bazę danych.",
   "login.header2": "do aplikacji",
   "login.enterEmail": "Wprowadź adres e-mail",

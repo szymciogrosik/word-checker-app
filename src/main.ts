@@ -6,7 +6,6 @@ import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {getStorage, provideStorage} from '@angular/fire/storage';
 import {getAnalytics, provideAnalytics} from '@angular/fire/analytics';
-import {getFunctions, provideFunctions} from '@angular/fire/functions';
 import {provideTranslateService} from '@ngx-translate/core';
 import {AppComponent} from './app/app.component';
 import {routing} from './app/app-routing.module';
@@ -55,7 +54,6 @@ bootstrapApplication(AppComponent, {
 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFunctions(() => getFunctions()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     provideAnalytics(() => getAnalytics()),
