@@ -42,7 +42,7 @@
 
     @if (showRoles()) {
       <p>
-        <mat-form-field appearance="outline" color="accent">
+        <mat-form-field appearance="outline">
           <mat-label>{{ 'admin.panel.users.roles' | translate }}</mat-label>
           <mat-select formControlName="roles" multiple color="accent">
             @for (role of selectRoles; track role.value) {

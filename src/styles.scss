@@ -419,6 +419,16 @@ mat-hint, mat-error { font-size: 0.85rem; }
   --mdc-radio-unselected-icon-color: #{$dark-text-secondary};
   --mdc-radio-unselected-hover-icon-color: #{$dark-text-primary};
 
+  // Explicit pseudo-checkbox override for mat-select (multiple) in dark mode
+  .mat-pseudo-checkbox-checked,
+  .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after,
+  .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full {
+    background-color: $app-accent-color !important;
+  }
+  .mat-pseudo-checkbox-checked::after {
+    color: $app-on-accent-color !important;
+  }
+
   background-color: $dark-background !important;
   color: $dark-text-primary !important;
 
