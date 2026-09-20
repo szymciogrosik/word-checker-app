@@ -64,12 +64,12 @@ export class UsersComponent {
         {
           tooltipKey: 'admin.panel.table.header.modify',
           icon: 'edit',
-          color: 'primary',
+          color: 'accent',
           onClick: (row) => this.openUpdateUser(row.id!)
         },
         {
           tooltipKey: 'admin.panel.table.header.delete',
-          icon: 'delete',
+          icon: 'archive',
           color: 'warn',
           onClick: (row) => this.openConfirmRemoveUserDialog(row.id!)
         }
@@ -92,7 +92,7 @@ export class UsersComponent {
         {
           tooltipKey: 'admin.panel.table.header.restore',
           icon: 'settings_backup_restore',
-          color: 'primary',
+          color: 'accent',
           onClick: (row) => this.restoreUser(row.id!)
         }
       ]
