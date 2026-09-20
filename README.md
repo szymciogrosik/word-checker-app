@@ -61,17 +61,14 @@ npm install
 
 # Run locally
 ng serve
-<<<<<<< HEAD
+
 # Open http://localhost:4200
-=======
-# open http://localhost:4200
 
 # run tests (interactive watch mode)
 npm test
 
 # run tests once headlessly with coverage
 npm run test:ci
->>>>>>> template/main
 ```
 
 ---
