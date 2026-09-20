@@ -488,6 +488,16 @@ mat-hint, mat-error { font-size: 0.85rem; }
   .mat-mdc-input-element, .mat-mdc-select-value-text {
     color: $dark-text-primary !important;
   }
+  .mat-mdc-form-field.mat-form-field-disabled .mat-mdc-input-element,
+  .mat-mdc-form-field.mat-form-field-disabled mat-label {
+    color: $dark-text-secondary !important;
+    -webkit-text-fill-color: $dark-text-secondary !important;
+  }
+  .mat-form-field-disabled .mdc-notched-outline__leading,
+  .mat-form-field-disabled .mdc-notched-outline__notch,
+  .mat-form-field-disabled .mdc-notched-outline__trailing {
+    border-color: rgba(255,255,255,0.05) !important;
+  }
 
   input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px $dark-input-bg inset !important;

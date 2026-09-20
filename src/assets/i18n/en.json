@@ -93,6 +93,8 @@
   "admin.panel.settings.users.addedSuccessfully": "User added successfully, in a second you will be switched to newly created account. Please confirm if newly created user have not to much rights.",
   "admin.panel.users.sendResetEmail": "Send password reset link",
   "admin.panel.users.sendResetEmail.success": "Password reset link sent successfully to email.",
+  "admin.panel.users.sendResetEmail.confirmTitle": "Reset password",
+  "admin.panel.users.sendResetEmail.confirmMessage": "Are you sure you want to send a password reset email to",
   "admin.panel.users.header": "User details",
   "admin.panel.users.firstName": "First name",
   "admin.panel.users.lastName": "Last name",

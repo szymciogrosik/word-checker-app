@@ -79,3 +79,7 @@ When using Angular Material components:
 
 ## 11. Security and Admin Panel
 - **Role Security:** EVERY single page, tab, or section within the "Admin Panel" MUST be secured by a specific access role (e.g. `ADMIN_PAGE_ACCESS`, `ADMIN_CORE_SETTINGS`). Do not create globally accessible sections in the admin panel. Use the `AccessRoleService` and `@if` blocks or route guards to protect all features.
+
+## 12. Dialogs and Popups
+- **Always Use the Generic Popup:** Whenever a new confirmation, warning, error, or informational popup is required, do NOT create a new component. You MUST use the existing `DialogComponent` via the `DialogService` (`openConfirmDialogWithData`).
+- **Customization:** The generic popup supports title, message, cancel/confirm button texts, built-in types (CONFIRMATION, WARNING, ERROR), as well as custom Material icons (`icon`, `iconColor`, `iconSize`) that automatically scale responsively.

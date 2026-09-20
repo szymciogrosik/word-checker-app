@@ -8,6 +8,9 @@ import {AuthService} from '../../../../../_services/auth/auth.service';
 import {SnackbarService} from '../../../../../_services/util/snackbar.service';
 import {TranslatePipe} from '@ngx-translate/core';
 import {MatButtonModule} from '@angular/material/button';
+import {DialogService} from '../../../../../_services/util/dialog.service';
+import {DialogType} from '../../../../../_models/dialog/dialog-type';
+import {firstValueFrom} from 'rxjs';
 
 @Component({
   selector: 'app-user-details',
@@ -26,7 +29,7 @@ export class UserDetailsComponent {
   private translateService = inject(CustomTranslateService);
   private authService = inject(AuthService);
   private snackbarService = inject(SnackbarService);
-
+  private dialogService = inject(DialogService);
 
   protected onCancelClick(): void {
     this.dialogRef.close(null);
@@ -40,14 +43,30 @@ export class UserDetailsComponent {
     this.dialogRef.close(payload);
   }
 
-  protected onSendResetEmail(): void {
+  protected async onSendResetEmail(): Promise<void> {
     if (this.data.user && this.data.user.email) {
-      this.authService.sendPasswordResetLink(this.data.user.email).then(() => {
-        this.snackbarService.openSnackBar(this.translateService.get('admin.panel.users.sendResetEmail.success'));
-      }).catch(err => {
-        console.error(err);
-        this.snackbarService.openLongSnackBar(this.translateService.get('login.error.internal'));
+      const email = this.data.user.email;
+      const message = `${this.translateService.get('admin.panel.users.sendResetEmail.confirmMessage')} ${email}?`;
+      
+      const confirmPopup = this.dialogService.openConfirmDialogWithData({
+          title: this.translateService.get('admin.panel.users.sendResetEmail.confirmTitle'),
+          popupType: null,
+          icon: 'mail',
+          iconColor: 'primary',
+          message: message,
+          cancelButtonText: this.translateService.get('registeredUsers.details.cancel'),
+          confirmButtonText: this.translateService.get('registeredUsers.details.confirm')
       });
+
+      const result = await firstValueFrom(confirmPopup.afterClosed());
+      if (result) {
+        this.authService.sendPasswordResetLink(email).then(() => {
+          this.snackbarService.openSnackBar(this.translateService.get('admin.panel.users.sendResetEmail.success'));
+        }).catch(err => {
+          console.error(err);
+          this.snackbarService.openLongSnackBar(this.translateService.get('login.error.internal'));
+        });
+      }
     }
   }
 
