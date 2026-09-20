@@ -74,6 +74,7 @@
   "admin.panel.tab.header.settings": "Ustawienia",
   "admin.panel.tab.header.settings.users": "Użytkownicy",
   "admin.panel.tab.header.settings.public": "Ustawienia publiczne",
+  "admin.panel.tab.header.settings.global": "Ustawienia globalne",
   "admin.panel.table.filter": "Filtr",
   "admin.panel.table.filter.placeholder": "Np. Kasia",
   "admin.panel.table.filter.noResult": "Brak danych pasujących do filtra",
