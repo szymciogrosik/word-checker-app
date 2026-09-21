@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import { ApiService } from '../_services/api/api-service.service';
 import { SnackbarService } from '../_services/util/snackbar.service';
@@ -113,7 +113,8 @@ describe('HomeComponent', () => {
   });
 
   describe('resetQueryAndSearchResults', () => {
-    it('should clear query and results and focus input', (done) => {
+    it('should clear query and results and focus input', () => {
+      jasmine.clock().install();
       spyOn(component, 'resetSearchResult').and.callThrough();
       
       const focusSpy = jasmine.createSpy('focus');
@@ -125,10 +126,10 @@ describe('HomeComponent', () => {
       expect(component.queryWord).toBe('');
       expect(component.resetSearchResult).toHaveBeenCalled();
       
-      setTimeout(() => {
-        expect(focusSpy).toHaveBeenCalled();
-        done();
-      }, 0);
+      jasmine.clock().tick(1);
+      
+      expect(focusSpy).toHaveBeenCalled();
+      jasmine.clock().uninstall();
     });
   });
 
