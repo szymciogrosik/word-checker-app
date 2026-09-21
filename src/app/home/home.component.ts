@@ -3,6 +3,8 @@ import {CommonModule} from '@angular/common';
 import {APP_CONFIG} from '../app.config.token';
 import {MatCardModule} from '@angular/material/card';
 import {ApiService} from '../_services/api/api-service.service';
+import {SnackbarService} from '../_services/util/snackbar.service';
+import {CustomTranslateService} from '../_services/translate/custom-translate.service';
 import {MatButton} from '@angular/material/button';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
@@ -43,6 +45,8 @@ export class HomeComponent implements OnInit {
   }
 
   protected readonly environment = inject(APP_CONFIG);
+  private snackbarService = inject(SnackbarService);
+  private customTranslateService = inject(CustomTranslateService);
 
   ngOnInit(): void {}
 
@@ -65,6 +69,9 @@ export class HomeComponent implements OnInit {
       },
       error: err => {
         console.error('Error in call to search words API ', err);
+        this.snackbarService.openSnackBar(this.customTranslateService.get('search.word.error'));
+        this.loading = false;
+        this.cdr.markForCheck();
       },
       complete: () => {
         this.loading = false;

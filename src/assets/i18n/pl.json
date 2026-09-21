@@ -34,6 +34,7 @@
   "search.word.result.part3-allowed": " jest dozwolone w grach słownych.",
   "search.word.result.part3-disallowed": " nie jest dozwolone w grach słownych.",
   "search.word.result.checkInDictionary": "Sprawdź jego znaczenie",
+  "search.word.error": "Wystąpił błąd podczas wyszukiwania słowa.",
   "registration.enterEmail": "Email",
   "registration.exampleEmail": "adam@gmail.com",
   "registration.fillField": "Uzupełnij pole",
@@ -186,7 +187,7 @@
 
   "privacy.title": "Polityka Prywatności",
   "privacy.s1.title": "1. Administrator danych osobowych",
-  "privacy.s1.p1": "Administratorem Twoich danych osobowych jest <strong>PAGE_OWNER_NAME</strong>, osoba fizyczna prowadząca serwis internetowy (dalej: „Serwis\"). Kontakt: <a href=\"mailto:PAGE_OWNER_EMAIL\">PAGE_OWNER_EMAIL</a>",
+  "privacy.s1.p1": "Administratorem Twoich danych osobowych jest <strong>Szymon Gross</strong>, osoba fizyczna prowadząca serwis internetowy (dalej: „Serwis\"). Kontakt: <a href=\"mailto:szymon.gross.dev@gmail.com\">szymon.gross.dev@gmail.com</a>",
   "privacy.s2.title": "2. Jakie dane zbieramy",
   "privacy.s2.p1": "W ramach korzystania z Serwisu przetwarzamy następujące dane osobowe:",
   "privacy.s2.item1": "<strong>Adres e-mail</strong> – wymagany do założenia konta i logowania",
@@ -212,9 +213,9 @@
   "privacy.s6.p1": "Przysługują Ci następujące prawa:",
   "privacy.s6.item1": "<strong>Dostęp do danych</strong> – możesz zażądać informacji o swoich przetwarzanych danych",
   "privacy.s6.item2": "<strong>Sprostowanie</strong> – możesz w każdej chwili poprawić swoje dane w zakładce „Mój profil\"",
-  "privacy.s6.item3": "<strong>Usunięcie danych</strong> – możesz zażądać usunięcia swojego konta i danych, pisząc na adres <a href=\"mailto:PAGE_OWNER_EMAIL\">PAGE_OWNER_EMAIL</a>",
+  "privacy.s6.item3": "<strong>Usunięcie danych</strong> – możesz zażądać usunięcia swojego konta i danych, pisząc na adres <a href=\"mailto:szymon.gross.dev@gmail.com\">szymon.gross.dev@gmail.com</a>",
   "privacy.s6.item4": "<strong>Ograniczenie przetwarzania oraz sprzeciw</strong> – masz prawo zażądać ograniczenia przetwarzania swoich danych",
-  "privacy.s6.p2": "W celu realizacji swoich praw skontaktuj się z nami pod adresem: <a href=\"mailto:PAGE_OWNER_EMAIL\">PAGE_OWNER_EMAIL</a>. Przysługuje Ci również prawo do wniesienia skargi do organu nadzorczego ds. ochrony danych osobowych.",
+  "privacy.s6.p2": "W celu realizacji swoich praw skontaktuj się z nami pod adresem: <a href=\"mailto:szymon.gross.dev@gmail.com\">szymon.gross.dev@gmail.com</a>. Przysługuje Ci również prawo do wniesienia skargi do organu nadzorczego ds. ochrony danych osobowych.",
   "privacy.s7.title": "7. Pliki cookie i localStorage",
   "privacy.s7.text": "Informacje o plikach cookie znajdziesz w naszej",
   "privacy.s7.link": "Polityce Cookies",
@@ -223,13 +224,13 @@
 
   "terms.title": "Regulamin Serwisu",
   "terms.s1.title": "1. Postanowienia ogólne",
-  "terms.s1.p1": "Niniejszy Regulamin określa zasady korzystania z Serwisu dostępnego pod adresem <strong>word-checker-app-2cbfd.web.app</strong> (dalej: „Serwis\"), którego operatorem jest <strong>PAGE_OWNER_NAME</strong> (dalej: „Administrator\"). Kontakt: <a href=\"mailto:PAGE_OWNER_EMAIL\">PAGE_OWNER_EMAIL</a>",
+  "terms.s1.p1": "Niniejszy Regulamin określa zasady korzystania z Serwisu dostępnego pod adresem <strong>word-checker-app-2cbfd.web.app</strong> (dalej: „Serwis\"), którego operatorem jest <strong>Szymon Gross</strong> (dalej: „Administrator\"). Kontakt: <a href=\"mailto:szymon.gross.dev@gmail.com\">szymon.gross.dev@gmail.com</a>",
   "terms.s1.p2": "Korzystanie z Serwisu oznacza akceptację niniejszego Regulaminu.",
   "terms.s2.title": "2. Definicje",
   "terms.s2.item1": "<strong>Serwis</strong> – aplikacja internetowa dostępna pod adresem word-checker-app-2cbfd.web.app",
   "terms.s2.item2": "<strong>Użytkownik</strong> – każda osoba fizyczna korzystająca z Serwisu lub posiadająca w nim konto",
   "terms.s2.item3": "<strong>Konto</strong> – indywidualny profil Użytkownika w Serwisie",
-  "terms.s2.item4": "<strong>Administrator</strong> – PAGE_OWNER_NAME, kontakt: PAGE_OWNER_EMAIL",
+  "terms.s2.item4": "<strong>Administrator</strong> – Szymon Gross, kontakt: szymon.gross.dev@gmail.com",
   "terms.s3.title": "3. Warunki korzystania i rejestracja konta",
   "terms.s3.item1": "Korzystanie z podstawowych stron informacyjnych nie wymaga rejestracji.",
   "terms.s3.item2": "Dostęp do pełnych funkcji wymaga utworzenia Konta (za pomocą e-maila i hasła lub logowania Google).",
@@ -250,9 +251,9 @@
   "terms.s6.item2": "Administrator nie ponosi odpowiedzialności za przerwy w działaniu spowodowane siłą wyższą lub problemami technicznymi dostawców infrastruktury (np. Google Firebase).",
   "terms.s6.item3": "Administrator nie odpowiada za szkody wynikłe z niewłaściwego korzystania z Serwisu przez Użytkowników.",
   "terms.s7.title": "7. Reklamacje",
-  "terms.s7.p1": "Wszelkie reklamacje dotyczące działania Serwisu można kierować na adres: <a href=\"mailto:PAGE_OWNER_EMAIL\">PAGE_OWNER_EMAIL</a>. Zgłoszenia rozpatrujemy w terminie 14 dni.",
+  "terms.s7.p1": "Wszelkie reklamacje dotyczące działania Serwisu można kierować na adres: <a href=\"mailto:szymon.gross.dev@gmail.com\">szymon.gross.dev@gmail.com</a>. Zgłoszenia rozpatrujemy w terminie 14 dni.",
   "terms.s8.title": "8. Kontakt",
-  "terms.s8.p1": "W sprawach dotyczących Regulaminu prosimy o kontakt: <a href=\"mailto:PAGE_OWNER_EMAIL\">PAGE_OWNER_EMAIL</a>",
+  "terms.s8.p1": "W sprawach dotyczących Regulaminu prosimy o kontakt: <a href=\"mailto:szymon.gross.dev@gmail.com\">szymon.gross.dev@gmail.com</a>",
 
   "cookies.title": "Polityka Cookies",
   "cookies.s1.title": "1. Czym są cookies i localStorage?",
@@ -280,5 +281,5 @@
   "cookies.s4.title": "4. Czy możesz wyłączyć cookies?",
   "cookies.s4.p1": "Możesz zarządzać plikami cookie przez ustawienia przeglądarki. Pamiętaj jednak, że wyłączenie cookies sesji uniemożliwi logowanie do Serwisu. Instrukcje dla popularnych przeglądarek:",
   "cookies.s5.title": "5. Kontakt",
-  "cookies.s5.p1": "W sprawach dotyczących cookies: <a href=\"mailto:PAGE_OWNER_EMAIL\">PAGE_OWNER_EMAIL</a>"
+  "cookies.s5.p1": "W sprawach dotyczących cookies: <a href=\"mailto:szymon.gross.dev@gmail.com\">szymon.gross.dev@gmail.com</a>"
 }
