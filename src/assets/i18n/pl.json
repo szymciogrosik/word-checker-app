@@ -34,6 +34,7 @@
   "search.word.result.part3-allowed": " jest dozwolone w grach słownych.",
   "search.word.result.part3-disallowed": " nie jest dozwolone w grach słownych.",
   "search.word.result.checkInDictionary": "Sprawdź jego znaczenie",
+  "search.word.error": "Wystąpił błąd podczas wyszukiwania słowa.",
   "registration.enterEmail": "Email",
   "registration.exampleEmail": "adam@gmail.com",
   "registration.fillField": "Uzupełnij pole",

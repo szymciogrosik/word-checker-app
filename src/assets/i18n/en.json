@@ -34,6 +34,7 @@
   "search.word.result.part3-allowed": " is allowed in the word games.",
   "search.word.result.part3-disallowed": " is not allowed in the word games.",
   "search.word.result.checkInDictionary": "Check its meaning",
+  "search.word.error": "An error occurred while searching for the word.",
   "registration.enterEmail": "Email",
   "registration.exampleEmail": "pat@example.com",
   "registration.fillField": "Fill field",
