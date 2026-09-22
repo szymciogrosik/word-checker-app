@@ -264,6 +264,18 @@ mat-form-field {
     border-color: rgba(0,0,0,0.1) !important;
   }
 
+  // Fix for vertical line glitch (subpixel rendering / CSS conflict)
+  .mdc-notched-outline__leading {
+    border-right: none !important;
+  }
+  .mdc-notched-outline__notch {
+    border-left: none !important;
+    border-right: none !important;
+  }
+  .mdc-notched-outline__trailing {
+    border-left: none !important;
+  }
+
   &.mat-form-field-disabled {
     .mat-mdc-input-element, mat-label {
       color: var(--app-text-secondary) !important;
@@ -515,7 +527,6 @@ mat-hint, mat-error { font-size: 0.85rem; }
 
   .mat-mdc-form-field.mat-form-field-invalid .mdc-text-field--outlined {
     .mdc-notched-outline__leading, .mdc-notched-outline__notch, .mdc-notched-outline__trailing {
-      border-width: 1.5px !important;
       border-color: $dark-error !important;
     }
   }
