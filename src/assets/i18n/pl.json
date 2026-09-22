@@ -281,5 +281,7 @@
   "cookies.s4.title": "4. Czy możesz wyłączyć cookies?",
   "cookies.s4.p1": "Możesz zarządzać plikami cookie przez ustawienia przeglądarki. Pamiętaj jednak, że wyłączenie cookies sesji uniemożliwi logowanie do Serwisu. Instrukcje dla popularnych przeglądarek:",
   "cookies.s5.title": "5. Kontakt",
-  "cookies.s5.p1": "W sprawach dotyczących cookies: <a href=\"mailto:szymon.gross.dev@gmail.com\">szymon.gross.dev@gmail.com</a>"
+  "cookies.s5.p1": "W sprawach dotyczących cookies: <a href=\"mailto:szymon.gross.dev@gmail.com\">szymon.gross.dev@gmail.com</a>",
+  "api.error.htmlReceived": "Otrzymano HTML zamiast słownika. Prawdopodobnie plik nie istnieje.",
+  "api.error.downloadFailed": "Nie udało się pobrać pliku"
 }

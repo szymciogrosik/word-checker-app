@@ -281,5 +281,7 @@
   "cookies.s4.title": "4. How to manage cookies in your browser",
   "cookies.s4.p1": "You can block or delete cookies at any time in your browser settings. Please note that blocking essential cookies may prevent logging in and using the Service. Instructions for popular browsers:",
   "cookies.s5.title": "5. Contact",
-  "cookies.s5.p1": "For cookie-related matters: <a href=\"mailto:szymon.gross.dev@gmail.com\">szymon.gross.dev@gmail.com</a>"
+  "cookies.s5.p1": "For cookie-related matters: <a href=\"mailto:szymon.gross.dev@gmail.com\">szymon.gross.dev@gmail.com</a>",
+  "api.error.htmlReceived": "Received HTML instead of dictionary. Probable file missing.",
+  "api.error.downloadFailed": "Failed to download file"
 }
