@@ -126,8 +126,7 @@ export class ProfileComponent {
       cancelButtonText: this.translateService.get('dialog.cancel'),
       confirmButtonText: this.translateService.get('registeredUsers.details.confirm'),
       icon: 'delete_outline',
-      iconColor: 'warn',
-      iconSize: '48px'
+      iconColor: 'warn'
     });
 
     const confirmed = await firstValueFrom(dialogRef.afterClosed());
