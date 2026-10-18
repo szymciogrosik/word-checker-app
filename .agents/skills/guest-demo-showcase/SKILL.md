@@ -61,7 +61,7 @@ Structure the page using the Bento Box design system from [`ui-guidelines`](../u
 - **3 Business Value Highlights (`.hero-metrics-strip`)**: Three concise pillars summarizing the main benefits for standard users.
 
 ### B. Interactive Bento Playground (`#bento-playground` / `.bento-grid`)
-Organize the business showcase into clean, responsive Bento cards (`mat-card.bento-card`):
+Organize the business showcase into clean, responsive Bento cards (`mat-card.bento-card`). Ensure `.bento-grid` (or `#bento-playground`) includes `scroll-margin-top: 24px;` (or `32px`) so scrolling via `scrollIntoView({behavior: 'smooth', block: 'start'})` leaves comfortable visual padding at the top of the viewport:
 
 1. **Guest vs. Logged-In Access Comparison Card (`.bento-span-2` or side-by-side cards)**:
    - Two distinct visual columns or interactive cards contrasting:
