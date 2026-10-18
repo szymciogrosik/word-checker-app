@@ -313,8 +313,13 @@ The application uses **Cloudinary** (free tier) with an **Unsigned Upload Preset
 3. Click **Save** in the top-right corner.
 
 ### 3. (Recommended for production) Restrict settings in Security
-1. In the Cloudinary console, go to **Settings** → **Security**.
-2. Under **Restricted media types**, make sure **Resource list** is checked (blocked by default) so nobody can list all images in a folder.
+1. In the Cloudinary console, go to **Settings** (gear icon) → **Security**.
+2. Under **Allowed fetch domains**, enter your production domains (comma-separated, without `https://`):
+   ```text
+   angular-firebase-accelerator.web.app
+   ```
+   - *Why:* Leaving this empty allows anyone on the internet to use your Cloudinary account as an open proxy CDN (`/image/fetch/https://external-site.com/...`) and drain your free quota. Specifying your domain locks this down while keeping `http://localhost:4200` uploads and `<img>` delivery working normally.
+3. Click **Save** at the bottom of the Security page.
 
 ### 4. Configure local `environment.ts`
 Update your local `src/environments/environment.ts` file with your Cloudinary credentials:
