@@ -10,5 +10,9 @@ export const environment = {
     storageBucket: "word-checker-app-2cbfd.firebasestorage.app",
     messagingSenderId: "255717563537",
     appId: "1:255717563537:web:ea5902f69f2d7f3967b330"
+  },
+  cloudinary: {
+    cloudName: "CLOUDINARY_CLOUD_NAME",
+    uploadPreset: "CLOUDINARY_UPLOAD_PRESET"
   }
 };

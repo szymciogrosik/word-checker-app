@@ -28,6 +28,7 @@ The dictionary comes from [sjp.pl](https://sjp.pl/sl/growy/) — a regularly upd
 
 - **Angular** (standalone components, zoneless change detection)
 - **Firebase** (Auth, Firestore, Hosting, Analytics)
+- **Cloudinary** (free image hosting & CDN optimization for profile pictures)
 - **@ngx-translate** — Polish / English UI
 - **Angular Material** — UI components
 
@@ -107,15 +108,16 @@ git push origin main
 
 ---
 
-## Firebase setup
+## Firebase & Cloudinary setup
 
 1. Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com/).
 2. Enable **Email/Password** and **Google** auth providers.
 3. Set up **Firestore** (Warsaw region, production mode).
 4. Register a **Web app** and copy the config into the `src/environments/` files.
 5. Set up **Firebase Hosting**.
+6. Set up **Cloudinary** (Unsigned Upload Preset) for user profile pictures.
 
-See the [Angular Firebase Accelerator README](https://github.com/szymciogrosik/angular-firebase-accelerator) for detailed step-by-step Firebase and GitHub Actions setup instructions.
+See the [Angular Firebase Accelerator README](https://github.com/szymciogrosik/angular-firebase-accelerator) for detailed step-by-step Firebase, Cloudinary, and GitHub Actions setup instructions.
 
 ---
 

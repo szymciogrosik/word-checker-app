@@ -9,10 +9,14 @@ export interface AppConfig {
     readonly apiKey: string;
     readonly authDomain: string;
     readonly projectId: string;
-    readonly storageBucket: string;
+    readonly storageBucket?: string;
     readonly messagingSenderId: string;
     readonly appId: string;
-    readonly measurementId: string;
+    readonly measurementId?: string;
+  };
+  readonly cloudinary: {
+    readonly cloudName: string;
+    readonly uploadPreset: string;
   };
 }
 
