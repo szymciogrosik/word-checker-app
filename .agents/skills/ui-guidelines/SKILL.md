@@ -31,7 +31,7 @@ All content must live inside premium cards. When creating new components, struct
 *Use the global SCSS classes and variables defined in `styles.scss` rather than hardcoding these values.*
 
 ## 4. Color Palette
-The exact colors are defined and can be changed by the developer in `styles.scss`. Always use CSS variables (`var(--name)`) instead of raw HEX values.
+The exact colors are defined and can be changed by the developer in `styles.scss` (when rebranding or adjusting application colors across Light and Dark modes, follow the [`adjust-project-colors`](../adjust-project-colors/SKILL.md) skill). Always use CSS variables (`var(--name)`) instead of raw HEX values.
 - **Light Mode (Default):**
   - Background & Surface: Use `var(--app-background-color)` and `var(--app-surface-color)`
   - Text: Use `var(--app-text-primary)` and `var(--app-text-secondary)`
