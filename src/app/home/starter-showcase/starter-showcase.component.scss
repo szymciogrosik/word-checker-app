@@ -392,7 +392,22 @@
   }
 
   &.active {
-    border-color: var(--app-accent-color);
+    border: 2px solid var(--app-accent-color) !important;
+    background-color: var(--app-accent-selected-bg) !important;
+    box-shadow: 0 0 0 1px var(--app-accent-color), 0 8px 20px -6px rgba(79, 70, 229, 0.25) !important;
+
+    .node-icon-box {
+      background-color: var(--app-accent-color);
+      border-color: var(--app-accent-color);
+
+      mat-icon {
+        color: #ffffff;
+      }
+    }
+
+    .node-meta strong {
+      color: var(--app-accent-color);
+    }
   }
 }
 
@@ -537,8 +552,10 @@
   }
 
   &.active {
-    border-color: var(--app-accent-color);
-    color: var(--app-text-primary);
+    border: 1.5px solid var(--app-accent-color) !important;
+    background-color: var(--app-accent-selected-bg) !important;
+    color: var(--app-accent-color) !important;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.15);
   }
 
   &:disabled {
@@ -705,8 +722,10 @@
   cursor: pointer;
 
   &.active {
-    border-color: var(--app-accent-color);
-    color: var(--app-text-primary);
+    border: 1.5px solid var(--app-accent-color) !important;
+    background-color: var(--app-accent-selected-bg) !important;
+    color: var(--app-accent-color) !important;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.15);
   }
 }
 
@@ -830,6 +849,25 @@
 
   .pipeline-connector {
     display: none;
+  }
+}
+
+@media (max-width: 768px), (hover: none) {
+  // Nested sub-elements inside main cards & showcase tiles
+  .metric-item,
+  .status-pill,
+  .session-chip,
+  .pipeline-node,
+  .pipeline-inspector,
+  .spec-pill,
+  .segmented-switch,
+  .live-user-box,
+  .live-guest-box,
+  .flag-row,
+  .stage-tabs,
+  .stage-display,
+  .compliance-icon-wrap {
+    border-color: var(--app-accent-color) !important;
   }
 }
 

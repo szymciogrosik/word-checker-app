@@ -146,6 +146,8 @@ $dark-theme: mat.m2-define-dark-theme((
   --separator-color: #{$app-text-secondary};
   --separator-line: #{$app-border-color};
   --mobile-card-border: #{$app-mobile-border-color};
+  --app-accent-selected-bg: rgba(79, 70, 229, 0.08);
+  --app-accent-selected-border: var(--app-accent-color);
   --google-btn-bg: #{$app-surface-color};
   --google-btn-text: #1f2937;
   --google-btn-hover: #f8fafd;
@@ -429,6 +431,8 @@ mat-hint, mat-error { font-size: 0.85rem; }
   --separator-color: #{$dark-text-secondary};
   --separator-line: #{$dark-border-primary};
   --mobile-card-border: #{$dark-mobile-border};
+  --app-accent-selected-bg: rgba(129, 140, 248, 0.16);
+  --app-accent-selected-border: #{$dark-mobile-border};
   --google-btn-bg: #2a3b3b;
   --google-btn-text: #{$dark-text-primary};
   --google-btn-hover: #344848;
