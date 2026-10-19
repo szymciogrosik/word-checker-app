@@ -21,15 +21,19 @@
 }
 
 .yes-class {
-  color: $app-green-color !important;
+  color: var(--app-success-color) !important;
 }
 
 .no-class {
-  color: $app-red-color !important;
+  color: var(--app-danger-color) !important;
 }
 
 .search-result-container {
   margin-top: 30px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--app-primary-color) !important;
+  background-color: var(--app-surface-color);
 }
 
 .search-results-sentence {
