@@ -81,7 +81,7 @@ Organize the business showcase into clean, responsive Bento cards (`mat-card.ben
 ## 5. Implementation Checklist & Standards
 
 1. **Strict [`ui-guidelines`](../ui-guidelines/SKILL.md) Compliance**:
-   - **Bento Cards & Whitespace**: Generous padding (`28px`), soft rounded corners (`24px`–`28px`), soft shadows, and subtle `1px solid var(--separator-line)` borders.
+   - **Bento Cards & Whitespace**: Generous padding (`28px`), soft rounded corners (`24px`–`28px`), soft shadows, and subtle `1px solid var(--separator-line)` borders on desktop that transition to `var(--app-accent-color)` on hover—and are **permanently set to `var(--app-accent-color)` on mobile/touch viewports** (`@media (max-width: 768px), (hover: none)`).
    - **CSS Variables Only**: Consume `var(--app-surface-color)`, `var(--app-background-color)`, `var(--app-text-primary)`, `var(--app-text-secondary)`, `var(--app-primary-color)`, `var(--app-accent-color)`, `var(--separator-line)`. **Never hardcode HEX/RGB colors** in component SCSS.
    - **Calm Motion**: **NEVER** use `translateY` or position-shifting transforms on card hover—only transition `border-color` or `box-shadow`.
    - **Mobile-First Overflow Protection**: Always set `margin: 0 !important;` on `mat-card` inside grids/wrappers, and apply `word-break: break-word; white-space: normal;` on text elements inside flex/grid containers.

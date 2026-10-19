@@ -10,7 +10,7 @@ This document serves as the single source of truth for the frontend styling of t
 ## 1. Core Principles
 - **Extreme Cleanliness:** Whitespace is your best friend. Do not clutter interfaces. Use generous padding (e.g., `24px` or `32px` inside cards).
 - **Soft Geometry:** Hard edges are forbidden. Everything uses a generous `border-radius`.
-- **Soft Shadows, No Hard Borders:** We do not use thick solid borders for layout separation. We use soft, diffused drop-shadows (elevation) or very subtle 1px borders (`rgba(0,0,0,0.05)`).
+- **Soft Shadows & Adaptive Borders:** On desktop, we use soft, diffused drop-shadows (elevation) and subtle 1px borders (`var(--separator-line)`) that highlight to `var(--app-accent-color)` on hover. On mobile/touch devices (`@media (max-width: 768px), (hover: none)`), subtle borders are too hard to see—all cards and Bento tiles MUST display their visible accent border (`border-color: var(--app-accent-color) !important;`) permanently at all times.
 - **Vibrant Call-to-Actions (CTAs):** Primary actions should pop against the clean white/dark background.
 - **Calm Motion:** We avoid jerky layout shifts or jumping elements (e.g., no `translateY` on hover for cards). We prefer subtle shadow highlights instead.
 
@@ -25,6 +25,7 @@ All content must live inside premium cards. When creating new components, struct
 - **Border Radius:** Use global CSS variables for standard cards.
 - **Shadow (Light Mode):** Use global CSS elevation variables/classes.
 - **Backgrounds:** Use global CSS variables for surface and nested backgrounds.
+- **Permanent Mobile Borders:** Every card (`mat-card`, `.bento-card`, `.hero-bento-card`, `.bento-role-card`, and any custom tile) must have a clearly visible border (`var(--app-accent-color)`) permanently applied on mobile screens and touch devices (`@media (max-width: 768px), (hover: none)`), matching the desktop `:hover` border state.
 - **Highlighted Tabs:** The `.highlight-tab-content` container must always have a thicker border in the primary color (`var(--app-primary-color)`) to stand out permanently.
 
 *Use the global SCSS classes and variables defined in `styles.scss` rather than hardcoding these values.*
@@ -42,7 +43,7 @@ The exact colors are defined and can be changed by the developer in `styles.scss
 
 ## 5. Micro-interactions
 - **Hover States:** Buttons and interactive cards must have a transition.
-  - Cards: Just intensify the `box-shadow` or border color on hover. **ABSOLUTELY NO BOUNCING**: do NOT use `translateY` or any position-shifting transforms on hover for cards.
+  - Cards: Intensify the `box-shadow` and transition `border-color` to `var(--app-accent-color)` on hover (on desktop). On mobile/touch devices (`@media (max-width: 768px), (hover: none)`), this `var(--app-accent-color)` border must be active permanently rather than waiting for hover. **ABSOLUTELY NO BOUNCING**: do NOT use `translateY` or any position-shifting transforms on hover for cards.
 - **Active States:** Buttons scale down subtly (`transform: scale(0.98)`).
 
 ## 6. Loading States (Skeletons)
@@ -55,6 +56,7 @@ The exact colors are defined and can be changed by the developer in `styles.scss
 - **Bind CSS Variables to SCSS Variables:** Do not hardcode HEX values directly into CSS variables (e.g. `--color: #ffffff;`). Instead, define them as SCSS variables at the top of the file (e.g. `$app-surface-color: #ffffff;`) and bind them using interpolation: `--app-surface-color: #{$app-surface-color};`. This ensures a single source of truth for the entire application palette.
 
 ## 8. Responsiveness and Overflow (Mobile First)
+- **Permanent Tile Borders on Mobile:** Because subtle `1px solid var(--separator-line)` borders are difficult to perceive on phone screens and touch devices have no hover state, all cards and Bento tiles across the entire application must display their highlighted border (`border-color: var(--app-accent-color) !important;`) permanently inside `@media (max-width: 768px), (hover: none)`.
 - **Prevent Text Overflow:** ALWAYS assume that text (especially warning notes, banners, or long user-generated content) might be too long for mobile screens.
 - **Flexbox & Wraps:** When placing text inside a `display: flex;` container, always ensure it can wrap. Apply `word-break: break-word;` and `white-space: normal;` to `<span>` or text elements inside flex containers to prevent horizontal scrolling or cut-off text on phones.
 - **Card Width Overflow (100% vs Margins):** `mat-card` components have a global responsive margin (`margin: clamp(...)` in `styles.scss`). If you set `width: 100%` on a `mat-card`, it will exceed the viewport and get cut off on mobile devices. To fix this, always add `margin: 0 !important;` to the `mat-card` when forcing `width: 100%`, and use `padding` on the parent container instead.
