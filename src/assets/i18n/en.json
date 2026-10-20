@@ -62,6 +62,7 @@
   "login.promo.subtitle": "Instant word validation for Scrabble, Literaki, and word games.",
   "login.mode.login": "LOGIN",
   "login.mode.register": "REGISTER",
+  "login.mode.switch": "Choose login or registration",
   "login.mode.toggleToRegister": "Don't have an account? Register",
   "login.mode.toggleToLogin": "Already have an account? Log in",
   "login.validation.mandatoryField": "Field is mandatory",
