@@ -335,6 +335,9 @@ mat-hint, mat-error { font-size: 0.85rem; }
 .app-card-narrow { max-width: 500px; }
 
 .mat-mdc-tab-body-content {
+  box-sizing: border-box;
+}
+.mat-mdc-tab-body-content:not(:has(.mat-mdc-tab-group)) {
   padding-top: var(--app-tab-content-gap);
   box-sizing: border-box;
 }
