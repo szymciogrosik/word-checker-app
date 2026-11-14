@@ -127,3 +127,4 @@ See the [Angular Firebase Accelerator README](https://github.com/szymciogrosik/a
 - **Dictionary source:** [sjp.pl](https://sjp.pl/sl/growy/)
 - **Angular CLI:** https://github.com/angular/angular-cli
 - **Firebase CLI:** https://firebase.google.com/docs/cli
+
